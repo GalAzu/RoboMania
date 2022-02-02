@@ -14,6 +14,10 @@ public class CameraFollow : MonoBehaviour
     private Vector3 rayOrigin;
     public float distanceToStopCam;
     private LayerMask borders = 14;
+    public float x_minVal;
+    public float x_maxVal;
+    public float y_minVal;
+    public float y_maxVal;
 
     // Start is called before the first frame update
     void Start() 
@@ -34,10 +38,12 @@ public class CameraFollow : MonoBehaviour
         posY = target.transform.position.y;
         Vector3 pos = new Vector3(posX, posY, -offset);
         transform.position = pos;
-        //var clampedPos = new Vector3(Mathf.Clamp(posX, -12, 15), Mathf.Clamp(posY, -23, 29) ,target.position.z );
+        pos.x = Mathf.Clamp(transform.position.x, x_minVal, x_maxVal);
+        pos.y = Mathf.Clamp(transform.position.y, y_minVal, y_maxVal);
+        var clampedPos = new Vector3(pos.x, pos.y ,transform.position.z );
+        transform.position = clampedPos;
 
-        pos.x = Mathf.Clamp(transform.position.x, -12, 15);
-        pos.y = Mathf.Clamp(transform.position.y, -23, 29);
+
 
         // Camera.main.orthographicSize = offset
     }

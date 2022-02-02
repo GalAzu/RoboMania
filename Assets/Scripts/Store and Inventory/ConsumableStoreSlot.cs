@@ -8,6 +8,11 @@ public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler
 {
 
     public Consumable consumable;
+    private ItemDatabase id;
+    private void Awake()
+    {
+        id = FindObjectOfType<ItemDatabase>();
+    }
     public void SyncSlotAndItem()
     {
         var iconChild = gameObject.transform.Find("ItemIcon");
@@ -28,6 +33,7 @@ public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler
         Debug.Log(consumable.name + " is Purchased");
         HPadded();
         ReduceCash();
+        id.AddConsumable(consumable.name);
         Destroy(this.gameObject);
     }
     public void HPadded()

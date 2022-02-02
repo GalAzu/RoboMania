@@ -45,6 +45,7 @@ public class SpawnManager : MonoBehaviour
         {
             store.CreateNewItemSlots();
             store.UpdateShopLists();
+            store.PopulateShopList();
         }
         yield return new WaitForSeconds(timeToNextSpawn);
         {

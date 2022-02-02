@@ -6,8 +6,6 @@ using UnityEngine;
 public class Item 
 {
     public string name;
-    public enum ItemType { Consumable, Abillity };
-    public ItemType itemType;
     public int id;
     public int price;
     public string description;

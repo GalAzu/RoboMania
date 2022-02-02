@@ -27,7 +27,7 @@ public class EnemyBullets : MonoBehaviour
                 GameManager.instance.GameOver();
             }
         }
-        else if(collision.gameObject.layer == 11)
+        else if(collision.gameObject.layer == 11) //Bullet blocking
         {
             Destroy(this.gameObject);
         }

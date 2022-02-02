@@ -1,27 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class Character : MonoBehaviour
 {
-    public enum PlayerState { Slowdown , Walking, Dash , Shooting };
+    public enum PlayerState { Slowdown, Walking, Dash, Shooting };
 
     [Header("State")]
+    [Space]
     public PlayerState state;
     Rigidbody2D rb;
     Vector2 mousePos;
     public float movementSpeed;
     public static Character instance;
+    [Space]
     [Header("PlayerStats")]
+    [Space]
     public float maxHealth;
     public float curHealth;
-    [SerializeField]private float dashLengthInTime;
+    [SerializeField] private float dashLengthInTime;
     [SerializeField] private bool onDash;
     [SerializeField] private float dashForce;
     [SerializeField] private float dashCooldown;
     [SerializeField] private float timeToNextDash;
     [SerializeField] public int cash;
     public bool waitForSpawn;
+    public Abillities abillitySelected;
+    public delegate void abillityEvent();
+    public event abillityEvent onAbillity;
 
     private void Start()
     {
@@ -63,17 +69,17 @@ public class Character : MonoBehaviour
         transform.position += moveVector;
         if (state != PlayerState.Dash && Input.GetKeyDown(KeyCode.Q))
         {
-            StartCoroutine(Dash());
+            Dash();
         }
         if (state != PlayerState.Dash || state != PlayerState.Shooting)
         {
             transform.position += moveVector;
             state = PlayerState.Walking;
 
-           /* if (Input.GetAxisRaw("Vertical") > 0)
+            if (Input.GetAxisRaw("Vertical") > 0)
                 transform.position += transform.up * Time.deltaTime * movementSpeed;
             else if (Input.GetAxisRaw("Vertical") < 0)                                                ///Move directionaly to the rotation.
-                transform.position -= transform.up * Time.deltaTime * movementSpeed;*/
+                transform.position -= transform.up * Time.deltaTime * movementSpeed;
 
         }
 
@@ -127,5 +133,9 @@ public class Character : MonoBehaviour
         {
             UIManager.instance.OpenAndCloseStore();
         }
+    }
+    public void Teleport()
+    {
+        transform.position +=instance.transform.forward  *10;
     }
 }
