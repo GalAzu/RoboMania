@@ -187,7 +187,7 @@ public class Enemy : MonoBehaviour
             {
                 var bulletPos = heavyBulletPos;
                 timeToNextShot = Time.time + shotRate;
-                var bullet = Instantiate(lightBullet, bulletPos.position, transform.rotation);
+                var bullet = Instantiate(HeaveyBullet, bulletPos.position, transform.rotation);
             }
         }
     }

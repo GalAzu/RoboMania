@@ -36,8 +36,8 @@ public class Shop : MonoBehaviour
     }
     public void PopulateShopList()
     {
-        PopulateAbillities();
-        PopulateConsumables();
+        PopulateAbillitiesShopList();
+        PopulateConsumablesShopList();
     }
     public void UpdateShopLists()
     {
@@ -61,13 +61,7 @@ public class Shop : MonoBehaviour
         }
 
     }
-    public void PopulateConsumables()
-    {
-        foreach(var consumable in id.consumableList)
-        {
-                consumableShopList.Add(consumable);
-        }
-    }
+
     public void UpdateConsumableSlot()
     {
         foreach (var slot in consumableSlots)
@@ -76,14 +70,6 @@ public class Shop : MonoBehaviour
             print("Slots name are: " + slot.consumable.name);
         }
     }
-    public void PopulateAbillities()
-    {
-        foreach(var abillity in id.abillitiesList)
-        {
-                abillitiesShopList.Add(abillity);
-        }
-    }
-
     public void UpdateAbillitySlot()
     {
         foreach (var slot in abillitySlots)
@@ -92,6 +78,22 @@ public class Shop : MonoBehaviour
             print("Slots name are: " + slot.abillity.name);
         }
     }
+    public void PopulateConsumablesShopList()
+    {
+        foreach (var consumable in id.consumableList)
+        {
+            consumableShopList.Add(consumable);
+        }
+    }
+    public void PopulateAbillitiesShopList()
+    {
+        foreach(var abillity in id.abillitiesList)
+        {
+                abillitiesShopList.Add(abillity);
+        }
+    }
+
+
     public Consumable RandomConsumable() // Get Random Item to add to the store from the item database, with icon and everything
 
     {
