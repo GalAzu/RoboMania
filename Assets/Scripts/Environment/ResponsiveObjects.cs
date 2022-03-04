@@ -10,6 +10,9 @@ public class ResponsiveObjects : MonoBehaviour
     private GameObject[] ItemPool;
     private GameObject itemToDrop;
     private float health;
+
+    [SerializeField] private float spatialDamage;
+    [SerializeField] private bool isExplosive;
     void Start()
     {
         health = 100;

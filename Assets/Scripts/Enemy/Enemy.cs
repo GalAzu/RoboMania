@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        attackState = (AttackType)Random.Range(0, 3);
         timeToNextShot = 0;
         enemyState = State.Walking;
         roamingPos = GetRoamingPos();
@@ -80,7 +81,7 @@ public class Enemy : MonoBehaviour
                     }
                     if (Vector2.Distance(transform.position, target.transform.position) <= attackDistance)
                     {
-                        Shoot();
+                        Attack();
                     }
                     else ChaseTarget();
 
@@ -103,6 +104,7 @@ public class Enemy : MonoBehaviour
         }
         if (detectRadiusCollider == null && enemyState == State.Chasing)
         {
+            if(target != null)
             target = Character.instance.GetComponent<Transform>();
             if(!onCooldown)
             {
@@ -169,26 +171,39 @@ public class Enemy : MonoBehaviour
         }
 
     }
-    private void Shoot()
+    private void Attack()
     {
-        // Need definition through code of attackType, maybe each enemy has its own attacks?
-        if (attackState == AttackType.RangedLight)
+        switch (attackState)
         {
-            if (Time.time > timeToNextShot)
-            {
-                var bulletPos = lightBulletPos;
-                timeToNextShot = Time.time + shotRate;
-                var bullet = Instantiate(lightBullet, bulletPos.position, transform.rotation);
-            }
+            case (AttackType.Melee):
+                ChaseTarget();
+                break;
+            case (AttackType.RangedHeavy):
+                HeavyShot();
+                break;
+            case (AttackType.RangedLight):
+                LightShot();
+                break;
         }
-        else if (attackState == AttackType.RangedHeavy)
+    }
+    private void LightShot()
+    {
+        if (Time.time > timeToNextShot)
         {
-            if (Time.time > timeToNextShot)
-            {
-                var bulletPos = heavyBulletPos;
-                timeToNextShot = Time.time + shotRate;
-                var bullet = Instantiate(HeaveyBullet, bulletPos.position, transform.rotation);
-            }
+            var bulletPos = lightBulletPos;
+            timeToNextShot = Time.time + shotRate;
+            var bullet = Instantiate(lightBullet, bulletPos.position, transform.rotation);
+            FmodAudioManager.instance.PlayAndAttachOneShot(FmodSfxClass.sfxEnums.ShootLight, transform.position); //use param value to change shot type
+        }
+    }
+    private void HeavyShot()
+    {
+        if (Time.time > timeToNextShot)
+        {
+            var bulletPos = heavyBulletPos;
+            timeToNextShot = Time.time + shotRate;
+            var bullet = Instantiate(HeaveyBullet, bulletPos.position, transform.rotation);
+            FmodAudioManager.instance.PlayAndAttachOneShot(FmodSfxClass.sfxEnums.ShootHeavy, transform.position);
         }
     }
     public Transform GetTarget()

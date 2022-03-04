@@ -6,12 +6,17 @@ using UnityEngine.EventSystems;
 
 public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler 
 {
-
+    private float initSpeed;
+    private float initRate;
     public Consumable consumable;
+    private Shooting shooting;
     private ItemDatabase id;
     private void Awake()
     {
+        shooting = FindObjectOfType<Shooting>();
         id = FindObjectOfType<ItemDatabase>();
+        initSpeed = FindObjectOfType<Character>().movementSpeed;
+        initRate = shooting.shotRate;
     }
     public void SyncSlotAndItem()
     {
@@ -22,7 +27,7 @@ public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (Character.instance.cash >= consumable.price)
+        if (Character.instance.machineParts >= consumable.price)
         {
             OnItemPurchase();
         }
@@ -30,9 +35,20 @@ public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler
     }
     public void OnItemPurchase()
     {
-        Debug.Log(consumable.name + " is Purchased");
-        HPadded();
+        switch(consumable.id)
+        {
+            case 1:  // hp adding consumables
+                HPadded();
+                break;
+            case 2:   // fireRate adding consumables
+                IncreaseFireRate();
+                break;
+            case 3:   // dashEnable adding consumables
+                StartCoroutine(Haste());
+                break;
+        }
         ReduceCash();
+        if(consumable.id == 1) // id 1 for fire rate increase
         id.AddConsumable(consumable.name);
         Destroy(this.gameObject);
     }
@@ -44,7 +60,28 @@ public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler
     public void ReduceCash()
     {
         UIManager.instance.UpdateMachineParts();
-        Character.instance.cash -= consumable.price;
+        Character.instance.machineParts -= consumable.price;
     }
-    
+    public void IncreaseFireRate()
+    {
+        shooting.shotRate -= consumable.shotRate;
+    }
+    private IEnumerator ResetStats()
+    {
+        shooting.shotRate = initRate;
+        Character.instance.movementSpeed = initSpeed;
+        yield return new WaitForSeconds(5);
+    }
+    public IEnumerator Haste()
+    {
+        var _char = FindObjectOfType<Character>();
+        var oldSpeed = _char.movementSpeed ;
+        _char.movementSpeed += consumable.speedAdded;
+        yield return new WaitForSeconds(5);
+        _char.movementSpeed = oldSpeed;
+    }
+    public void DashEnable()
+    {
+
+    }
 }

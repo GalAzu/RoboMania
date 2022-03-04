@@ -23,7 +23,10 @@ public class Character : MonoBehaviour
     [SerializeField] private float dashForce;
     [SerializeField] private float dashCooldown;
     [SerializeField] private float timeToNextDash;
-    [SerializeField] public int cash;
+    [SerializeField] public int machineParts;
+
+    public bool onCooldown;
+    public int cooldownSec;
     public bool waitForSpawn;
     public Abillities abillitySelected;
     public delegate void abillityEvent();

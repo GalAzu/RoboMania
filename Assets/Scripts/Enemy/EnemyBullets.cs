@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyBullets : MonoBehaviour
 {
-    public int lightBulletDamage;
-    public float lightBulletSpeed;
+    public int _bulletDamage;
+    public float _bulletSpeed;
 
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate((Vector3.up * lightBulletSpeed) * Time.deltaTime, Space.Self);
+        transform.Translate((Vector3.up * _bulletSpeed) * Time.deltaTime, Space.Self);
         Destroy(this.gameObject, 3);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +19,7 @@ public class EnemyBullets : MonoBehaviour
         if(collision.gameObject.layer == 9)
         {
             print("player Hit");
-            Character.instance.curHealth -= lightBulletDamage;
+            Character.instance.curHealth -= _bulletDamage;
             UIManager.instance.UpdateHP();
             Destroy(this.gameObject);
             if(Character.instance.curHealth <= 0)

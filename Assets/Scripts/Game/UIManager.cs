@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
         UpdateEnemyCount();
         UpdateWaveNumber();
         UpdateHP();
+        UpdateMachineParts();
     }
     public void OpenAndCloseStore()
     {
@@ -54,6 +55,6 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateMachineParts()
     {
-       machineParts.text = "Machine Parts: " + GameManager.instance.MachineParts;
+       machineParts.text = "Machine Parts: " + Character.instance.machineParts;
     }
 }

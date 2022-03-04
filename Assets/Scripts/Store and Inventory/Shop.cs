@@ -5,9 +5,11 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour 
 {
     public List<Consumable> consumableShopList = new List<Consumable>();
+    public List<Abillities> abillitiesShopList = new List<Abillities>();
+    [Space]
     public List<ConsumableStoreSlot> consumableSlots = new List<ConsumableStoreSlot>();
     public List<AbillityStoreSlot> abillitySlots = new List<AbillityStoreSlot>();
-    public List<Abillities> abillitiesShopList = new List<Abillities>();
+    [Space]
     public GameObject abillitySlot, consumableSlot, StorePanel;
     private ItemDatabase id;
     public int numberOfAbillitySlots = 3;

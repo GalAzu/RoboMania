@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public UnityEvent enemiesDefeatedEvent;
     private Character player;
-    public int MachineParts;
     public int enemiesDefeated;
     public bool storeIsOpened;
     private void Start()
@@ -30,7 +29,7 @@ public class GameManager : MonoBehaviour
     }
     public void AddScoreToEnemiesDefeated()
     {
-        MachineParts +=Random.Range(1,5);
+        Character.instance.machineParts += Random.Range(1, 5);
         enemiesDefeated++;
         UIManager.instance.UpdateEnemyKilled();
         UIManager.instance.UpdateMachineParts();

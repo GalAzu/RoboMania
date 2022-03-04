@@ -24,7 +24,7 @@ public class Shooting : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time >= timeToNextShot)
         {
             Shoot();
-            timeToNextShot = Time.time + shotRate;
+            timeToNextShot = Time.time + shotRate * Time.deltaTime;
         }
     }
     private void Shoot()
@@ -32,6 +32,7 @@ public class Shooting : MonoBehaviour
         Character.instance.state = Character.PlayerState.Shooting;
         if (shotType == ShotType.DoubleLaser)
         {
+            FmodAudioManager.instance.PlayAndAttachOneShot(FmodSfxClass.sfxEnums.ShootLight, transform.position); //use param value to change shot type
             GameObject bullet = Instantiate(bulletPrefab, shootPointR.transform.position, Character.instance.transform.rotation);
             GameObject bullet2 = Instantiate(bulletPrefab, shootPointL.transform.position, Character.instance.transform.rotation);
         }

@@ -21,13 +21,13 @@ public class AbillityStoreSlot : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (Character.instance.cash >= abillity.price)
+        if (Character.instance.machineParts >= abillity.price)
             OnItemPurchase();
         else Debug.Log("You don't have enough machine parts!");
     }
     public void OnItemPurchase()
     {
-        Character.instance.cash -= abillity.price;
+        Character.instance.machineParts -= abillity.price;
         Debug.Log(abillity.name + " is Purchased");
         id.AddAbillity(abillity.name);
         Destroy(this.gameObject);

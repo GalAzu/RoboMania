@@ -69,7 +69,6 @@
     <Compile Include="Assets\Scripts\Character\AbillitiesCallbacks.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Environment\BlockBullets.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Consumables.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Turrets.cs" />
@@ -77,25 +76,54 @@
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Ienvironment.cs" />
     <Compile Include="Assets\Scripts\Character\HoldObject.cs" />
+    <Compile Include="Assets\Scripts\Fmod\FmodAudioManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\AudioUnit_Unity.cs" />
+    <Compile Include="Assets\Scripts\Fmod\FmodSfxClass.cs" />
+    <Compile Include="Assets\Scripts\Unity\AudioManager_Unity.cs" />
+    <Compile Include="Assets\Scripts\Unity\SoundGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\EncodingSetting\{9fba4a82-d3e2-4f0b-a2c0-814aa4200173}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\EffectPresetFolder\{2e7a9a3a-b2a0-454d-833d-cd5921ee3210}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Tags.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Bank\{221d6dfd-f308-4223-bb8a-f1a41f257537}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\SnapshotGroup\{8e4a13cf-cb04-42c1-af6c-9e0c61380eb8}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Event\{2c1a0f70-38f8-4d22-9242-411ad5d0a27d}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\ParameterPresetFolder\{4355bf9f-bc24-4285-9667-e12cf6e6b2ac}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Platform\{85c91eaa-cbe2-4e8e-a7a0-28e136709ff8}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\ProfilerFolder\{02bd4b3b-c925-42dd-945a-550da551b816}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Return\{d6d7040c-85a1-4ebd-9641-2da020976682}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Mixer.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\SandboxFolder\{568e1bab-1e6a-4f4a-8809-ba73cbe510c2}.xml" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\AudioFile\{7da26e58-68cd-4a3f-8c4d-5132bcbf7ad2}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Master.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\AudioFile\{74a4c1bb-2586-4f68-bc89-c417c4e8daf9}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Asset\{cc8665f6-0e35-4a88-9db5-f44ca145eb6b}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\AudioFile\{bb27c5be-8adf-4b30-9d6b-fa77a17a9c0a}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\AudioFile\{b4710bd7-6d1e-4500-8aea-44a5f76bb24d}.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Workspace.xml" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\AudioFile\{de988c8d-aa1c-4bf4-be02-6ab332b56423}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\EventFolder\{b8c7a88f-d3dc-4a41-858c-a3acbd139585}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\AudioFile\{3329bc8a-b4de-43be-8e59-ce676b7160cc}.xml" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\BankFolder\{9dcba7bd-d53b-4d99-9438-dd2174f9d447}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\FmodProject\romoMania_fmod\Metadata\Event\{da2b9c75-532c-497f-b1b4-88df357685a3}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -704,6 +732,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="FMODUnityResonanceEditor.csproj">
+      <Project>{7ADF9752-8089-EDA8-519D-FF319BEAF093}</Project>
+      <Name>FMODUnityResonanceEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="FMODUnity.csproj">
+      <Project>{C4ABF28F-4197-62CA-B747-A4897C52B9C6}</Project>
+      <Name>FMODUnity</Name>
+    </ProjectReference>
+    <ProjectReference Include="FMODUnityEditor.csproj">
+      <Project>{7696EC45-1DEE-C1F7-13A5-20B0EB62CB6D}</Project>
+      <Name>FMODUnityEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="FMODUnityResonance.csproj">
+      <Project>{C5AF346F-3868-CD1F-CB2C-938C7767813D}</Project>
+      <Name>FMODUnityResonance</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
