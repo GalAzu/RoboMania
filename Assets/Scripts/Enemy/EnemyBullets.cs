@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//EnemyBullets managing all damage that is taken by enemy projectiles of any kind, according to what it collides with.
+
 public class EnemyBullets : MonoBehaviour
 {
     public int _bulletDamage;
     public float _bulletSpeed;
-
-
+    private Shield shield;
+    private void Awake()
+    {
+        shield = FindObjectOfType<Shield>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -16,20 +22,23 @@ public class EnemyBullets : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 9)
+        if(collision.gameObject.layer == 9) //Player Layer
         {
-            print("player Hit");
-            Character.instance.curHealth -= _bulletDamage;
-            UIManager.instance.UpdateHP();
-            Destroy(this.gameObject);
-            if(Character.instance.curHealth <= 0)
+            if (!Character.instance._onShield) // No Shield
             {
-                GameManager.instance.GameOver();
+                Character.instance.Damage(_bulletDamage);
+                Destroy(this.gameObject);
+            }
+            else // On Shield
+            {
+                FindObjectOfType<Shield>().DamageShield(_bulletDamage);
+                Destroy(this.gameObject);
             }
         }
-        else if(collision.gameObject.layer == 11) //Bullet blocking
+        else if(collision.gameObject.layer == 11) //Environment Layer
         {
             Destroy(this.gameObject);
         }
+        //Destroy(this.gameObject);
     }
 }

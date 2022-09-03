@@ -5,24 +5,24 @@ using TMPro;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static SpawnManager instance;
     public float timeToNextSpawn;
     [SerializeField]
     public int EnemyCount;
     public static Enemy[] EnemiesLeft;
     public int waveNumber;
     public GameObject[] MultipleEnemiesToSpawn;
-    public GameObject SpiderEnemy;
     public int waveSize;
     public bool waveSpawned;
     public bool timerIsOn;
     public Shop store;
-
+    public float secToSpawn;
+    [SerializeField]
+    private GameObject inventoryPanel;
+    private Shop shop;
     private void Awake()
     {
         store = FindObjectOfType<Shop>();
         waveSize = 3;
-        instance = this;
         waveNumber = 0;
         waveSpawned = false;
     }
@@ -35,45 +35,43 @@ public class SpawnManager : MonoBehaviour
         if (EnemyCount == 0 && waveSpawned == false)
         {
             waveSpawned = true;
-            Character.instance.waitForSpawn = true;
             StartCoroutine(WaveSpawn());
         }
     }
     private IEnumerator WaveSpawn()
     {
-        if(store != null)
-        {
-            store.CreateNewItemSlots();
-            store.UpdateShopLists();
-            store.PopulateShopList();
-        }
+        Character.instance.waitForSpawn = true;
         yield return new WaitForSeconds(timeToNextSpawn);
         {
             for (int i = 0; i < waveSize; i++)
             {
                 SpawnEnemies();
+                
             }
             UIManager.instance.nextWavePanel.SetActive(false);
+            inventoryPanel.gameObject.SetActive(true);
             EnemiesOnLevel();
             waveSize += Random.Range(1, 3);
             waveNumber++;
-            Character.instance.waitForSpawn = false;
-            UIManager.instance.store.gameObject.SetActive(false);
+            UIManager.instance.storeUI.gameObject.SetActive(false);
             UIManager.instance.UpdateWaveNumber();
             UIManager.instance.UpdateEnemyCount();
             waveSpawned = false;
+            Character.instance.waitForSpawn = false;
         }
     }
     private void Timer()
     {
+        inventoryPanel.gameObject.SetActive(false);
         UIManager.instance.nextWavePanel.SetActive(true);
         timeToNextSpawn -= Time.deltaTime;
         UIManager.instance.timeToNextWaveText.text = "Next wave will start in: " + ((int)timeToNextSpawn).ToString();
-        if (timeToNextSpawn <= 0) timeToNextSpawn = 16;
+        if (timeToNextSpawn <= 0) timeToNextSpawn = secToSpawn;
     }
     private void SpawnEnemies()
     {
-        var newEnemy = Instantiate(SpiderEnemy, NewSpawnPos(), Quaternion.identity);
+        var randomEnemy = Random.Range(0, MultipleEnemiesToSpawn.Length);
+        var newEnemy = Instantiate(MultipleEnemiesToSpawn[randomEnemy], NewSpawnPos(), Quaternion.identity);
     }
     private Vector3 NewSpawnPos()
     {
@@ -85,4 +83,5 @@ public class SpawnManager : MonoBehaviour
         EnemiesLeft = GameObject.FindObjectsOfType<Enemy>();
         EnemyCount = EnemiesLeft.Length;
     }
+
 }

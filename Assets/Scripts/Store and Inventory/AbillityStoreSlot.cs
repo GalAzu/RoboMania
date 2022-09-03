@@ -6,10 +6,13 @@ using UnityEngine.EventSystems;
 
 public class AbillityStoreSlot : MonoBehaviour, IPointerDownHandler
 {
-    public Abillities abillity;
-    private ItemDatabase id;
+    public AbillitiesItem abillity;
+    public ItemDatabase id;
+    private Inventory inventory;
+
     private void Awake()
     {
+        inventory = FindObjectOfType<Inventory>();
         id = FindObjectOfType<ItemDatabase>();
     }
     public void SyncSlotAndItem()
@@ -29,7 +32,9 @@ public class AbillityStoreSlot : MonoBehaviour, IPointerDownHandler
     {
         Character.instance.machineParts -= abillity.price;
         Debug.Log(abillity.name + " is Purchased");
+        inventory.UpdateAbillitySlot(abillity.id, abillity.icon);
         id.AddAbillity(abillity.name);
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
+
 }

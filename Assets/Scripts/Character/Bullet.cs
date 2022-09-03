@@ -11,31 +11,23 @@ public class Bullet : MonoBehaviour
     }
     public BulletType type;
     public float bulletSpeed;
+    public int bulletDamage;
     public Transform LeftShotPos, RightShotPos;
     private Rigidbody2D rb;
-    private Shooting playerShooting;
+    private ShootingManager playerShooting;
     public LayerMask Enemy  ;
+    private Animator anim;
     void Start()
     {
-        playerShooting = FindObjectOfType<Shooting>();
-        LeftShotPos = playerShooting.shootPointL;
-        RightShotPos = playerShooting.shootPointR;
+        playerShooting = FindObjectOfType<ShootingManager>();
         transform.position = transform.localPosition;
-
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-            //Laser Attack Behaviour
-          type = BulletType.light;
         transform.position += (transform.up * bulletSpeed) * Time.deltaTime;
-        if(playerShooting.shotType == Shooting.ShotType.Abillity)
-        {
-            type = BulletType.missile;
-            //Missile Attack stuff
-        }
         Destroy(this.gameObject, 3);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,13 +36,18 @@ public class Bullet : MonoBehaviour
         {
             if (collision.gameObject.layer == 8)
             {
-                collision.gameObject.GetComponent<Enemy>().health -= playerShooting.bulletDamage;
+                collision.gameObject.GetComponent<Enemy>().health -= bulletDamage;
             }
             Destroy(this.gameObject);
         }
-        else if(type == BulletType.missile)
+        if(type == BulletType.missile)
         {
-            //Missile Stuff
+            if (collision.gameObject.layer == 8)
+            {
+                anim.SetTrigger("explosion");
+                collision.gameObject.GetComponent<Enemy>().health -= bulletDamage;
+            }
+            Destroy(this.gameObject);
         }
 
     }

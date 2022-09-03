@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f59f0b2dd6943b40acd5283d3a71643, type: 3}
+  m_Name: FireRate
+  m_EditorClassIdentifier: 
+  name: ShotBooster
+  id: 1
+  price: 0
+  description: 
+  icon: {fileID: -7738437374538900620, guid: de63bf1749b96ea4e88e7f960618be8e, type: 3}
+  hpAdded: 0
+  speedAdded: 0
+  shotRate: 27

@@ -1,10 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class UIManager : MonoBehaviour
 {
+    public HealthBar healthBar;
+    private SpawnManager spawnManager;
     public TextMeshProUGUI EnemyCountText;
     public TextMeshProUGUI waveNumber;
     public TextMeshProUGUI playerState;
@@ -15,35 +18,37 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     public GameObject nextWavePanel;
     public Canvas uiCanvas;
-    public Shop store;
+    public GameObject storeUI , GameOverUI;
 
     private void Awake()
     {
+        spawnManager = FindObjectOfType<SpawnManager>();
+        healthBar = FindObjectOfType<HealthBar>();
         instance = this;
         uiCanvas.gameObject.SetActive(true);
-        store = FindObjectOfType<Shop>();
-        OpenAndCloseStore();
     }
     private void Start()
     {
         UpdateEnemyCount();
         UpdateWaveNumber();
-        UpdateHP();
         UpdateMachineParts();
     }
-    public void OpenAndCloseStore()
+    public void OpenAndCloseStore(Shop store)
     {
-        if (store.gameObject.activeSelf == false)
-           store.gameObject.SetActive(true);
-        else store.gameObject.SetActive(false);
+        if (storeUI.gameObject.activeSelf == false)
+        {
+            storeUI.gameObject.SetActive(true);
+         //   store.UpdateShopLists();
+        }
+        else storeUI.gameObject.SetActive(false);
     }
     public void UpdateEnemyCount()
     {
-        EnemyCountText.text = "Enemy Count:" + SpawnManager.instance.EnemyCount;
+        EnemyCountText.text = "Enemy Count:" + spawnManager.EnemyCount;
     }
     public void UpdateWaveNumber()
     {
-        waveNumber.text = "Wave Number :" + SpawnManager.instance.waveNumber.ToString();
+        waveNumber.text = "Wave Number :" + spawnManager.waveNumber.ToString();
     }
     public void UpdateEnemyKilled()
     {
@@ -51,10 +56,17 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateHP()
     {
+        healthBar.SetSize(Character.instance.curHealth / 100);
         HP.text = "HP: " + Character.instance.curHealth;
+        if (Character.instance.curHealth <= 0) GameManager.instance.GameOver();
     }
     public void UpdateMachineParts()
     {
-       machineParts.text = "Machine Parts: " + Character.instance.machineParts;
+        machineParts.text = "Machine Parts: " + Character.instance.machineParts;
+    }
+    public void GetCurrentStore()
+    {
+        //player choose random store
+        //get store script from the triggered object
     }
 }

@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public class Consumable : Item
+
+[CreateAssetMenu(fileName = "ConsumableItem", menuName
+= "Items/Consumable")]
+public class Consumables : Item
 {
     public int hpAdded;
     public int speedAdded;

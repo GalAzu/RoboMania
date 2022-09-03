@@ -4,45 +4,58 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Character : MonoBehaviour
 {
-    public enum PlayerState { Slowdown, Walking, Dash, Shooting };
+    public float dashForce;
 
-    [Header("State")]
-    [Space]
+    [HideInInspector] 
+    public static int cooldownTimer;
+    public bool waitForSpawn;
+    public ShootingManager shooting;
+    public static Character instance;
+    public GameObject shield;
+    [HideInInspector]
+    public Animator anim;
+    public enum PlayerState { Slowdown, Walking, Dash, Shooting };
     public PlayerState state;
     Rigidbody2D rb;
     Vector2 mousePos;
-    public float movementSpeed;
-    public static Character instance;
     [Space]
     [Header("PlayerStats")]
-    [Space]
+    public float movementSpeed;
     public float maxHealth;
     public float curHealth;
-    [SerializeField] private float dashLengthInTime;
-    [SerializeField] private bool onDash;
-    [SerializeField] private float dashForce;
-    [SerializeField] private float dashCooldown;
-    [SerializeField] private float timeToNextDash;
-    [SerializeField] public int machineParts;
 
-    public bool onCooldown;
-    public int cooldownSec;
-    public bool waitForSpawn;
-    public Abillities abillitySelected;
-    public delegate void abillityEvent();
-    public event abillityEvent onAbillity;
+    [SerializeField] 
+    public int machineParts;
+    [Space]
+    [Header("PowerUps")]
+    public float initSpeed;
+    public float initShotRate;
+    public bool _onShield;
 
+
+    private void Awake()
+    {
+        shooting = FindObjectOfType<ShootingManager>();
+        initSpeed = movementSpeed;
+        initShotRate = shooting.lightShotRate;
+        anim = GetComponent<Animator>();
+        instance = this;
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        instance = this;
         maxHealth = 100;
         curHealth = 100;
-        onDash = false;
-        
     }
+
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            ShieldPowerSwitch();
+        }
+
+
        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
        switch(state)
         {
@@ -60,20 +73,18 @@ public class Character : MonoBehaviour
                 break;
         }
     }
-    private void FixedUpdate()
+    private  void FixedUpdate()
     {
-
         Movement();
         PlayerRotation();
     }
+    #region movement
     private void Movement()
     {
-        Vector3 moveVector = new Vector3(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical")) * Time.deltaTime * movementSpeed;
+        Dash();
+        Vector3 moveVector = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.deltaTime * movementSpeed;
+        moveVector = Vector3.ClampMagnitude(moveVector, 1);
         transform.position += moveVector;
-        if (state != PlayerState.Dash && Input.GetKeyDown(KeyCode.Q))
-        {
-            Dash();
-        }
         if (state != PlayerState.Dash || state != PlayerState.Shooting)
         {
             transform.position += moveVector;
@@ -83,22 +94,6 @@ public class Character : MonoBehaviour
                 transform.position += transform.up * Time.deltaTime * movementSpeed;
             else if (Input.GetAxisRaw("Vertical") < 0)                                                ///Move directionaly to the rotation.
                 transform.position -= transform.up * Time.deltaTime * movementSpeed;
-
-        }
-
-    }
-    private IEnumerator Dash()
-    {
-        {
-            state = PlayerState.Dash;
-            print("Dashing");
-            timeToNextDash = Time.time + dashCooldown;
-            movementSpeed *= dashForce;
-            yield return new WaitForSeconds(dashLengthInTime);
-            onDash = false;
-            movementSpeed /= dashForce;
-            print("dash Enable");
-            state = PlayerState.Walking;
         }
     }
 
@@ -123,22 +118,67 @@ public class Character : MonoBehaviour
           float midpoint = (transform.position - Camera.main.transform.position).magnitude * 0.5f;
           transform.LookAt(mousray.origin + mousray.direction * midpoint);   */
     }
+    #endregion
+    #region PowerUps
+    private void ShieldPowerSwitch()
+    {
+        _onShield = true ? true : false;
+        shield.SetActive(_onShield);
+        print(_onShield.ToString());
+    }
+
+    public void Dash ()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            print("DASH");
+            var upVector = transform.up * dashForce;
+            var newPos = transform.position + upVector;
+            transform.position = Vector3.MoveTowards(transform.position, newPos , 0.5f);
+        }
+    }
+    public IEnumerator ResetStatsTimer(int cooldownTime)
+    {
+        cooldownTimer = cooldownTime;
+        cooldownTimer = cooldownTime;
+        while (cooldownTimer > 0)
+        {
+            cooldownTimer--;
+            print("cooldown is:" + cooldownTimer.ToString());
+            yield return new WaitForSeconds(1);
+        }
+        shooting.lightShotRate = initShotRate;
+        movementSpeed = initSpeed;
+        print("RESET STATS");
+        yield return null;
+    }
+    public void ActivateResetStatTimer(int cooldownTime)
+    {
+        StartCoroutine(ResetStatsTimer(cooldownTime)); ;
+    }
+    #endregion
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Store" && waitForSpawn == true)
+        if (collision.tag == "Store" && waitForSpawn == true)
         {
-          UIManager.instance.OpenAndCloseStore();
+            var store = collision.GetComponent<Shop>();
+            UIManager.instance.OpenAndCloseStore(store);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Store" && waitForSpawn == true)
         {
-            UIManager.instance.OpenAndCloseStore();
+            var store = collision.GetComponent<Shop>();
+            UIManager.instance.OpenAndCloseStore(store);
         }
     }
-    public void Teleport()
+    public void Damage(float damage)
     {
-        transform.position +=instance.transform.forward  *10;
+        curHealth -= damage;
+        UIManager.instance.UpdateHP();
     }
+
+    public void setShootingAnimOff() => anim.SetBool("isShooting", false);
 }

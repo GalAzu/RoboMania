@@ -6,17 +6,16 @@ using UnityEngine.EventSystems;
 
 public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler 
 {
-    private float initSpeed;
-    private float initRate;
-    public Consumable consumable;
-    private Shooting shooting;
+
+    public Consumables consumable;
+    private ShootingManager shooting;
     private ItemDatabase id;
+    private Shop store;
     private void Awake()
     {
-        shooting = FindObjectOfType<Shooting>();
+        shooting = FindObjectOfType<ShootingManager>();
         id = FindObjectOfType<ItemDatabase>();
-        initSpeed = FindObjectOfType<Character>().movementSpeed;
-        initRate = shooting.shotRate;
+        store = FindObjectOfType<Shop>();
     }
     public void SyncSlotAndItem()
     {
@@ -37,24 +36,26 @@ public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler
     {
         switch(consumable.id)
         {
-            case 1:  // hp adding consumables
+            case 0:  // hp adding consumables
                 HPadded();
                 break;
-            case 2:   // fireRate adding consumables
+            case 1:   // fireRate adding consumables
                 IncreaseFireRate();
+                Character.instance.ActivateResetStatTimer(15);
                 break;
-            case 3:   // dashEnable adding consumables
-                StartCoroutine(Haste());
+            case 2:   // Increase moving speed
+                Haste();
+                Character.instance.ActivateResetStatTimer(15);
                 break;
         }
         ReduceCash();
-        if(consumable.id == 1) // id 1 for fire rate increase
-        id.AddConsumable(consumable.name);
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
     public void HPadded()
     {
+        print(consumable.hpAdded.ToString() + " HP ADDED");
         Character.instance.curHealth += consumable.hpAdded;
+        if (Character.instance.curHealth > 100) Character.instance.curHealth = 100;
         UIManager.instance.UpdateHP();
     }
     public void ReduceCash()
@@ -62,26 +63,9 @@ public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler
         UIManager.instance.UpdateMachineParts();
         Character.instance.machineParts -= consumable.price;
     }
-    public void IncreaseFireRate()
-    {
-        shooting.shotRate -= consumable.shotRate;
-    }
-    private IEnumerator ResetStats()
-    {
-        shooting.shotRate = initRate;
-        Character.instance.movementSpeed = initSpeed;
-        yield return new WaitForSeconds(5);
-    }
-    public IEnumerator Haste()
-    {
-        var _char = FindObjectOfType<Character>();
-        var oldSpeed = _char.movementSpeed ;
-        _char.movementSpeed += consumable.speedAdded;
-        yield return new WaitForSeconds(5);
-        _char.movementSpeed = oldSpeed;
-    }
-    public void DashEnable()
-    {
+    public void IncreaseFireRate() => shooting.lightShotRate -= consumable.shotRate;
+    public void Haste() => Character.instance.movementSpeed += consumable.speedAdded;
 
-    }
+   
+
 }

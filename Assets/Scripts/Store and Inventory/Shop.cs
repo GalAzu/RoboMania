@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Shop : MonoBehaviour 
 {
-    public List<Consumable> consumableShopList = new List<Consumable>();
-    public List<Abillities> abillitiesShopList = new List<Abillities>();
+    public List<Consumables> consumableShopList = new List<Consumables>();
+    public List<AbillitiesItem> abillitiesShopList = new List<AbillitiesItem>();
     [Space]
     public List<ConsumableStoreSlot> consumableSlots = new List<ConsumableStoreSlot>();
     public List<AbillityStoreSlot> abillitySlots = new List<AbillityStoreSlot>();
@@ -15,16 +15,21 @@ public class Shop : MonoBehaviour
     public int numberOfAbillitySlots = 3;
     public int numberOfconsumableSlots = 3;
 
+    private void OnValidate()
+    {
+        foreach(var abillity in abillitiesShopList)
+        {
+            abillity.name = abillity.abillity.ToString();
+        }
+    }
     private void Awake()
     {
-        CreateNewItemSlots();
-    }
-    private void Start()
-    {
         id = FindObjectOfType<ItemDatabase>();
+        CreateNewItemSlots();
         PopulateShopList();
         UpdateShopLists();
     }
+
     private void SyncAllSlotsImages()
     {
         for(int i = 0; i < consumableSlots.Count ; i++)
@@ -36,6 +41,7 @@ public class Shop : MonoBehaviour
             abillitySlots[i].GetComponent<AbillityStoreSlot>().SyncSlotAndItem();
         }
     }
+
     public void PopulateShopList()
     {
         PopulateAbillitiesShopList();
@@ -68,14 +74,17 @@ public class Shop : MonoBehaviour
     {
         foreach (var slot in consumableSlots)
         {
+            slot.gameObject.SetActive(true);
             slot.consumable = RandomConsumable();
             print("Slots name are: " + slot.consumable.name);
         }
     }
     public void UpdateAbillitySlot()
     {
+        print("UPDATE ABILLITIES");
         foreach (var slot in abillitySlots)
         {
+            slot.gameObject.SetActive(true);
             slot.abillity = RandomAbillity();
             print("Slots name are: " + slot.abillity.name);
         }
@@ -96,17 +105,24 @@ public class Shop : MonoBehaviour
     }
 
 
-    public Consumable RandomConsumable() // Get Random Item to add to the store from the item database, with icon and everything
+    public Consumables RandomConsumable() // Get Random Item to add to the store from the item database, with icon and everything
 
     {
         var itemName = consumableShopList[Random.Range(0, consumableShopList.Count)].name;
         return consumableShopList.Find(item => item.name == itemName);
     }
 
-    public Abillities RandomAbillity() // Get Random Item to add to the store from the item database, with icon and everything
+    public AbillitiesItem RandomAbillity() // Get Random Item to add to the store from the item database, with icon and everything
 
     {
         var itemName = abillitiesShopList[Random.Range(0, abillitiesShopList.Count)].name;
         return abillitiesShopList.Find(item => item.name == itemName);
     }
+    public void PopulateStore()
+    {
+          CreateNewItemSlots();
+          UpdateShopLists();              ///////////// PUT IT ALL IN A PLACE WHERE STORE IS ACTIVE!! FFS
+          PopulateShopList();
+    }
+
 }

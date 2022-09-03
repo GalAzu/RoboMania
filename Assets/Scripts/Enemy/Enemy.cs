@@ -36,9 +36,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject HeaveyBullet;
     private Vector3 roamingPos;
     private bool corutineStarted;
+    private SpawnManager spawnManager;
+
 
     private Collider2D detectRadiusCollider, meleeRadiusCollider;
 
+    private void Awake()
+    {
+        spawnManager = FindObjectOfType<SpawnManager>();
+
+    }
     private void Start()
     {
         attackState = (AttackType)Random.Range(0, 3);
@@ -161,7 +168,7 @@ public class Enemy : MonoBehaviour
 
     #endregion
     #region AttackingStateLogic
-    private void PlayerHit()
+    private void PhysicalHitOnPlayer()
     {
         Character.instance.curHealth -= physicalDamage;
         UIManager.instance.UpdateHP();
@@ -173,6 +180,7 @@ public class Enemy : MonoBehaviour
     }
     private void Attack()
     {
+        if(Character.instance != null)
         switch (attackState)
         {
             case (AttackType.Melee):
@@ -193,7 +201,6 @@ public class Enemy : MonoBehaviour
             var bulletPos = lightBulletPos;
             timeToNextShot = Time.time + shotRate;
             var bullet = Instantiate(lightBullet, bulletPos.position, transform.rotation);
-            FmodAudioManager.instance.PlayAndAttachOneShot(FmodSfxClass.sfxEnums.ShootLight, transform.position); //use param value to change shot type
         }
     }
     private void HeavyShot()
@@ -203,12 +210,16 @@ public class Enemy : MonoBehaviour
             var bulletPos = heavyBulletPos;
             timeToNextShot = Time.time + shotRate;
             var bullet = Instantiate(HeaveyBullet, bulletPos.position, transform.rotation);
-            FmodAudioManager.instance.PlayAndAttachOneShot(FmodSfxClass.sfxEnums.ShootHeavy, transform.position);
         }
     }
     public Transform GetTarget()
     {
-        return Character.instance.transform;
+        if (this.gameObject != null)
+        {
+            return Character.instance.transform;
+
+        }
+        else return null;
     }
     #endregion
     private void Death()
@@ -217,7 +228,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
             GameManager.instance.enemiesDefeatedEvent.Invoke();
-            SpawnManager.instance.EnemyCount --;
+            spawnManager.EnemyCount --;
             UIManager.instance.UpdateEnemyCount();
             //Explosion particles / animation
         }
@@ -246,7 +257,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.collider.tag == "Player" && onSlowdown == false)
         {
-            PlayerHit();
+            PhysicalHitOnPlayer();
             if (onSlowdown == false)
             {
                 StartCoroutine("Slowdown");
@@ -257,6 +268,11 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, meleeAttackRange);
         Gizmos.DrawWireSphere(transform.position, detectRadius);
+    }
+
+    public void Damage(float damage)
+    {
+        health -= damage;
     }
 
 }

@@ -11,21 +11,23 @@ public class GameManager : MonoBehaviour
     public bool storeIsOpened;
     private void Start()
     {
+        UIManager.instance.uiCanvas.gameObject.SetActive(true);
         storeIsOpened = false;
         instance = this;
         player = Character.instance;
         UIManager.instance.UpdateMachineParts();
+        UIManager.instance.GameOverUI.SetActive(false);
     }
     public void GameOver()
     {
-        if(player.curHealth <= 0 )
-        {
+            Debug.Log("game fucking over");
             player.curHealth = 0;
             Destroy(player.gameObject);
             Time.timeScale = 0;
-            //GAME OVER SEQUENCE
-            //GAME OVER UI
-        }
+            UIManager.instance.GameOverUI.SetActive(true);
+          //  UIManager.instance.uiCanvas.gameObject.SetActive(false);
+
+            //GAME OVER ANIMATION SEQUENCE
     }
     public void AddScoreToEnemiesDefeated()
     {
