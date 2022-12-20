@@ -162,7 +162,7 @@ TextureImporter:
       213: 6726546122845134825
     second: beams_52
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -182,6 +182,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -190,12 +192,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -213,10 +215,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -244,6 +250,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1380,6 +1398,60 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      beams_29: -7738437374538900620
+      beams_24: 6657893770769798689
+      beams_31: 5181571790623375139
+      beams_48: 6523675839282231479
+      beams_0: 8813226132166169265
+      beams_17: -5481649109184314681
+      beams_45: 2638821381411442448
+      beams_11: -7550472941382305865
+      beams_39: -8639704294832099750
+      beams_34: -4122403361326895116
+      beams_38: 3825296469523011728
+      beams_36: 4647145149307888720
+      beams_49: 6809698112737714254
+      beams_7: 3086281766754650022
+      beams_8: -5887574851830874244
+      beams_10: -4389689700790840645
+      beams_42: 1915607286910376557
+      beams_14: -1065171029721156181
+      beams_32: 2112879784255247613
+      beams_16: 6100613402793374524
+      beams_41: -1919077881297319850
+      beams_44: -3769203906711113032
+      beams_33: 1560893695569296514
+      beams_15: 6221243194420154528
+      beams_9: -3532125607399209406
+      beams_25: -4187057815155954561
+      beams_6: 3221046606929183262
+      beams_12: 1340418249766201452
+      beams_43: -4466639421194908512
+      beams_40: -2462576014434015965
+      beams_46: -8076006086675949797
+      beams_5: -224264422132340645
+      beams_50: -9150954616461882458
+      beams_26: -4223754384032259362
+      beams_52: 6726546122845134825
+      beams_20: 3117329161928284718
+      beams_3: -864346992521728030
+      beams_47: -7181182688776095764
+      beams_21: 7197149788720406248
+      beams_2: -3008786985731672919
+      beams_30: -8381284675905171842
+      beams_37: -101723649237734213
+      beams_28: -8470403037619771882
+      beams_18: 4172045527919470226
+      beams_19: 1555915593380633493
+      beams_13: -1513116261127942503
+      beams_51: 5877039498505239813
+      beams_23: 550197025238284939
+      beams_35: 7498665378132165843
+      beams_1: -342841500392956471
+      beams_27: 2183476718214222350
+      beams_22: -3708074645100094667
+      beams_4: 2448983918405450708
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

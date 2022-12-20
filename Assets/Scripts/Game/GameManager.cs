@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-            Debug.Log("game fucking over");
             player.curHealth = 0;
             Destroy(player.gameObject);
             Time.timeScale = 0;

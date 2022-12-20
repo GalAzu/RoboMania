@@ -14,6 +14,7 @@ public class AbillityStoreSlot : MonoBehaviour, IPointerDownHandler
     {
         inventory = FindObjectOfType<Inventory>();
         id = FindObjectOfType<ItemDatabase>();
+        if (abillity == null) abillity = id.abillitiesList[Random.Range(0,id.abillitiesList.Count)];
     }
     public void SyncSlotAndItem()
     {

@@ -10,9 +10,11 @@ public class EnemyBullets : MonoBehaviour
     public int _bulletDamage;
     public float _bulletSpeed;
     private Shield shield;
+    private PowerUpsManager powerUpManager;
     private void Awake()
     {
         shield = FindObjectOfType<Shield>();
+        powerUpManager = FindObjectOfType<PowerUpsManager>();
     }
     // Update is called once per frame
     void Update()
@@ -24,14 +26,14 @@ public class EnemyBullets : MonoBehaviour
     {
         if(collision.gameObject.layer == 9) //Player Layer
         {
-            if (!Character.instance._onShield) // No Shield
+            if (powerUpManager._onShield) 
             {
-                Character.instance.Damage(_bulletDamage);
+                shield.DamageShield(_bulletDamage);
                 Destroy(this.gameObject);
             }
-            else // On Shield
+            else
             {
-                FindObjectOfType<Shield>().DamageShield(_bulletDamage);
+                Character.instance.Damage(_bulletDamage);
                 Destroy(this.gameObject);
             }
         }

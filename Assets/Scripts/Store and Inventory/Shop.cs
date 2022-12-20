@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 public class Shop : MonoBehaviour 
 {
-    public List<Consumables> consumableShopList = new List<Consumables>();
+    [Title("Shop Data")]
+    public List<PowerUps> consumableShopList = new List<PowerUps>();
     public List<AbillitiesItem> abillitiesShopList = new List<AbillitiesItem>();
     [Space]
-    public List<ConsumableStoreSlot> consumableSlots = new List<ConsumableStoreSlot>();
+    [Title("Shop UI")]
+    public List<PowerUpStoreSlot> consumableSlots = new List<PowerUpStoreSlot>();
     public List<AbillityStoreSlot> abillitySlots = new List<AbillityStoreSlot>();
-    [Space]
-    public GameObject abillitySlot, consumableSlot, StorePanel;
-    private ItemDatabase id;
     public int numberOfAbillitySlots = 3;
     public int numberOfconsumableSlots = 3;
+
+    [Space]
+    [Title("Dependencies")]
+    public GameObject abillitySlot;
+    public GameObject consumableSlot;
+    public GameObject StorePanel;
+    private ItemDatabase id;
 
     private void OnValidate()
     {
@@ -25,6 +32,10 @@ public class Shop : MonoBehaviour
     private void Awake()
     {
         id = FindObjectOfType<ItemDatabase>();
+
+    }
+    private void Start()
+    {
         CreateNewItemSlots();
         PopulateShopList();
         UpdateShopLists();
@@ -34,7 +45,7 @@ public class Shop : MonoBehaviour
     {
         for(int i = 0; i < consumableSlots.Count ; i++)
         {
-            consumableSlots[i].GetComponent<ConsumableStoreSlot>().SyncSlotAndItem();
+            consumableSlots[i].GetComponent<PowerUpStoreSlot>().SyncSlotAndItem();
         }
         for(int i = 0; i < abillitySlots.Count; i++)
         {
@@ -57,15 +68,15 @@ public class Shop : MonoBehaviour
     {
        for(int i = 0; numberOfAbillitySlots > i; i++)
         {
-            var aSlot = Instantiate(abillitySlot, StorePanel.transform.position, Quaternion.identity);
-            aSlot.transform.parent = StorePanel.transform;
+            GameObject aSlot = Instantiate(abillitySlot, StorePanel.transform.position, Quaternion.identity);
+            aSlot.transform.SetParent(StorePanel.transform);
             abillitySlots.Add(aSlot.GetComponent<AbillityStoreSlot>());
         }
        for(int i=0; numberOfconsumableSlots > i; i++)
         {
-            var cSlot = Instantiate(consumableSlot, StorePanel.transform.position, Quaternion.identity);
+            GameObject cSlot = Instantiate(consumableSlot, StorePanel.transform.position, Quaternion.identity);
             cSlot.transform.parent = StorePanel.transform;
-            consumableSlots.Add(cSlot.GetComponent<ConsumableStoreSlot>());
+            consumableSlots.Add(cSlot.GetComponent<PowerUpStoreSlot>());
         }
 
     }
@@ -105,7 +116,7 @@ public class Shop : MonoBehaviour
     }
 
 
-    public Consumables RandomConsumable() // Get Random Item to add to the store from the item database, with icon and everything
+    public PowerUps RandomConsumable() // Get Random Item to add to the store from the item database, with icon and everything
 
     {
         var itemName = consumableShopList[Random.Range(0, consumableShopList.Count)].name;

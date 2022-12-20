@@ -31,8 +31,8 @@ public class AbillitySlot : MonoBehaviour , IPointerClickHandler
                     break;
                 case (2)://SHOCKWAVE
                     Debug.Log("ACTIVATE SHOCKWAVE");
-                    Character.instance.shooting.lightShotType = ShootingManager.LightShotType.Shockwave;
-                    shootingManager.lightShotRate = shootingManager.shockwaveShotRate;
+                    Character.instance.shooting.activeAbility = ShootingManager.ActiveAbility.Shockwave;
+                    shootingManager.abilityShotRate = shootingManager.shockwaveShotRate;
                     break;
                 case (3): //HEAL
                     print("ACTIVATE HEAL");
@@ -42,8 +42,8 @@ public class AbillitySlot : MonoBehaviour , IPointerClickHandler
                     break;
                 case (5):
                     print("Double Laser");
-                    Character.instance.shooting.lightShotType = ShootingManager.LightShotType.DoubleLaser;
-                    Character.instance.shooting.lightShotRate = shootingManager.doubleShotRate;
+                    Character.instance.shooting.activeShotType = ShootingManager.ActiveShot.DoubleLaser;
+                    Character.instance.shooting.abilityShotRate = shootingManager.doubleShotRate;
                     break;
             }
             Destroy(gameObject);

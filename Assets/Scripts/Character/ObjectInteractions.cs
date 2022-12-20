@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class ObjectInteractions : MonoBehaviour 
 {
+    [SerializeField] private Animator anim;
     [SerializeField]
     private bool onAction;
     public float actionDistance;
@@ -14,9 +15,14 @@ public class ObjectInteractions : MonoBehaviour
     public LayerMask enemies = 8;
     [SerializeField]
     public UnityEvent OnActionEvent , OutOfActionEvent;
+    [SerializeField] private int explosionDamage;
     public float throwForce;
+    private Character character;
 
-
+    private void Awake()
+    {
+        character = GetComponent<Character>();
+    }
 
     private void Update()
     {
@@ -48,6 +54,7 @@ public class ObjectInteractions : MonoBehaviour
         var obj = hit.collider.gameObject.GetComponent<ResponsiveObjects>();
         actionDistance -= 1;
         hit.collider.transform.parent = null;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         obj.isMoving = true;
         rb.AddForce(transform.up * throwForce , ForceMode2D.Impulse);
     }
@@ -55,5 +62,10 @@ public class ObjectInteractions : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, transform.up * actionDistance);
+    }
+    public void Explode()
+    {
+        anim.SetBool("OnExplosion", true);
+        character.curHealth -= explosionDamage;
     }
 }

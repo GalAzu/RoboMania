@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 public class ItemDatabase : MonoBehaviour
 {
-    public List <Consumables> consumableList = new List<Consumables>();
+    [GUIColor(1,0.5f,0.4f,1)]
+    public List <PowerUps> consumableList = new List<PowerUps>();
+    [GUIColor(1, 0.5f, 0.9f, 1)]
     public List<AbillitiesItem> abillitiesList = new List<AbillitiesItem>();
     private Inventory inventory;
     private void Start()

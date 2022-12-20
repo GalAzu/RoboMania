@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour
     public int waveNumber;
     public GameObject[] MultipleEnemiesToSpawn;
     public int waveSize;
-    public bool waveSpawned;
+    public bool waveIsSpawning;
     public bool timerIsOn;
     public Shop store;
     public float secToSpawn;
@@ -24,17 +24,17 @@ public class SpawnManager : MonoBehaviour
         store = FindObjectOfType<Shop>();
         waveSize = 3;
         waveNumber = 0;
-        waveSpawned = false;
+        waveIsSpawning = false;
     }
     private void Update()
     {
-        if(waveSpawned == true)
+        if (waveIsSpawning == true)
         {
             Timer();
         }
-        if (EnemyCount == 0 && waveSpawned == false)
+        if (EnemyCount == 0 && waveIsSpawning == false)
         {
-            waveSpawned = true;
+            waveIsSpawning = true;
             StartCoroutine(WaveSpawn());
         }
     }
@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
             for (int i = 0; i < waveSize; i++)
             {
                 SpawnEnemies();
-                
+
             }
             UIManager.instance.nextWavePanel.SetActive(false);
             inventoryPanel.gameObject.SetActive(true);
@@ -56,7 +56,7 @@ public class SpawnManager : MonoBehaviour
             UIManager.instance.storeUI.gameObject.SetActive(false);
             UIManager.instance.UpdateWaveNumber();
             UIManager.instance.UpdateEnemyCount();
-            waveSpawned = false;
+            waveIsSpawning = false;
             Character.instance.waitForSpawn = false;
         }
     }
