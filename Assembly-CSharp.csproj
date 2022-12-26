@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Game\UIManager.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Shop.cs" />
     <Compile Include="Assets\Scripts\Character\PlayerBullet.cs" />
+    <Compile Include="Assets\PowerUpsManager.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="Assets\Scripts\Character\AbillitySlot.cs" />
     <Compile Include="Assets\Scripts\Game\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Character\ObjectInteractions.cs" />
+    <Compile Include="Assets\Scripts\Character\HoldAndThrowObjects.cs" />
     <Compile Include="Assets\Traps.cs" />
     <Compile Include="Assets\Shield.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Iabillity.cs" />
@@ -95,7 +96,6 @@
     <Compile Include="Assets\Scripts\Ienvironment.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunAim.cs" />
     <Compile Include="Assets\Scripts\Unity\AudioManager_Unity.cs" />
-    <Compile Include="Assets\PowerUpsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

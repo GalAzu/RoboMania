@@ -23,21 +23,23 @@ public class Character : MonoBehaviour
     public float curHealth;
     private float initSpeed;
     private float initShotRate;
-    [SerializeField]private float dashForce;
 
 
     [Title("Character Setting and Dependencies", null, TitleAlignments.Centered)]
     public bool waitForSpawn;
     public ShootingManager shooting;
+    private Shield shield;
     [SerializeField]
     private float rotationLerp;
     public enum PlayerState { Slowdown, Walking, Dash, Shooting };
     public PlayerState state;
     Vector2 mousePos;
+    private LayerMask enemyBullet = 12;
 
     private void Awake()
     {
-        shooting = FindObjectOfType<ShootingManager>();
+        shield = GetComponent<Shield>();
+        shooting = GetComponent<ShootingManager>();
         initSpeed = movementSpeed;
         initShotRate = shooting.abilityShotRate;
         anim = GetComponent<Animator>();
@@ -77,6 +79,7 @@ public class Character : MonoBehaviour
     #region movement and rotation
     private void Movement()
     {
+        state = PlayerState.Walking;
         Vector3 moveVector = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.deltaTime * movementSpeed;
         moveVector = Vector3.ClampMagnitude(moveVector, 1);
         transform.position += moveVector;
@@ -109,11 +112,17 @@ public class Character : MonoBehaviour
     //Manage store with events that subscribe from different classes.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Store" && waitForSpawn == true)
+        if (collision.tag == "Store" && waitForSpawn == true) //Store open
         {
             var store = collision.GetComponent<Shop>();
             UIManager.instance.OpenAndCloseStore(store);
         }
+        if (collision.gameObject.layer == enemyBullet && shield == null) //Bullet damage
+        {
+            Damage(collision.GetComponent<EnemyBullets>()._bulletDamage);
+            Destroy(collision.gameObject);
+        }
+        else Debug.Log("SHIELD");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

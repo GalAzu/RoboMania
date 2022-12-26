@@ -6,8 +6,8 @@ public class PlayerBullet : MonoBehaviour
 {
     public enum BulletType
     {
-        light,
-        missile
+        Light,
+        Heavy,
     }
     public BulletType type;
     public float bulletSpeed;
@@ -32,15 +32,15 @@ public class PlayerBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(type == BulletType.light)
+        if(type == BulletType.Light)
         {
-            if (collision.gameObject.layer == 8)
+            if (collision.gameObject.layer == 8) //enemy layer mask
             {
                 collision.gameObject.GetComponent<Enemy>().health -= bulletDamage;
             }
             Destroy(this.gameObject);
         }
-        if(type == BulletType.missile)
+        if(type == BulletType.Heavy)
         {
             if (collision.gameObject.layer == 8)
             {
@@ -50,9 +50,5 @@ public class PlayerBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
     }
 }

@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  onAction: 0
+  onHold: 0
   actionDistance: 3.45
   ObjectsToHold:
     serializedVersion: 2
@@ -922,8 +922,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: {fileID: 0}
-  _onShield: 0
-  dashForce: 0
+  _onShield: 1
+  dashForce: 0.2
   dashTime: 0
 --- !u!1 &674676447
 GameObject:
@@ -3645,6 +3645,7 @@ GameObject:
   - component: {fileID: 2023199627}
   - component: {fileID: 2023199628}
   - component: {fileID: 2023199629}
+  - component: {fileID: 2023199630}
   m_Layer: 9
   m_Name: shield
   m_TagString: Untagged
@@ -3731,7 +3732,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326cf03ed2602ab4c859477834ebbe16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 700
+  initHP: 50
+--- !u!58 &2023199630
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023199626}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000047683716, y: -0.0000009536743}
+  serializedVersion: 2
+  m_Radius: 2.7800007
 --- !u!1 &2036568646
 GameObject:
   m_ObjectHideFlags: 0
@@ -5124,6 +5142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: rotationSpeed
       value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422632934431043807, guid: 81f586e5c1cbe524cafabf821810b1dc,
+        type: 3}
+      propertyPath: enemyBullet.m_Bits
+      value: 4096
       objectReference: {fileID: 0}
     - target: {fileID: 4422632935133596473, guid: 81f586e5c1cbe524cafabf821810b1dc,
         type: 3}

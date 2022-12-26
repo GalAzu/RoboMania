@@ -20,19 +20,10 @@ public class PowerUpsManager : MonoBehaviour
         character = GetComponent<Character>();
         shield = GetComponentInChildren<Shield>();
     }
-
     private void Update()
     {
-        if (Input.GetKey(KeyCode.P))
-            ShieldPowerSwitch();
+        Dash();
     }
-    private void ShieldPowerSwitch()
-    {
-        _onShield = true;
-        shield.gameObject.SetActive(_onShield);
-        print(_onShield.ToString());
-    }
-
     public IEnumerator ResetStatsTimer(int cooldownTime)
     {
         cooldownTimer = cooldownTime;

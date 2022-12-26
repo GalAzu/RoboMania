@@ -366,7 +366,7 @@
 "Assets/PowerUpsManager.cs"
 "Assets/Scripts/Character/AbillitySlot.cs"
 "Assets/Scripts/Character/Character.cs"
-"Assets/Scripts/Character/ObjectInteractions.cs"
+"Assets/Scripts/Character/HoldAndThrowObjects.cs"
 "Assets/Scripts/Character/PlayerBullet.cs"
 "Assets/Scripts/Character/ShootingManager.cs"
 "Assets/Scripts/Enemy/Enemy.cs"

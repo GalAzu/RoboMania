@@ -20,7 +20,7 @@ public class AbillitySlot : MonoBehaviour , IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {     
         {
-          //  if(shootingManager.shotType == ShootingManager.ShotType.Abillity)
+          //  if(shootingManager.abilityType == ShootingManager.abilitType.x)
             switch (abillityID)
             {
                 case (0): //FIREBALL
@@ -39,11 +39,6 @@ public class AbillitySlot : MonoBehaviour , IPointerClickHandler
                     break;
                 case (4): //DASH
                     print("ACTIVATE DASH");
-                    break;
-                case (5):
-                    print("Double Laser");
-                    Character.instance.shooting.activeShotType = ShootingManager.ActiveShot.DoubleLaser;
-                    Character.instance.shooting.abilityShotRate = shootingManager.doubleShotRate;
                     break;
             }
             Destroy(gameObject);

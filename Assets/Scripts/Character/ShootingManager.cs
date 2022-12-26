@@ -67,7 +67,7 @@ public class ShootingManager : MonoBehaviour
     }
     private void OnShoot()
     {
-        Character.instance.state = Character.PlayerState.Shooting;
+        character.state = Character.PlayerState.Shooting;
         if (Input.GetButton("Fire2") && Time.time >= timeToNextShot)
         {
             ShootAbility();
