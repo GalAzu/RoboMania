@@ -5,16 +5,21 @@ using Sirenix.OdinInspector;
 using Sirenix.Utilities.Editor;
 public class ShootingManager : MonoBehaviour
 {
+    [HideInInspector]
+    public float lightShotRate;
+    [HideInInspector]
+    public float abilityShotRate;
+
     public enum ActiveAbility { Fireball, Blizzard, Shockwave };
     public enum ActiveShot { DoubleLaser, HeavyShot }
     
     public Character character;
     [FoldoutGroup("Dependencies and Setting")]
     public LayerMask Damagable;
+    [FoldoutGroup("Dependencies and Setting"),ShowInInspector]
+    [SerializeField] private float timeToNextAbilityShot;
     [FoldoutGroup("Dependencies and Setting")]
-    [SerializeField] private float timeToNextShot;
-    [FoldoutGroup("Dependencies and Setting")]
-    [SerializeField] private float timeToNextHeavyShot;
+    [SerializeField] private float timeToNextLightShot;
     [FoldoutGroup("Dependencies and Setting")]
     public GameObject bulletPrefab;
     [FoldoutGroup("Dependencies and Setting")]
@@ -28,37 +33,71 @@ public class ShootingManager : MonoBehaviour
 
     [EnumToggleButtons , GUIColor(0.5f,0.9F,0,1)]
     public ActiveAbility activeAbility;
-    [Range(0, 350), GUIColor(0.5f, 0.9F, 0, 1)]
-    public float abilityShotRate;
     [Space]
     [EnumToggleButtons, GUIColor(0.9f, 0.5F, 0, 1)]
-    public ActiveShot activeShotType;
-    [Range(0, 150), GUIColor(0.9f, 0.5F, 0, 1)]
-    public float lightShotRate;
+    public ActiveShot activeShot;
     [Space]
-    [FoldoutGroup("Shot Types"), GUIColor(1, 0.4f, 1, 1)]
-    [Range(0, 350)]
+    [FoldoutGroup("Shot Stats"), GUIColor(1, 0.4f, 1, 1), ShowIf("activeShot", ActiveShot.DoubleLaser)]
+    [Range(0, 100)]
     public float doubleShotRate = 100;
-    [FoldoutGroup("Shot Types"),Range(0, 350), GUIColor(1, 0.4f, 1, 1)]
+    [FoldoutGroup("Shot Stats"),Range(0, 350), GUIColor(1, 0.4f, 1, 1), ShowIf("activeShot", ActiveShot.HeavyShot)]
     public float heavyShotRate = 150;
-    [FoldoutGroup("Shockwave"),GUIColor(0.3f, 0.5f, 1, 1)]
+    [FoldoutGroup("Shockwave Stats"),GUIColor(0.3f, 0.5f, 1, 1),ShowIf("activeAbility",ActiveAbility.Shockwave)]
     [Range(0, 90)]
     public float shockwaveRadius;
-    [FoldoutGroup("Shockwave"), GUIColor(0.3f, 0.5f, 1, 1)]
-    [Range(0, 800)]
+    [FoldoutGroup("Shockwave Stats"), GUIColor(0.3f, 0.5f, 1, 1), ShowIf("activeAbility", ActiveAbility.Shockwave)]
+    [Range(0, 500)]
     public float shockwaveShotRate;
-    [FoldoutGroup("Shockwave"), GUIColor(0.3f, 0.5f, 1, 1)]
+    [FoldoutGroup("Shockwave Stats"), GUIColor(0.3f, 0.5f, 1, 1), ShowIf("activeAbility", ActiveAbility.Shockwave)]
     [Range(0,350)]
     public float shockwaveDamage;
+    [ShowInInspector]
+    private bool canShootLight = true;
+    [FoldoutGroup("Blizzard Stats"), GUIColor(0.2f, 2.5f, 1, 1), ShowIf("activeAbility", ActiveAbility.Blizzard)]
+    public float blizzardShotRate;
+    private float fireBallShotRate;
 
-    [Title("Heavy Shot", null, TitleAlignments.Centered)]
-    public bool canShootLight = true;
 
     private void Awake()
     {
+        ResetShotRates();
+        abilityShotRate = curAbilityShotRate();
         character = GetComponent<Character>();
-        if (activeShotType == ActiveShot.DoubleLaser) lightShotRate = doubleShotRate;
+        if (activeShot == ActiveShot.DoubleLaser) lightShotRate = doubleShotRate;
         else lightShotRate = heavyShotRate;
+    }
+
+    [Button("Update ability Shotrate")]
+    public void ResetShotRates()
+    {
+        abilityShotRate = curAbilityShotRate() * 0.2f;
+        lightShotRate = CurLightShotRate() * 0.2f;
+    }
+
+    private float CurLightShotRate()
+    {
+        switch(activeShot)
+        {
+            case (ActiveShot.DoubleLaser):
+                return doubleShotRate;
+            case (ActiveShot.HeavyShot):
+                return heavyShotRate;
+        }
+        return lightShotRate;
+    }
+
+    public float curAbilityShotRate()
+    {
+        switch (activeAbility)
+        {
+            case (ActiveAbility.Shockwave):
+                return shockwaveShotRate;
+            case (ActiveAbility.Blizzard):
+                return blizzardShotRate;
+            case (ActiveAbility.Fireball):
+                return fireBallShotRate;
+        }
+        return abilityShotRate;
     }
 
     private void Update()
@@ -68,19 +107,24 @@ public class ShootingManager : MonoBehaviour
     private void OnShoot()
     {
         character.state = Character.PlayerState.Shooting;
-        if (Input.GetButton("Fire2") && Time.time >= timeToNextShot)
+        if (Input.GetButton("Fire2"))
         {
-            ShootAbility();
-            character.anim.SetBool("isShooting" , true);
-            timeToNextShot = Time.time + abilityShotRate * Time.deltaTime;
+            if (Time.time >= timeToNextAbilityShot)
+            {
+                ShootAbility();
+                character.anim.SetBool("isShooting", true);
+                timeToNextAbilityShot = Time.time + abilityShotRate * Time.deltaTime;
+            }
+            else character.anim.SetTrigger("Cooldown");
         }
 
-        else if (Input.GetButton("Fire1") && canShootLight && Time.time >= timeToNextHeavyShot) ShootLight();
+        else if (Input.GetButton("Fire1") && canShootLight && Time.time >= timeToNextLightShot) ShootLight();
     }
+
 
     private void ShootLight()
     {
-        switch (activeShotType)
+        switch (activeShot)
         {
             case (ActiveShot.DoubleLaser):
                 GameObject bullet = Instantiate(bulletPrefab, shootPointR.transform.position, Character.instance.transform.rotation);   //TDL Bullets pool.
@@ -90,7 +134,7 @@ public class ShootingManager : MonoBehaviour
                 GameObject missile = Instantiate(missilePrefab, missilePoint.transform.position, Character.instance.transform.rotation);
                 break;
         }
-        timeToNextHeavyShot = Time.time + lightShotRate * Time.deltaTime;
+        timeToNextLightShot = Time.time + lightShotRate * Time.deltaTime;
     }
     private void ShootAbility()
     {

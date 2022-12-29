@@ -226,7 +226,7 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             GameManager.instance.enemiesDefeatedEvent.Invoke();
             spawnManager.EnemyCount --;
             UIManager.instance.UpdateEnemyCount();

@@ -43,7 +43,7 @@ public class PowerUpStoreSlot : MonoBehaviour , IPointerDownHandler
                 HPadded();
                 break;
             case 1:   // fireRate adding consumables
-                IncreaseFireRate();
+                powerUpManager.IncreaseFireRate(consumable);
                powerUpManager.ActivateResetStatTimer(15);
                 break;
             case 2:   // Increase moving speed
@@ -66,7 +66,6 @@ public class PowerUpStoreSlot : MonoBehaviour , IPointerDownHandler
         UIManager.instance.UpdateMachineParts();
         Character.instance.machineParts -= consumable.price;
     }
-    public void IncreaseFireRate() => shooting.abilityShotRate -= consumable.shotRate;
     public void Haste() => Character.instance.movementSpeed += consumable.speedAdded;
 
    

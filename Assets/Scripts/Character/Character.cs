@@ -36,6 +36,7 @@ public class Character : MonoBehaviour
     Vector2 mousePos;
     private LayerMask enemyBullet = 12;
 
+
     private void Awake()
     {
         shield = GetComponent<Shield>();

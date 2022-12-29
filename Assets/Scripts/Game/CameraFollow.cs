@@ -18,10 +18,13 @@ public class CameraFollow : MonoBehaviour
     public float x_maxVal;
     public float y_minVal;
     public float y_maxVal;
+    [SerializeField]
+    private Texture2D cursorTexture;
 
     // Start is called before the first frame update
     void Start() 
     {
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
         isMoving = true;
         target = FindObjectOfType<Character>().transform;
     }

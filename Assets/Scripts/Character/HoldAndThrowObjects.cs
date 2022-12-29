@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 public class HoldAndThrowObjects : MonoBehaviour 
 {
     [SerializeField] private Animator anim;
@@ -18,6 +19,8 @@ public class HoldAndThrowObjects : MonoBehaviour
     [SerializeField] private int explosionDamage;
     public float throwForce;
     private Character character;
+    [SerializeField]
+    private Transform objectPlace;
 
     private void Awake()
     {
@@ -35,7 +38,7 @@ public class HoldAndThrowObjects : MonoBehaviour
                 OnActionEvent.Invoke();
                 onHold = true;
             }
-            else if (onHold && hit.collider.gameObject.transform.parent == this.transform && Input.GetKeyDown(KeyCode.Mouse2))
+            else if (onHold && hit.collider.gameObject.transform.parent == objectPlace.transform && Input.GetKeyDown(KeyCode.Mouse2))
             {
                 OutOfActionEvent.Invoke();
                 onHold = false;
@@ -44,16 +47,20 @@ public class HoldAndThrowObjects : MonoBehaviour
     }
     public void HoldObject()
     {
-        actionDistance += 1;
-        hit.collider.transform.parent = gameObject.transform;
+        Rigidbody2D hitRb = hit.collider.gameObject.GetComponent<Rigidbody2D>();
+        //actionDistance += 1;
+        hit.collider.transform.parent = objectPlace;
+        hit.collider.transform.position = objectPlace.position;
+        hitRb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public void ThrowObject()
     {
         var rb = hit.collider.gameObject.GetComponent<Rigidbody2D>();
         var obj = hit.collider.gameObject.GetComponent<ResponsiveObjects>();
-        actionDistance -= 1;
+       // actionDistance -= 1;
         hit.collider.transform.parent = null;
+        rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         obj.isMoving = true;
         rb.AddForce(transform.up * throwForce , ForceMode2D.Impulse);
