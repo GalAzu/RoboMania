@@ -15,7 +15,7 @@ public class AbillitySlot : MonoBehaviour , IPointerClickHandler
     private void Awake()
     {
         image = GetComponent<Image>();
-        shootingManager = FindObjectOfType<ShootingManager>();
+        shootingManager = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<ShootingManager>();
     }
     public void OnPointerClick(PointerEventData eventData)
     {     

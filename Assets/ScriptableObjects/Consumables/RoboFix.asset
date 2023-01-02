@@ -16,7 +16,8 @@ MonoBehaviour:
   id: 0
   price: 0
   description: 
-  icon: {fileID: 21300000, guid: 1211daed84fff124eb5af95ddd2bb10f, type: 3}
+  icon: {fileID: 21300000, guid: 9ce177332f0d6ca4b8a2f2dd9ce1f619, type: 3}
   hpAdded: 50
   speedAdded: 0
   shotRate: 0
+  invisibility: 0

@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Unity\SoundGenerator.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunShoot.cs" />
+    <Compile Include="Assets\playerBecomeRed.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\AbillitiesItem.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\inventory_AbillitySlot.cs" />
@@ -97,7 +98,6 @@
     <Compile Include="Assets\Scripts\Ienvironment.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunAim.cs" />
     <Compile Include="Assets\Scripts\Unity\AudioManager_Unity.cs" />
-    <Compile Include="Assets\playerBecomeRed.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

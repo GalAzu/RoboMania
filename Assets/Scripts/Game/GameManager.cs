@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public bool storeIsOpened;
     private void Awake()
     {
-        character = FindObjectOfType<Character>();
+        character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
     }
     private void Start()
     {

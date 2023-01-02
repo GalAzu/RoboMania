@@ -19,7 +19,7 @@ public class PlayerBullet : MonoBehaviour
     private Animator anim;
     void Start()
     {
-        playerShooting = FindObjectOfType<ShootingManager>();
+        playerShooting = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<ShootingManager>();
         transform.position = transform.localPosition;
         anim = GetComponent<Animator>();
     }

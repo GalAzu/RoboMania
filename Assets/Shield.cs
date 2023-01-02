@@ -13,7 +13,7 @@ public class Shield : MonoBehaviour
 
     private void Awake()
     {
-        character = FindObjectOfType<Character>();
+        character = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Character>();
     }
     private void Start()
     {
