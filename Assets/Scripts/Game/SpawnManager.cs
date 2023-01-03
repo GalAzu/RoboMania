@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour
     [ShowInInspector]
     public static Enemy[] EnemiesLeft;
     public int waveNumber;
-    public GameObject[] EnemiesPool;
+    public GameObject[] EnemiesInScene;
     public int waveSize;
     public bool waveIsSpawning;
     public bool timerIsOn;
@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        store = FindObjectOfType<Shop>();
+        store = GameObject.FindGameObjectWithTag("Store").GetComponent<Shop>();
         waveSize = 3;
         waveNumber = 0;
         waveIsSpawning = false;
@@ -85,8 +85,8 @@ public class SpawnManager : MonoBehaviour
     {
         foreach(Vector3 spawnPoint in nextSpawnPoints)
         {
-            int randomEnemyIndex = Random.Range(0, EnemiesPool.Length);
-            var newEnemy = Instantiate(EnemiesPool[randomEnemyIndex], spawnPoint , Quaternion.identity);
+            int randomEnemyIndex = Random.Range(0, EnemiesInScene.Length);
+            var newEnemy = Instantiate(EnemiesInScene[randomEnemyIndex], spawnPoint , Quaternion.identity);
             var spawnfx = Instantiate(onSpawnEffect, spawnPoint, Quaternion.identity);
             Destroy(spawnfx, 1);
         }

@@ -832,7 +832,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  explosionDamage: 0
+  explosionDamage: 74
   throwForce: 60
   objectPlace: {fileID: 826668102}
 --- !u!4 &673190035 stripped
@@ -4794,7 +4794,7 @@ PrefabInstance:
     - target: {fileID: 4422632934431043800, guid: 81f586e5c1cbe524cafabf821810b1dc,
         type: 3}
       propertyPath: activeShot
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4422632934431043800, guid: 81f586e5c1cbe524cafabf821810b1dc,
         type: 3}
@@ -4945,7 +4945,7 @@ PrefabInstance:
     - target: {fileID: 4422632934431043806, guid: 81f586e5c1cbe524cafabf821810b1dc,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player_Robot
       objectReference: {fileID: 0}
     - target: {fileID: 4422632934431043806, guid: 81f586e5c1cbe524cafabf821810b1dc,
         type: 3}
