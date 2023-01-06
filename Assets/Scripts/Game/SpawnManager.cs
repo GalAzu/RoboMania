@@ -47,7 +47,6 @@ public class SpawnManager : MonoBehaviour
         {
             waveIsSpawning = true;
             StartCoroutine(WaveSpawn());
-            Debug.Log("WaveSpawn");
         }
     }
     private IEnumerator WaveSpawn()

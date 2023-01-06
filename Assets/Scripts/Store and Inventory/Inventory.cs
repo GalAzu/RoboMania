@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     public GameObject AbillitySlot , InventoryPanel;
     private void Awake()
     {
-        id = FindObjectOfType<ItemDatabase>();
+        id = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
     }
     public void UpdateAbillitySlots()
     {
@@ -22,12 +22,12 @@ public class Inventory : MonoBehaviour
             obj.GetComponent<UnityEngine.UI.Image>().sprite = itemList[i].icon;
         }
     }
-    public void UpdateAbillitySlot(int id , Sprite icon)
+    public void AddAbilityToInventory(int id , Sprite icon)
     {
          var obj = Instantiate(AbillitySlot, InventoryPanel.transform, true);
          obj.GetComponent<AbillitySlot>().UpdateAbillity(id,icon);
     }
-    public void DeleteAllAbillitySlots()
+    public void DeleteAllAbilitiesFromInventory()
     {
         for (int i = 0; i < itemList.Count; i++ )
         {
@@ -35,10 +35,5 @@ public class Inventory : MonoBehaviour
             Destroy(obj.gameObject);
         }
     }
-   /* private void SyncSlots()
-    {
-        for(int i = 0; i < itemList.Count; i++)
-        {
-        }
-    }*/
+
 }

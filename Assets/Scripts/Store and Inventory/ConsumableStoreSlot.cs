@@ -14,10 +14,10 @@ public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler
     private PowerUpsManager powerUpManager;
     private void Awake()
     {
-        powerUpManager = GetComponent<PowerUpsManager>();
-        shooting = FindObjectOfType<ShootingManager>();
-        id = FindObjectOfType<ItemDatabase>();
-        store = FindObjectOfType<Store>();
+        powerUpManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PowerUpsManager>();
+        shooting = GameObject.FindGameObjectWithTag("Player").GetComponent<ShootingManager>();
+        id =  GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
+        store = GameObject.FindGameObjectWithTag("Store").GetComponent<Store>();
         if (consumable == null) consumable = id.consumableList[Random.Range(0, id.consumableList.Count)];
     }
     public void SyncSlotAndItem()
@@ -52,7 +52,8 @@ public class ConsumableStoreSlot : MonoBehaviour , IPointerDownHandler
                 break;
         }
         ReduceCash();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
     }
     public void HPadded()
     {

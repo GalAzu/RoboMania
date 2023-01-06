@@ -12,8 +12,8 @@ public class AbilityStoreSlot : MonoBehaviour, IPointerDownHandler
 
     private void Awake()
     {
-        inventory = FindObjectOfType<Inventory>();
-        id = FindObjectOfType<ItemDatabase>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        id = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         if (abillity == null) abillity = id.abillitiesList[Random.Range(0,id.abillitiesList.Count)];
     }
     public void SyncSlotAndItem()
@@ -25,15 +25,14 @@ public class AbilityStoreSlot : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("UI CLICK");
         if (Character.instance.machineParts >= abillity.price)
             OnItemPurchase();
-        else Debug.Log("You don't have enough machine parts!");
     }
     public void OnItemPurchase()
     {
         Character.instance.machineParts -= abillity.price;
-        Debug.Log(abillity.itemName + " is Purchased");
-        inventory.UpdateAbillitySlot(abillity.id, abillity.icon);
+        inventory.AddAbilityToInventory(abillity.id, abillity.icon);
         id.AddAbillity(abillity.itemName);
         gameObject.SetActive(false);
     }

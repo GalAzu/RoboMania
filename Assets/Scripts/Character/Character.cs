@@ -133,7 +133,6 @@ public class Character : MonoBehaviour
             Damage(collision.GetComponent<EnemyBullets>()._bulletDamage);
             Destroy(collision.gameObject);
         }
-        else Debug.Log("SHIELD");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

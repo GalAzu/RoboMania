@@ -19,24 +19,23 @@ public class StoreUI : MonoBehaviour
 
     private void OnEnable()
     {
-        if (!storeHasInit) CreateNewItemSlots();
+        if (!storeHasInit) StoreInit();
+        else UpdateShopLists();
     }
-    private void OnDisable()
+    public void StoreInit()
     {
-       // RemoveAllItemSlots();
-    }
-    public void CreateNewItemSlots()
-    {
-        Debug.Log("CreateOnce");
         for (int i = 0; numberOfAbillitySlots > i; i++) AddAbilityStoreSlot();
         for (int i = 0; numberOfconsumableSlots > i; i++) AddConsumableStoreSlot();
         storeHasInit = true;
         UpdateShopLists();
     }
-    private void RemoveAllItemSlots()
+
+    public void UpdateShopLists()
     {
-        abillitySlots.Clear();
-        consumableSlots.Clear();
+        Debug.Log("Updating Lists");
+        UpdateAbillitySlot();
+        UpdateConsumableSlot();
+        SyncAllSlotsImages();
     }
 
     public void SyncAllSlotsImages()
@@ -84,12 +83,6 @@ public class StoreUI : MonoBehaviour
             slot.abillity = Store.RandomAbillity();
             print("Slots name are: " + slot.abillity.itemName);
         }
-    }
-    public void UpdateShopLists()
-    {
-        UpdateAbillitySlot();
-        UpdateConsumableSlot();
-        SyncAllSlotsImages();
     }
 
 }

@@ -12,9 +12,9 @@ public class Store : MonoBehaviour
     [Space]
 
     [Space]
-    public GameObject StoreUI;
     [SerializeField]
     private ItemDatabase id;
+    [SerializeField]
     private StoreUI storeUI;
     [SerializeField]
     private bool storeHasInit;
@@ -29,9 +29,11 @@ public class Store : MonoBehaviour
     }
 #endif
 
-    private void Start()
+    public void PopulateStore()
     {
-        ToggleStoreUI();
+        storeUI.StoreInit();
+        storeUI.UpdateShopLists();
+        PopulateShopList();
     }
     public void PopulateShopList()
     {
@@ -53,12 +55,7 @@ public class Store : MonoBehaviour
         }
     }
 
-    public void PopulateStore()
-    {
-          storeUI.CreateNewItemSlots();
-          storeUI.UpdateShopLists();            
-          PopulateShopList();
-    }
+
     public static Consumable RandomConsumable() // Get Random Item to add to the store from the item database, with icon and everything
 
     {
@@ -76,14 +73,17 @@ public class Store : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("open store");
             ToggleStoreUI();
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        ToggleStoreUI();
+    }
     private void ToggleStoreUI()
     {
-        if (StoreUI.activeSelf == true) StoreUI.SetActive(false);
-        else StoreUI.SetActive(true);
+        if (storeUI.gameObject.activeSelf == true) storeUI.gameObject.SetActive(false);
+        else storeUI.gameObject.SetActive(true);
     }
 
 }

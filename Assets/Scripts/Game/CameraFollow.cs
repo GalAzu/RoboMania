@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     private float posX;
     private float posY;
     public float offset;
-    private Transform target;
+    private Transform playerToFollow;
     public bool isMoving;
     [SerializeField]private Transform rayPoint;
     [SerializeField]private RaycastHit2D ray;
@@ -21,24 +21,21 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private Texture2D cursorTexture;
 
-/*    void Start()
-    {
-        rayPoint = GameObject.FindGameObjectWithTag("Player").transform;
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
-        isMoving = true;
-        target = FindObjectOfType<Character>().transform;
+    void Start()
+    {        //Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+        playerToFollow = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-*/    // Update is called once per frame
     void Update()
     {
-        if(target != null) CameraIsMoving();
+        if(playerToFollow != null) CameraIsMoving();
 
     }
     private void CameraIsMoving()
     {
-        posX = target.transform.position.x;
-        posY = target.transform.position.y;
+        isMoving = true;
+        posX = playerToFollow.transform.position.x;
+        posY = playerToFollow.transform.position.y;
         Vector3 pos = new Vector3(posX, posY, -offset);
         transform.position = pos;
         pos.x = Mathf.Clamp(transform.position.x, x_minVal, x_maxVal);
@@ -52,7 +49,7 @@ public class CameraFollow : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        if(target != null) Debug.DrawRay(rayPoint.position, rayPoint.up * distanceToStopCam);
+        if(playerToFollow != null) Debug.DrawRay(rayPoint.position, rayPoint.up * distanceToStopCam);
     }
     private void RayCastCheck()
     {
