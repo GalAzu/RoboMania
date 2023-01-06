@@ -42,8 +42,8 @@ public class PowerUpsManager : MonoBehaviour
     {
         StartCoroutine(ResetStatsTimer(cooldownTime)); ;
     }
-    public void IncreaseFireRate(PowerUps powerup) => shooting.abilityShotRate -= powerup.shotRate;
-    public void IncreaseSpeed(PowerUps powerup) => character.movementSpeed += powerup.speedAdded;
+    public void IncreaseFireRate(Consumable powerup) => shooting.abilityShotRate -= powerup.shotRate;
+    public void IncreaseSpeed(Consumable powerup) => character.movementSpeed += powerup.speedAdded;
     public void Dash()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -55,7 +55,7 @@ public class PowerUpsManager : MonoBehaviour
             }
         }
     }
-    public void AddHP(PowerUps consumable)
+    public void AddHP(Consumable consumable)
     {
         print(consumable.hpAdded.ToString() + " HP ADDED");
         Character.instance.curHealth += consumable.hpAdded;

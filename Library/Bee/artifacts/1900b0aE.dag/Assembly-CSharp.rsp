@@ -122,9 +122,15 @@
 -define:ODIN_INSPECTOR
 -define:ODIN_INSPECTOR_3
 -define:UNITY_POST_PROCESSING_STACK_V2
+-define:PHOTON_UNITY_NETWORKING
+-define:PUN_2_0_OR_NEWER
+-define:PUN_2_OR_NEWER
+-define:PUN_2_19_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
+-r:"Assets/Plugins/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll"
+-r:"Assets/Plugins/Photon/PhotonLibs/WebSocket/websocket-sharp.dll"
 -r:"Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll"
 -r:"Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll"
 -r:"Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll"
@@ -337,6 +343,16 @@
 -r:"D:/Unity/2021.3.12f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"D:/Unity/2021.3.12f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-firstpass.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonChat.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonRealtime.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Demos.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Utilities.Culling.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Utilities.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PunDemos.DemoHubEditor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PunDemos.DemoSlotcarEditor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Sirenix.OdinInspector.CompatibilityLayer.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Sirenix.OdinInspector.CompatibilityLayer.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.Sprite.Editor.ref.dll"
@@ -355,6 +371,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/ConnectToServer.cs"
+"Assets/CreateAndJoinRooms.cs"
 "Assets/EffectExamples/Shared/Scripts/DecalDestroyer.cs"
 "Assets/EffectExamples/Shared/Scripts/ExtinguishableFire.cs"
 "Assets/EffectExamples/Shared/Scripts/GunAim.cs"
@@ -383,20 +401,23 @@
 "Assets/Scripts/Ienvironment.cs"
 "Assets/Scripts/inventory_AbillitySlot.cs"
 "Assets/Scripts/MainMenuUI.cs"
+"Assets/Scripts/Store and Inventory/AbilityStoreSlot.cs"
 "Assets/Scripts/Store and Inventory/AbillitiesItem.cs"
-"Assets/Scripts/Store and Inventory/AbillityStoreSlot.cs"
+"Assets/Scripts/Store and Inventory/Consumable.cs"
+"Assets/Scripts/Store and Inventory/ConsumableStoreSlot.cs"
 "Assets/Scripts/Store and Inventory/Iabillity.cs"
 "Assets/Scripts/Store and Inventory/Inventory.cs"
 "Assets/Scripts/Store and Inventory/Item.cs"
 "Assets/Scripts/Store and Inventory/ItemDatabase.cs"
-"Assets/Scripts/Store and Inventory/PowerUps.cs"
-"Assets/Scripts/Store and Inventory/PowerUpStoreSlot.cs"
-"Assets/Scripts/Store and Inventory/Shop.cs"
+"Assets/Scripts/Store and Inventory/Store.cs"
+"Assets/Scripts/Store and Inventory/StoreUI.cs"
 "Assets/Scripts/Unity/AudioManager_Unity.cs"
 "Assets/Scripts/Unity/AudioUnit_Unity.cs"
 "Assets/Scripts/Unity/SoundGenerator.cs"
 "Assets/Shield.cs"
+"Assets/SpawnPlayers.cs"
 "Assets/Traps.cs"
+"Assets/Vector2Utilities.cs"
 -langversion:9.0
 
 /deterministic

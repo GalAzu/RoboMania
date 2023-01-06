@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities.Editor;
+using Sirenix.Utilities;
+using Photon.Pun;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -15,6 +16,7 @@ public class Character : MonoBehaviour
     public Rigidbody2D rb;
     [HideInInspector]
     public Animator anim;
+    private PhotonView photonView;
 
     [Title("PlayerStats", null, TitleAlignments.Centered)]
     public int machineParts;
@@ -39,6 +41,7 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
+        photonView = GetComponent<PhotonView>();
         shield = GetComponent<Shield>();
         shooting = GetComponent<ShootingManager>();
         initSpeed = movementSpeed;
@@ -54,28 +57,35 @@ public class Character : MonoBehaviour
     }
 
     private void Update()
-    {
-       mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-       switch(state)
+     {
+        if(photonView.IsMine)
         {
-            case (PlayerState.Walking):
-                UIManager.instance.playerState.text = "PlayerState: Walking";
-                break;
-            case (PlayerState.Dash):
-                UIManager.instance.playerState.text = "PlayerState: Dash";
-                break;
-            case (PlayerState.Shooting):
-                UIManager.instance.playerState.text = "PlayerState : Shooting";
-                break;
-            case (PlayerState.Slowdown):
-                UIManager.instance.playerState.text = "PlayerState : Slowdown";
-                break;
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            switch (state)
+            {
+                case (PlayerState.Walking):
+                    UIManager.instance.playerState.text = "PlayerState: Walking";
+                    break;
+                case (PlayerState.Dash):
+                    UIManager.instance.playerState.text = "PlayerState: Dash";
+                    break;
+                case (PlayerState.Shooting):
+                    UIManager.instance.playerState.text = "PlayerState : Shooting";
+                    break;
+                case (PlayerState.Slowdown):
+                    UIManager.instance.playerState.text = "PlayerState : Slowdown";
+                    break;
+            }
         }
     }
     private  void FixedUpdate()
     {
-        Movement();
-        PlayerRotation();
+        if (photonView.IsMine)
+        {
+            Movement();
+            PlayerRotation();
+
+        }
     }
     #region movement and rotation
     private void Movement()
@@ -115,8 +125,8 @@ public class Character : MonoBehaviour
     {
         if (collision.tag == "Store" && waitForSpawn == true) //Store open
         {
-            var store = collision.GetComponent<Shop>();
-            UIManager.instance.OpenAndCloseStore(store);
+            var store = collision.GetComponent<Store>();
+            //open store
         }
         if (collision.gameObject.layer == enemyBullet && shield == null) //Bullet damage
         {
@@ -129,8 +139,8 @@ public class Character : MonoBehaviour
     {
         if (collision.tag == "Store" && waitForSpawn == true)
         {
-            var store = collision.GetComponent<Shop>();
-            UIManager.instance.OpenAndCloseStore(store);
+            var store = collision.GetComponent<Store>();
+            //close store
         }
     }
     public void Damage(float damage)

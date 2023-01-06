@@ -21,15 +21,15 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private Texture2D cursorTexture;
 
-    // Start is called before the first frame update
-    void Start() 
+/*    void Start()
     {
+        rayPoint = GameObject.FindGameObjectWithTag("Player").transform;
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
         isMoving = true;
         target = FindObjectOfType<Character>().transform;
     }
 
-    // Update is called once per frame
+*/    // Update is called once per frame
     void Update()
     {
         if(target != null) CameraIsMoving();

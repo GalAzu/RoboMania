@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Sirenix.OdinInspector;
+using _Utilities;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -16,11 +17,9 @@ public class SpawnManager : MonoBehaviour
     public int waveSize;
     public bool waveIsSpawning;
     public bool timerIsOn;
-    public Shop store;
     public float secToSpawn;
     [SerializeField]
     private GameObject inventoryPanel;
-    private Shop shop;
     [SerializeField]
     private List <Vector3> nextSpawnPoints = new();
     [Title("VFX")]
@@ -31,7 +30,6 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        store = GameObject.FindGameObjectWithTag("Store").GetComponent<Shop>();
         waveSize = 3;
         waveNumber = 0;
         waveIsSpawning = false;
@@ -66,7 +64,6 @@ public class SpawnManager : MonoBehaviour
             waveNumber++;
             waveIsSpawning = false;
             Character.instance.waitForSpawn = false;
-            UIManager.instance.storeUI.gameObject.SetActive(false);
             UIManager.instance.nextWavePanel.SetActive(false);
             UIManager.instance.UpdateWaveNumber();
             UIManager.instance.UpdateEnemyCount();
@@ -94,14 +91,9 @@ public class SpawnManager : MonoBehaviour
     private void UpdateSpawnPoints()
     {
         for(int enemyInWave=0; enemyInWave <= waveSize; enemyInWave++)
-            nextSpawnPoints.Add(NewSpawnPos());
-        
+            nextSpawnPoints.Add(Vector2Utilities.NewSpawnPos());
     }
-    private Vector3 NewSpawnPos()
-    {
-        var newPos = new Vector3(Random.Range(-30, 30), Random.Range(-30, 30));
-        return newPos;
-    }
+
     private void EnemiesOnLevel()
     {
         EnemiesLeft = GameObject.FindObjectsOfType<Enemy>();

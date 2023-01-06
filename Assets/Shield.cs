@@ -7,7 +7,7 @@ public class Shield : MonoBehaviour
     [SerializeField]
     private int hp;
     [SerializeField]
-    private int initHP = 700;
+    private int initShieldHP = 700;
     private int enemyBulletLayer = 12;
     private Character character;
 
@@ -17,7 +17,7 @@ public class Shield : MonoBehaviour
     }
     private void Start()
     {
-        hp = initHP;
+        hp = initShieldHP;
         character.GetComponent<Collider2D>().enabled = false;
     }
     public void DamageShield(float damage)

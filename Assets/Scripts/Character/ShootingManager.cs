@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities.Editor;
+using Sirenix.Utilities;
 public class ShootingManager : MonoBehaviour
 {
     [HideInInspector]

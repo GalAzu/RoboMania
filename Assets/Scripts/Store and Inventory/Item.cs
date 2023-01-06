@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Item  : ScriptableObject
 {
-    public string name;
+    public string itemName;
     public int id;
     public int price;
     public string description;

@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public UnityEvent enemiesDefeatedEvent;
     private Character character;
     public int enemiesDefeated;
-    public bool storeIsOpened;
-    private void Awake()
-    {
-        character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-    }
     private void Start()
     {
-        UIManager.instance.uiCanvas.gameObject.SetActive(true);
-        storeIsOpened = false;
         instance = this;
+        character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+        UIManager.instance.uiCanvas.gameObject.SetActive(true);
         UIManager.instance.UpdateMachineParts();
         UIManager.instance.GameOverUI.SetActive(false);
     }

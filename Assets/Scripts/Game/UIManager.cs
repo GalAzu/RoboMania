@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     public GameObject nextWavePanel;
     public Canvas uiCanvas;
-    public GameObject storeUI , GameOverUI;
+    public GameObject GameOverUI;
 
     private void Awake()
     {
@@ -32,15 +32,6 @@ public class UIManager : MonoBehaviour
         UpdateEnemyCount();
         UpdateWaveNumber();
         UpdateMachineParts();
-    }
-    public void OpenAndCloseStore(Shop store)
-    {
-        if (storeUI.gameObject.activeSelf == false)
-        {
-            storeUI.gameObject.SetActive(true);
-         //   store.UpdateShopLists();
-        }
-        else storeUI.gameObject.SetActive(false);
     }
     public void UpdateEnemyCount()
     {
