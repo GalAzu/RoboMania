@@ -59,16 +59,15 @@
     <Compile Include="Assets\Scripts\Unity\AudioUnit_Unity.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
-    <Compile Include="Assets\Scripts\MainMenuUI.cs" />
-    <Compile Include="Assets\Scripts\Store and Inventory\ConsumableStoreSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\MainMenuUI.cs" />
     <Compile Include="Assets\Scripts\Game\UIManager.cs" />
     <Compile Include="Assets\Scripts\Character\PlayerBullet.cs" />
-    <Compile Include="Assets\PowerUpsManager.cs" />
+    <Compile Include="Assets\Scripts\Game\PowerUpsManager.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
-    <Compile Include="Assets\Scripts\HealthBar.cs" />
-    <Compile Include="Assets\SpawnPlayers.cs" />
+    <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
     <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\ItemDatabase.cs" />
+    <Compile Include="Assets\Scripts\Store and Inventory\ConsumableSlotUI.cs" />
     <Compile Include="Assets\Scripts\Environment\ResponsiveObjects.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBullets.cs" />
@@ -76,31 +75,27 @@
     <Compile Include="Assets\Scripts\Game\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Character\HoldAndThrowObjects.cs" />
-    <Compile Include="Assets\Traps.cs" />
-    <Compile Include="Assets\Shield.cs" />
+    <Compile Include="Assets\Scripts\Traps.cs" />
+    <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Iabillity.cs" />
     <Compile Include="Assets\Scripts\Character\ShootingManager.cs" />
     <Compile Include="Assets\Scripts\Unity\SoundGenerator.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunShoot.cs" />
-    <Compile Include="Assets\playerBecomeRed.cs" />
-    <Compile Include="Assets\CreateAndJoinRooms.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\AbillitiesItem.cs" />
-    <Compile Include="Assets\Vector2Utilities.cs" />
+    <Compile Include="Assets\Scripts\Vector2Utilities.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\StoreUI.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnManager.cs" />
-    <Compile Include="Assets\Scripts\inventory_AbillitySlot.cs" />
+    <Compile Include="Assets\Scripts\Store and Inventory\inventory_AbillitySlot.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Store.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Consumable.cs" />
-    <Compile Include="Assets\ConnectToServer.cs" />
-    <Compile Include="Assets\OnPowerUp.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Turrets.cs" />
-    <Compile Include="Assets\Scripts\Store and Inventory\AbilityStoreSlot.cs" />
+    <Compile Include="Assets\Scripts\Store and Inventory\AbilitySlotUI.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
-    <Compile Include="Assets\Scripts\Ienvironment.cs" />
+    <Compile Include="Assets\Scripts\Store and Inventory\Ienvironment.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunAim.cs" />
     <Compile Include="Assets\Scripts\Unity\AudioManager_Unity.cs" />
   </ItemGroup>
@@ -373,14 +368,8 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>D:\Unity\2021.3.12f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\Plugins\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Photon3Unity3D">
-      <HintPath>Assets\Plugins\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
@@ -823,53 +812,13 @@
       <Project>{5F27BF00-98CF-42AC-93E9-CA71E7913D31}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
-    <ProjectReference Include="PhotonChat.csproj">
-      <Project>{82D0EA56-5DA6-5500-DFB5-3D2044CE917D}</Project>
-      <Name>PhotonChat</Name>
-    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
       <Project>{A60B9663-93EF-1640-9758-6686416A8B99}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
-      <Project>{DE4C63BD-0B8B-D1FD-1FBA-F92E5BFD2D58}</Project>
-      <Name>PhotonUnityNetworking.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj">
-      <Project>{BF9C7C46-E710-83E2-2386-EED5A47D6808}</Project>
-      <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
-      <Project>{007B87E7-85FF-16C2-51CE-B418B174AA62}</Project>
-      <Name>PunDemos.DemoHubEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonRealtime.csproj">
-      <Project>{A74CAA3C-8A36-A09F-560A-C46AF31035DB}</Project>
-      <Name>PhotonRealtime</Name>
-    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{961B7793-890F-E45E-DFFC-03FF3DE92D60}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{F657E03D-C276-0B21-79EA-DADFE2156E62}</Project>
-      <Name>PhotonUnityNetworking.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.csproj">
-      <Project>{376361F1-C143-B468-08F5-42549D13B731}</Project>
-      <Name>PhotonUnityNetworking</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
-      <Project>{82CF232E-2053-FACB-46F7-837D5F0214D9}</Project>
-      <Name>PhotonUnityNetworking.Demos</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
-      <Project>{A447D0E5-C215-6BB2-5920-6EEB778F7978}</Project>
-      <Name>PunDemos.DemoSlotcarEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
-      <Project>{0AA07286-0BC6-1919-9AAF-A8CFFD4E28BF}</Project>
-      <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

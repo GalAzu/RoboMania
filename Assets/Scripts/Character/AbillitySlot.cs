@@ -24,21 +24,14 @@ public class AbillitySlot : MonoBehaviour , IPointerClickHandler
             switch (abillityID)
             {
                 case (0): //FIREBALL
-                    print("ACTIVATE FIREBALL");
+                    Character.instance.shooting.activeAbility = ShootingManager.ActiveAbility.Fireball;
                     break;
                 case (1): //ICE
-                    print("ACTIVATE ICE");
+                    Character.instance.shooting.activeAbility = ShootingManager.ActiveAbility.Blizzard;
                     break;
                 case (2)://SHOCKWAVE
-                    Debug.Log("ACTIVATE SHOCKWAVE");
                     Character.instance.shooting.activeAbility = ShootingManager.ActiveAbility.Shockwave;
                     shootingManager.abilityShotRate = shootingManager.shockwaveShotRate;
-                    break;
-                case (3): //HEAL
-                    print("ACTIVATE HEAL");
-                    break;
-                case (4): //DASH
-                    print("ACTIVATE DASH");
                     break;
             }
             Destroy(gameObject);

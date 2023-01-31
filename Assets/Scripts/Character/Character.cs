@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
-using Photon.Pun;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -16,7 +15,6 @@ public class Character : MonoBehaviour
     public Rigidbody2D rb;
     [HideInInspector]
     public Animator anim;
-    private PhotonView photonView;
 
     [Title("PlayerStats", null, TitleAlignments.Centered)]
     public int machineParts;
@@ -25,7 +23,7 @@ public class Character : MonoBehaviour
     public float curHealth;
     private float initSpeed;
     private float initShotRate;
-
+    //When true desires go unfulfilled, they turn into needs.
 
     [Title("Character Setting and Dependencies", null, TitleAlignments.Centered)]
     public bool waitForSpawn;
@@ -41,7 +39,6 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        photonView = GetComponent<PhotonView>();
         shield = GetComponent<Shield>();
         shooting = GetComponent<ShootingManager>();
         initSpeed = movementSpeed;
@@ -58,8 +55,6 @@ public class Character : MonoBehaviour
 
     private void Update()
      {
-        if(photonView.IsMine)
-        {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             switch (state)
             {
@@ -75,17 +70,12 @@ public class Character : MonoBehaviour
                 case (PlayerState.Slowdown):
                     UIManager.instance.playerState.text = "PlayerState : Slowdown";
                     break;
-            }
         }
     }
     private  void FixedUpdate()
     {
-        if (photonView.IsMine)
-        {
             Movement();
             PlayerRotation();
-
-        }
     }
     #region movement and rotation
     private void Movement()

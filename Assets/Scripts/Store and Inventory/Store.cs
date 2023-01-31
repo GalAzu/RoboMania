@@ -31,7 +31,7 @@ public class Store : MonoBehaviour
 
     public void PopulateStore()
     {
-        storeUI.StoreInit();
+        if(!storeHasInit) storeUI.StoreInit();
         storeUI.UpdateShopLists();
         PopulateShopList();
     }
@@ -84,6 +84,7 @@ public class Store : MonoBehaviour
     {
         if (storeUI.gameObject.activeSelf == true) storeUI.gameObject.SetActive(false);
         else storeUI.gameObject.SetActive(true);
+        if (!storeHasInit) storeHasInit = true;
     }
 
 }

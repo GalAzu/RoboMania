@@ -5,8 +5,8 @@ using Sirenix.OdinInspector;
 public class StoreUI : MonoBehaviour
 {
     [Title("Shop UI")]
-    public List<ConsumableStoreSlot> consumableSlots = new List<ConsumableStoreSlot>();
-    public List<AbilityStoreSlot> abillitySlots = new List<AbilityStoreSlot>();
+    public List<ConsumableSlotUI> consumableSlots = new List<ConsumableSlotUI>();
+    public List<AbilitySlotUI> abillitySlots = new List<AbilitySlotUI>();
     public int numberOfAbillitySlots = 3;
     public int numberOfconsumableSlots = 3;
     [Title("Dependencies")]
@@ -42,17 +42,22 @@ public class StoreUI : MonoBehaviour
     {
         for (int i = 0; i < consumableSlots.Count; i++)
         {
-            consumableSlots[i].GetComponent<ConsumableStoreSlot>().SyncSlotAndItem();
+            consumableSlots[i].GetComponent<ConsumableSlotUI>().SyncSlotAndItem();
         }
         for (int i = 0; i < abillitySlots.Count; i++)
         {
-            abillitySlots[i].GetComponent<AbilityStoreSlot>().SyncSlotAndItem();
+            abillitySlots[i].GetComponent<AbilitySlotUI>().SyncSlotAndItem();
         }
+    }
+    private void ResetStore()
+    {
+        abillitySlots.Clear();
+        consumableSlots.Clear();
     }
     private void AddAbilityStoreSlot()
     {
         GameObject aSlot = Instantiate(abillitySlot,StorePanel.transform.position, Quaternion.identity);
-        AbilityStoreSlot abilityStoreSlot = aSlot.GetComponent<AbilityStoreSlot>();
+        AbilitySlotUI abilityStoreSlot = aSlot.GetComponent<AbilitySlotUI>();
         aSlot.transform.SetParent(StorePanel.transform);
         abillitySlots.Add(abilityStoreSlot);
         Store.abillitiesShopList.Add(abilityStoreSlot.abillity);
@@ -60,7 +65,7 @@ public class StoreUI : MonoBehaviour
     private void AddConsumableStoreSlot()
     {
         GameObject cSlot = Instantiate(consumableSlot, StorePanel.transform.position, Quaternion.identity);
-        ConsumableStoreSlot consumableStoreSlot = cSlot.GetComponent<ConsumableStoreSlot>();
+        ConsumableSlotUI consumableStoreSlot = cSlot.GetComponent<ConsumableSlotUI>();
         cSlot.transform.parent =StorePanel.transform;
         consumableSlots.Add(consumableStoreSlot);
         Store.consumableShopList.Add(consumableStoreSlot.consumable);

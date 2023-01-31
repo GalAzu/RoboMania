@@ -56,38 +56,21 @@
     <Analyzer Include="D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\Plugins\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Plugins\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
-    <None Include="Assets\Plugins\Photon\PhotonUnityNetworking\changelog.txt" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\link.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll" />
-    <None Include="Assets\Plugins\Photon\PhotonLibs\WebSocket\websocket-sharp.dll" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\NoEditor\Sirenix.Serialization.dll" />
@@ -96,20 +79,12 @@
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.xml" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.dll" />
-    <None Include="Assets\Plugins\Photon\PhotonLibs\changes-library.txt" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\NoEditor\Sirenix.Utilities.dll" />
-    <None Include="Assets\Plugins\Photon\PhotonUnityNetworking\readme.txt" />
-    <None Include="Assets\Plugins\Photon\PhotonChat\Demos\DemoChat\Files\eurof_tt.txt" />
     <None Include="Assets\Plugins\Sirenix\Readme.txt" />
-    <None Include="Assets\Plugins\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll" />
-    <None Include="Assets\Plugins\Photon\PhotonLibs\Photon3Unity3D.dll" />
-    <None Include="Assets\Plugins\Photon\PhotonLibs\Metro\Photon3Unity3D.dll" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll" />
     <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
-    <None Include="Assets\Plugins\Photon\PhotonLibs\Photon3Unity3D.xml" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll" />
-    <None Include="Assets\Plugins\Photon\PhotonUnityNetworking\link.xml" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.xml" />
   </ItemGroup>
@@ -360,14 +335,8 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>D:\Unity\2021.3.12f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\Plugins\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Photon3Unity3D">
-      <HintPath>Assets\Plugins\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
@@ -806,53 +775,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="PhotonChat.csproj">
-      <Project>{82D0EA56-5DA6-5500-DFB5-3D2044CE917D}</Project>
-      <Name>PhotonChat</Name>
-    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
       <Project>{A60B9663-93EF-1640-9758-6686416A8B99}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
-      <Project>{DE4C63BD-0B8B-D1FD-1FBA-F92E5BFD2D58}</Project>
-      <Name>PhotonUnityNetworking.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj">
-      <Project>{BF9C7C46-E710-83E2-2386-EED5A47D6808}</Project>
-      <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
-      <Project>{007B87E7-85FF-16C2-51CE-B418B174AA62}</Project>
-      <Name>PunDemos.DemoHubEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonRealtime.csproj">
-      <Project>{A74CAA3C-8A36-A09F-560A-C46AF31035DB}</Project>
-      <Name>PhotonRealtime</Name>
-    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{961B7793-890F-E45E-DFFC-03FF3DE92D60}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{F657E03D-C276-0B21-79EA-DADFE2156E62}</Project>
-      <Name>PhotonUnityNetworking.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.csproj">
-      <Project>{376361F1-C143-B468-08F5-42549D13B731}</Project>
-      <Name>PhotonUnityNetworking</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
-      <Project>{82CF232E-2053-FACB-46F7-837D5F0214D9}</Project>
-      <Name>PhotonUnityNetworking.Demos</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
-      <Project>{A447D0E5-C215-6BB2-5920-6EEB778F7978}</Project>
-      <Name>PunDemos.DemoSlotcarEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
-      <Project>{0AA07286-0BC6-1919-9AAF-A8CFFD4E28BF}</Project>
-      <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

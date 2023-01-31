@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PlayerBullet : MonoBehaviour
 {
     public enum BulletType
@@ -14,21 +13,18 @@ public class PlayerBullet : MonoBehaviour
     public int bulletDamage;
     public Transform LeftShotPos, RightShotPos;
     private Rigidbody2D rb;
-    private ShootingManager playerShooting;
     public LayerMask Enemy  ;
     private Animator anim;
     void Start()
     {
-        playerShooting = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<ShootingManager>();
-        transform.position = transform.localPosition;
-        anim = GetComponent<Animator>();
+            anim = GetComponent<Animator>();
+            transform.position = transform.localPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position += (transform.up * bulletSpeed) * Time.deltaTime;
-        Destroy(this.gameObject, 3);
+            transform.position += (transform.up * bulletSpeed) * Time.deltaTime;
+            Destroy(this.gameObject, 3);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

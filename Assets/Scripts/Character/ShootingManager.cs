@@ -9,7 +9,6 @@ public class ShootingManager : MonoBehaviour
     public float lightShotRate;
     [HideInInspector]
     public float abilityShotRate;
-
     public enum ActiveAbility { Fireball, Blizzard, Shockwave };
     public enum ActiveShot { DoubleLaser, HeavyShot }
     
@@ -57,7 +56,6 @@ public class ShootingManager : MonoBehaviour
     public float blizzardShotRate;
     private float fireBallShotRate;
 
-
     private void Awake()
     {
         ResetShotRates();
@@ -67,7 +65,7 @@ public class ShootingManager : MonoBehaviour
         else lightShotRate = heavyShotRate;
     }
 
-    [Button("Update ability Shotrate")]
+    [Button("Update ability ShotRate")]
     public void ResetShotRates()
     {
         abilityShotRate = curAbilityShotRate() * 0.2f;

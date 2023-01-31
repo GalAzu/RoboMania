@@ -133,8 +133,6 @@
 -r:"Assets/EffectExamples/Editor/PackageManagerAssembly/PackageManagerAssembly.dll"
 -r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
 -r:"Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll"
--r:"Assets/Plugins/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll"
--r:"Assets/Plugins/Photon/PhotonLibs/WebSocket/websocket-sharp.dll"
 -r:"Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll"
 -r:"Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll"
 -r:"Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll"

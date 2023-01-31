@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 534.5219, y: 366.89026, z: -94.9375}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -40,13 +41,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3310233287557460810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1434d5b4e0f8f5943a058c85bfc6f005, type: 3}
+  m_Script: {fileID: 11500000, guid: 89536985a82421148bbcb998e5c4dd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   EnemyCountText: {fileID: 0}
   waveNumber: {fileID: 0}
   playerState: {fileID: 0}
   enemyKilledText: {fileID: 0}
   timeToNextWaveText: {fileID: 0}
+  machineParts: {fileID: 0}
+  HP: {fileID: 0}
   nextWavePanel: {fileID: 0}
   uiCanvas: {fileID: 0}
+  GameOverUI: {fileID: 0}

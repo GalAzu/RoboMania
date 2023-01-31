@@ -20,16 +20,14 @@ public class CameraFollow : MonoBehaviour
     public float y_maxVal;
     [SerializeField]
     private Texture2D cursorTexture;
-
     void Start()
-    {        //Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
-        playerToFollow = GameObject.FindGameObjectWithTag("Player").transform;
+    {       
+            playerToFollow = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        if(playerToFollow != null) CameraIsMoving();
-
+           if (playerToFollow != null) CameraIsMoving();
     }
     private void CameraIsMoving()
     {

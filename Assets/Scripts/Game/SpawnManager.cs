@@ -21,21 +21,20 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject inventoryPanel;
     [SerializeField]
-    private List <Vector3> nextSpawnPoints = new();
+    private List <Vector2> nextSpawnPoints = new();
     [Title("VFX")]
     [SerializeField]
     private GameObject spawnEffect;
     [SerializeField]
     private GameObject onSpawnEffect;
+    private CameraFollow mainCamera;
 
     private void Awake()
     {
         waveSize = 3;
         waveNumber = 0;
         waveIsSpawning = false;
-    }
-    private void Start()
-    {
+        mainCamera = Camera.main.GetComponent<CameraFollow>();
     }
     private void Update()
     {
@@ -89,8 +88,11 @@ public class SpawnManager : MonoBehaviour
     }
     private void UpdateSpawnPoints()
     {
-        for(int enemyInWave=0; enemyInWave <= waveSize; enemyInWave++)
-            nextSpawnPoints.Add(Vector2Utilities.NewSpawnPos());
+        for (int enemyInWave=0; enemyInWave <= waveSize; enemyInWave++)
+        {
+            Vector2 nextSpawnPos = Vector2Utilities.NewSpawnPos(mainCamera.x_minVal, mainCamera.x_maxVal, mainCamera.y_minVal, mainCamera.y_maxVal);
+            nextSpawnPoints.Add(nextSpawnPos);
+        }
     }
 
     private void EnemiesOnLevel()
