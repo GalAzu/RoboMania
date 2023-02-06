@@ -228,7 +228,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             GameManager.instance.enemiesDefeatedEvent.Invoke();
-            spawnManager.EnemyCount --;
+            GameManager.instance.enemyCount--;
             UIManager.instance.UpdateEnemyCount();
             //Explosion particles / animation
         }

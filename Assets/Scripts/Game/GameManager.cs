@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent enemiesDefeatedEvent;
     private Character character;
     public int enemiesDefeated;
+    public int enemyCount;
     private void Start()
     {
         instance = this;
@@ -32,5 +33,10 @@ public class GameManager : MonoBehaviour
         enemiesDefeated++;
         UIManager.instance.UpdateEnemyKilled();
         UIManager.instance.UpdateMachineParts();
+    }
+    public void EnemiesOnLevel()
+    {
+        GameObject[] EnemiesLeft = GameObject.FindGameObjectsWithTag("Enemy"); //TODO Refactor for better performance, Get local list of enemies from each enemy?
+        enemyCount = EnemiesLeft.Length;
     }
 }

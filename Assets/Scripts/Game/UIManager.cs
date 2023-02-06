@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI enemyKilledText;
     public TextMeshProUGUI timeToNextWaveText;
     public TextMeshProUGUI machineParts;
-    public TextMeshProUGUI HP;
     public static UIManager instance;
     public GameObject nextWavePanel;
     public Canvas uiCanvas;
@@ -29,13 +28,13 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        UpdateEnemyCount();
         UpdateWaveNumber();
         UpdateMachineParts();
+        UpdateEnemyCount();
     }
     public void UpdateEnemyCount()
     {
-        EnemyCountText.text = "Enemy Count:" + spawnManager.EnemyCount;
+        EnemyCountText.text = "Enemy Count:" + GameManager.instance.enemyCount.ToString();
     }
     public void UpdateWaveNumber()
     {
@@ -48,7 +47,6 @@ public class UIManager : MonoBehaviour
     public void UpdateHP()
     {
         healthBar.SetSize(Character.instance.curHealth / 100);
-        HP.text = "HP: " + Character.instance.curHealth;
         if (Character.instance.curHealth <= 0) GameManager.instance.GameOver();
     }
     public void UpdateMachineParts()

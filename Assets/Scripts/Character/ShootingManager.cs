@@ -113,12 +113,16 @@ public class ShootingManager : MonoBehaviour
                 character.anim.SetBool("isShooting", true);
                 timeToNextAbilityShot = Time.time + abilityShotRate * Time.deltaTime;
             }
-            else character.anim.SetTrigger("Cooldown");
+            else
+            {
+                //Cooldown Sequence
+                character.anim.SetTrigger("Cooldown");
+            }
+
         }
 
         else if (Input.GetButton("Fire1") && canShootLight && Time.time >= timeToNextLightShot) ShootLight();
     }
-
 
     private void ShootLight()
     {

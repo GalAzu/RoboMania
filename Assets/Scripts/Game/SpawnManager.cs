@@ -9,9 +9,7 @@ public class SpawnManager : MonoBehaviour
 {
     public float timeToNextSpawn;
     [SerializeField]
-    public int EnemyCount;
     [ShowInInspector]
-    public static Enemy[] EnemiesLeft;
     public int waveNumber;
     public GameObject[] EnemiesInScene;
     public int waveSize;
@@ -42,13 +40,13 @@ public class SpawnManager : MonoBehaviour
         {
             Timer();
         }
-        if (EnemyCount == 0 && waveIsSpawning == false)
+        if (GameManager.instance.enemyCount == 0 && waveIsSpawning == false)
         {
             waveIsSpawning = true;
-            StartCoroutine(WaveSpawn());
+            StartCoroutine(StartSpawn());
         }
     }
-    private IEnumerator WaveSpawn()
+    private IEnumerator StartSpawn()
     {
         Character.instance.waitForSpawn = true;
         UpdateSpawnPoints();
@@ -57,7 +55,7 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnEnemies();
             inventoryPanel.gameObject.SetActive(true);
-            EnemiesOnLevel();
+            GameManager.instance.EnemiesOnLevel();
             waveSize += Random.Range(1, 3);
             waveNumber++;
             waveIsSpawning = false;
@@ -65,6 +63,7 @@ public class SpawnManager : MonoBehaviour
             UIManager.instance.nextWavePanel.SetActive(false);
             UIManager.instance.UpdateWaveNumber();
             UIManager.instance.UpdateEnemyCount();
+            //TODO Refactor this whole mess into OnSpawn event
         }
     }
 
@@ -95,11 +94,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private void EnemiesOnLevel()
-    {
-        EnemiesLeft = GameObject.FindObjectsOfType<Enemy>();
-        EnemyCount = EnemiesLeft.Length;
-    }
+
     private void ShowEnemiesLocation()
     {
         foreach(Vector3 spawnPoint in nextSpawnPoints)

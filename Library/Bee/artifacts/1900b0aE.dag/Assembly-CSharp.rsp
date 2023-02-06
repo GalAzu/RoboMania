@@ -367,6 +367,7 @@
 "Assets/EffectExamples/Shared/Scripts/ParticleExamples.cs"
 "Assets/EffectExamples/Shared/Scripts/ParticleMenu.cs"
 "Assets/EffectExamples/TutorialInfo/Scripts/Readme.cs"
+"Assets/EnvironmentSpawner.cs"
 "Assets/Scripts/Character/AbillitySlot.cs"
 "Assets/Scripts/Character/Character.cs"
 "Assets/Scripts/Character/HoldAndThrowObjects.cs"

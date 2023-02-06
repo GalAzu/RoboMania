@@ -62,7 +62,6 @@ public class HoldAndThrowObjects : MonoBehaviour
         hit.collider.transform.parent = null;
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        obj.isMoving = true;
         rb.AddForce(transform.up * throwForce , ForceMode2D.Impulse);
     }
     private void OnDrawGizmosSelected()

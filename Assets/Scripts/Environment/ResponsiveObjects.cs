@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ResponsiveObjects : MonoBehaviour
+    //STORE ALL OBJECT DATA IN SCRIPTABLE AND LOAD IT FROM CLASS
 {
     private LayerMask playerBullets = 10;
     private LayerMask enemyBullets = 12;
     private LayerMask enemyLayer = 8;
     [SerializeField]
-    private GameObject[] ItemPool;
-    private GameObject itemToDrop;
+    private GameObject[] ItemPool; //TODO Change to scriptable objects
+    private GameObject itemToDrop; //ScriptableObject
+    [SerializeField]
     private float health;
     [Header("Spatial properties")]
     [SerializeField] private float spatialDamage;
@@ -18,11 +20,16 @@ public class ResponsiveObjects : MonoBehaviour
     [Header("Object Properties")]
     [SerializeField] private float throwDamage;
     [SerializeField] public bool isExplosive;
-    [SerializeField] public bool isMoving;
-    void Start()
+    [SerializeField]
+    public float velocityDamageThreshold;
+    [SerializeField]
+    private GameObject smallExplosion;
+    private Rigidbody2D rb;
+    private void Awake()
     {
-        health = 100;
+        rb = GetComponent<Rigidbody2D>();
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,7 +40,7 @@ public class ResponsiveObjects : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isMoving && collision.gameObject.layer == enemyLayer)
+        if (rb.velocity.magnitude > 0.5f && collision.gameObject.layer == enemyLayer)
         {
             var enemy = collision.gameObject.GetComponent<Enemy>();
             enemy.health -= throwDamage;
@@ -42,14 +49,23 @@ public class ResponsiveObjects : MonoBehaviour
     }
     private void DamageObject()
     {
+        rb.velocity *= 0.1f;
         health -= 20;
         if (health <= 0)
         {
             if(isExplosive)
             {
-                //Circle raycast array with spatialRadius
-                //damage each raycast array element with the spatial damage
-                //Activate vfx within that raycast? or animation?
+                var vfx = Instantiate(smallExplosion, transform.position,Quaternion.identity);
+                RaycastHit2D[] rayHits = Physics2D.CircleCastAll(transform.position, spatialRadius, Vector2.zero);
+                foreach(var hit in rayHits)
+                {
+                    if (hit.collider.tag == "Player")
+                        hit.collider.gameObject.GetComponent<Character>().Damage(spatialDamage);
+                    else if (hit.collider.tag == "Enemy")
+                        hit.collider.gameObject.GetComponent<Enemy>().Damage(spatialDamage);
+                }
+                Destroy(vfx, 1.5f);
+               
             }
           Destroy(this.gameObject);
           if (itemToDrop != null) DropRandomItem();
@@ -66,5 +82,8 @@ public class ResponsiveObjects : MonoBehaviour
         Instantiate(RandomItem(), transform.position, Quaternion.identity);
         Debug.Log("DROP ITEM: " + RandomItem().name);
     }
-    public void ItemIsMoving() => isMoving = true;
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, spatialRadius);
+    }
 }

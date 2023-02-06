@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -72,6 +73,12 @@ public class Character : MonoBehaviour
                     break;
         }
     }
+
+    internal void Damage(object objectDamage)
+    {
+        throw new NotImplementedException();
+    }
+
     private  void FixedUpdate()
     {
             Movement();

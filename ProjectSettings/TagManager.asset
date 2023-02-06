@@ -9,6 +9,7 @@ TagManager:
   - SpawnManager
   - Inventory
   - ItemDatabase
+  - Enemy
   layers:
   - Default
   - TransparentFX
