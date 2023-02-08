@@ -9,13 +9,18 @@ public class GameManager : MonoBehaviour
     private Character character;
     public int enemiesDefeated;
     public int enemyCount;
-    private void Start()
+    private void Awake()
     {
         instance = this;
+
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         UIManager.instance.uiCanvas.gameObject.SetActive(true);
-        UIManager.instance.UpdateMachineParts();
         UIManager.instance.GameOverUI.SetActive(false);
+    }
+    private void Start()
+    {
+        UIManager.instance.UpdateMachineParts();
+
     }
     public void GameOver()
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1436829958605859162}
   m_Layer: 0
   m_Name: SpawnManager
-  m_TagString: Untagged
+  m_TagString: SpawnManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.9771, y: 15.270024, z: -19.169207}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,11 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17111327de112984bae7d5e29886cd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToNextSpawn: 6
-  EnemyCount: 0
+  timeToNextSpawn: 5.62
   waveNumber: 0
-  MultipleEnemiesToSpawn: []
-  SpiderEnemy: {fileID: 0}
+  EnemiesInScene:
+  - {fileID: 6160738217018322192, guid: 589bff8d5af430242ae813ff806aa67f, type: 3}
+  - {fileID: 5156944477997298768, guid: 7d08f3a8279f7f843b459c9840095a5e, type: 3}
   waveSize: 0
-  waveSpawned: 0
+  waveIsSpawning: 0
   timerIsOn: 0
+  secToSpawn: 10
+  inventoryPanel: {fileID: 0}
+  nextSpawnPoints: []
+  spawnEffect: {fileID: 1000012560919920, guid: 85a8865d1bf4a63478038fae23776de8,
+    type: 3}
+  onSpawnEffect: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
+    type: 3}

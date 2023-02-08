@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
+    private int startingSceneNumber = 1;
     public void OnStartButton()
     {
-        SceneManager.LoadScene(1);
-        Time.timeScale = 1;
+        SceneManager.LoadScene(startingSceneNumber);
+        Time.timeScale = 0;
     }
 
     public void OnSettingButton()

@@ -163,8 +163,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 588849509
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b30551ae5a54da14fbbb2023f4dd208d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -247,8 +247,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 588849509
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d4cb188b3c6771a4cba80dd80c2c260f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -362,8 +362,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 588849509
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1110a2cc6dea93e4fbbaafa31b25f748, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -463,8 +463,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 588849509
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 953b45eb1d2ca1447a30495237129f96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -558,8 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ee549c099f3c141a925f6845784846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightShotRate: 0
-  abilityShotRate: 29
+  lightShotRate: 13.860001
+  abilityShotRate: 50
   character: {fileID: 0}
   Damagable:
     serializedVersion: 2
@@ -576,8 +576,8 @@ MonoBehaviour:
   ElectricitySphere: {fileID: 1306605793903958, guid: 9ce4142b18056ab4b813713b878856ca,
     type: 3}
   activeAbility: 2
-  activeShot: 1
-  doubleShotRate: 35
+  activeShot: 0
+  doubleShotRate: 69.3
   heavyShotRate: 150
   shockwaveRadius: 10
   shockwaveShotRate: 250

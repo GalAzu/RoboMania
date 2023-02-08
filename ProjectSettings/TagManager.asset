@@ -47,3 +47,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background
+    uniqueID: 79359691
+    locked: 0
+  - name: bullets
+    uniqueID: 3161060901
+    locked: 0
+  - name: obstacles
+    uniqueID: 2164937375
+    locked: 0
+  - name: player
+    uniqueID: 588849509
+    locked: 0

@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemPool:
   - {fileID: 835734950487037754}
+  health: 0
   spatialDamage: 7.18
   spatialRadius: 5
   throwDamage: 0

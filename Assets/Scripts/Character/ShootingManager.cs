@@ -92,13 +92,14 @@ public class ShootingManager : MonoBehaviour
                 return shockwaveShotRate;
             case (ActiveAbility.Blizzard):
                 return blizzardShotRate;
+
             case (ActiveAbility.Fireball):
                 return fireBallShotRate;
         }
         return abilityShotRate;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         OnShoot();
     }
@@ -143,21 +144,7 @@ public class ShootingManager : MonoBehaviour
         switch(activeAbility)
         {
             case (ActiveAbility.Shockwave):
-                Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, shockwaveRadius , Damagable );
-                foreach(var collider2D in collider)
-                {
-                    if(collider2D != null)
-                    {
-                        var enemyMask = 8;
-                        if(collider2D.gameObject.layer == enemyMask)
-                        {
-                            var enemy = collider2D.GetComponent<Enemy>();
-                            enemy.Damage(shockwaveDamage);
-                        }
-                    }
-                }
-                var sphere = Instantiate(ElectricitySphere, transform.position , Quaternion.identity);
-                Destroy(sphere, 0.3f);
+                Shockwave();
                 break;
             case (ActiveAbility.Blizzard):
                 break;
@@ -169,5 +156,24 @@ public class ShootingManager : MonoBehaviour
     {
        Gizmos.color = Color.yellow;
        Gizmos.DrawWireSphere(transform.position, shockwaveRadius);
+    }
+    private void Shockwave()
+    {
+        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, shockwaveRadius, Damagable);
+        foreach (var collider2D in collider)
+        {
+            if (collider2D != null)
+            {
+                var enemyMask = 8;
+                if (collider2D.gameObject.layer == enemyMask)
+                {
+                    var enemy = collider2D.GetComponent<Enemy>();
+                    enemy.Damage(shockwaveDamage);
+                    enemy.OnStatusEffect(StatusEffect.statusEffect.Shock);
+                }
+            }
+        }
+        var sphere = Instantiate(ElectricitySphere, transform.position, Quaternion.identity);
+        Destroy(sphere, 0.3f);
     }
 }

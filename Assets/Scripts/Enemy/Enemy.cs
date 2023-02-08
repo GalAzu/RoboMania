@@ -37,15 +37,20 @@ public class Enemy : MonoBehaviour
     private Vector3 roamingPos;
     private bool corutineStarted;
     private SpawnManager spawnManager;
-
+    private StatusEffect _statusEffect;
 
     private Collider2D detectRadiusCollider, meleeRadiusCollider;
 
     private void Awake()
     {
         spawnManager = FindObjectOfType<SpawnManager>();
-
+        _statusEffect = GetComponent<StatusEffect>();
     }
+    public void OnStatusEffect(StatusEffect.statusEffect status)
+    {
+        _statusEffect.SetStatus(status);
+    }
+
     private void Start()
     {
         attackState = (AttackType)Random.Range(0, 3);

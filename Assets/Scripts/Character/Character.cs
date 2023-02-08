@@ -32,7 +32,7 @@ public class Character : MonoBehaviour
     private Shield shield;
     [SerializeField]
     private float rotationLerp;
-    public enum PlayerState { Slowdown, Walking, Dash, Shooting };
+   public enum PlayerState { Slowdown, Walking, Dash, Shooting };
     public PlayerState state;
     Vector2 mousePos;
     private LayerMask enemyBullet = 12;
@@ -57,27 +57,8 @@ public class Character : MonoBehaviour
     private void Update()
      {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            switch (state)
-            {
-                case (PlayerState.Walking):
-                    UIManager.instance.playerState.text = "PlayerState: Walking";
-                    break;
-                case (PlayerState.Dash):
-                    UIManager.instance.playerState.text = "PlayerState: Dash";
-                    break;
-                case (PlayerState.Shooting):
-                    UIManager.instance.playerState.text = "PlayerState : Shooting";
-                    break;
-                case (PlayerState.Slowdown):
-                    UIManager.instance.playerState.text = "PlayerState : Slowdown";
-                    break;
-        }
     }
 
-    internal void Damage(object objectDamage)
-    {
-        throw new NotImplementedException();
-    }
 
     private  void FixedUpdate()
     {
@@ -96,7 +77,7 @@ public class Character : MonoBehaviour
     private void PlayerRotation()
     {
         //rotation not based on rigidbody.
-
+        Debug.Log((Input.mousePosition) - transform.position);
           Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
           difference.Normalize();
           float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg -90;
@@ -107,7 +88,7 @@ public class Character : MonoBehaviour
 
        /* Vector2 direction = mousePos - rb.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;/*
+        rb.rotation = angle;
 
         //rotation with perspective camera(3D)
 

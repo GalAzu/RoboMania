@@ -6,7 +6,10 @@ public class CameraFollow : MonoBehaviour
 {
     private float posX;
     private float posY;
-    public float offset;
+    public float Xoffset;
+    public float yoffset;
+    public float Zoffset;
+
     private Transform playerToFollow;
     public bool isMoving;
     [SerializeField]private Transform rayPoint;
@@ -20,6 +23,8 @@ public class CameraFollow : MonoBehaviour
     public float y_maxVal;
     [SerializeField]
     private Texture2D cursorTexture;
+    [SerializeField]
+    private bool ifBoundariesSet;
     void Start()
     {       
             playerToFollow = GameObject.FindGameObjectWithTag("Player").transform;
@@ -34,15 +39,17 @@ public class CameraFollow : MonoBehaviour
         isMoving = true;
         posX = playerToFollow.transform.position.x;
         posY = playerToFollow.transform.position.y;
-        Vector3 pos = new Vector3(posX, posY, -offset);
+        Vector3 pos = new Vector3(posX, posY, transform.position.z);
+        Vector3 posOffset = new Vector3(Xoffset, yoffset, Zoffset);
         transform.position = pos;
-        pos.x = Mathf.Clamp(transform.position.x, x_minVal, x_maxVal);
-        pos.y = Mathf.Clamp(transform.position.y, y_minVal, y_maxVal);
-        var clampedPos = new Vector3(pos.x, pos.y ,transform.position.z );
-        transform.position = clampedPos;
+        if(ifBoundariesSet)
+        {
+            pos.x = Mathf.Clamp(transform.position.x, x_minVal, x_maxVal);
+            pos.y = Mathf.Clamp(transform.position.y, y_minVal, y_maxVal);
+            var clampedPos = new Vector3(pos.x, pos.y, transform.position.z);
+            transform.position = clampedPos + posOffset;
 
-
-
+        }
         // Camera.main.orthographicSize = offset
     }
     private void OnDrawGizmos()
