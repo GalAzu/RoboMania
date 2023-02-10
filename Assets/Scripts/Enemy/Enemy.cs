@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
     private SpawnManager spawnManager;
     private StatusEffect _statusEffect;
 
-    private Collider2D detectRadiusCollider, meleeRadiusCollider;
+    private Collider2D detectRadiusCollider;
 
     private void Awake()
     {
@@ -107,8 +107,8 @@ public class Enemy : MonoBehaviour
 
         if (detectRadiusCollider != null)
         {
-            target = Character.instance.transform;
             enemyState = State.Chasing;
+            target = Character.instance.transform; //TODO Refactor not singleton!
             if (Vector3.Distance(transform.position, target.transform.position) <= attackDistance)
             {
                 enemyState = State.Attacking;
@@ -124,10 +124,7 @@ public class Enemy : MonoBehaviour
               onCooldown = true;
             }
         }
-        if (meleeRadiusCollider != null && enemyState == State.Attacking)
-        {
-            // Melee attack Sequence
-        }
+
     }
     #region WalkingStateLogic
     private Vector3 GetRandomDir()
@@ -159,8 +156,16 @@ public class Enemy : MonoBehaviour
         if (target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, target.transform.position) <= meleeAttackRange)
+                OnMeleeAttack();
         }
     }
+
+    private void OnMeleeAttack()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void RotateToTarget()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, RotateTowardsNewPos(target.position), 0.2f);
