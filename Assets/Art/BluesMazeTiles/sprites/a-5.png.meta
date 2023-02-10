@@ -120,9 +120,6 @@ TextureImporter:
     physicsShape:
     - - {x: -135, y: 135}
       - {x: -135, y: 62}
-      - {x: -31, y: 68}
-      - {x: 47, y: 59}
-      - {x: 94, y: 73}
       - {x: 135, y: 63}
       - {x: 135, y: 135}
     bones: []

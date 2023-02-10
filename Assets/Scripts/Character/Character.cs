@@ -77,7 +77,6 @@ public class Character : MonoBehaviour
     private void PlayerRotation()
     {
         //rotation not based on rigidbody.
-        Debug.Log((Input.mousePosition) - transform.position);
           Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
           difference.Normalize();
           float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg -90;

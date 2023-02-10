@@ -122,7 +122,8 @@ public class ShootingManager : MonoBehaviour
 
         }
 
-        else if (Input.GetButton("Fire1") && canShootLight && Time.time >= timeToNextLightShot) ShootLight();
+        else if (Input.GetButton("Fire1") && canShootLight && Time.time >= timeToNextLightShot) 
+            ShootLight();
     }
 
     private void ShootLight()
@@ -167,9 +168,9 @@ public class ShootingManager : MonoBehaviour
                 var enemyMask = 8;
                 if (collider2D.gameObject.layer == enemyMask)
                 {
-                    var enemy = collider2D.GetComponent<Enemy>();
+                    var enemy = collider2D.GetComponent<EnemyStateMachine>();
                     enemy.Damage(shockwaveDamage);
-                    enemy.OnStatusEffect(StatusEffect.statusEffect.Shock);
+                   // enemy.OnStatusEffect(StatusEffect.statusEffect.Shock);
                 }
             }
         }

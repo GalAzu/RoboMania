@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class StatusEffect : MonoBehaviour
 {
-    public Enemy enemy;
+    public EnemyStateMachine enemy;
     public enum statusEffect { Null , Shock , Fire , Poison}
     public statusEffect _statusEffect;
-
+    private bool onSlowdown;
     private void Awake()
     {
-        enemy = GetComponent<Enemy>();
+        enemy = GetComponent<EnemyStateMachine>();
     }
     private void Update()
     {
@@ -26,6 +26,17 @@ public class StatusEffect : MonoBehaviour
     
     private void ShockEffect()
     {
-        //Shock effect on 
+
     }
+    private IEnumerator Slowdown()
+    {
+        Character.instance.state = Character.PlayerState.Slowdown;
+        onSlowdown = true;
+        Character.instance.movementSpeed -= 1.5f;
+        yield return new WaitForSeconds(15);
+        Character.instance.movementSpeed = 5;
+        Character.instance.state = Character.PlayerState.Walking;
+        onSlowdown = false;
+    }
+
 }

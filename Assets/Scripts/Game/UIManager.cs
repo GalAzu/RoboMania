@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        UpdateWaveNumber();
+       // UpdateWaveNumber();
         UpdateMachineParts();
         UpdateEnemyCount();
     }

@@ -8,12 +8,13 @@ using UnityEngine;
 public class EnemyBullets : MonoBehaviour
 {
     public int _bulletDamage;
+    public float bulletAreaDamage;
     public float _bulletSpeed;
+    public GameObject vfx;
     // Update is called once per frame
     void Update()
     {
         transform.Translate((Vector3.up * _bulletSpeed) * Time.deltaTime, Space.Self);
         Destroy(this.gameObject, 3);
     }
-
 }

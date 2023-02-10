@@ -5,7 +5,7 @@ using _Utilities;
 public class EnvironmentSpawner : MonoBehaviour
 {
     [SerializeField]
-    private List<ResponsiveObjects> explodingObjects = new(); //Refactor ResponsiveObjects to scriptable objects
+    private List<ExplosiveItems> explodingObjects = new(); //Refactor ResponsiveObjects to scriptable objects
     private CameraFollow camera;
     public int numberToSpawn;
 

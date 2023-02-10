@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private Character character;
     public int enemiesDefeated;
     public int enemyCount;
+
     private void Awake()
     {
         instance = this;

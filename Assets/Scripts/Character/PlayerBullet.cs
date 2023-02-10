@@ -13,7 +13,7 @@ public class PlayerBullet : MonoBehaviour
     public int bulletDamage;
     public Transform LeftShotPos, RightShotPos;
     private Rigidbody2D rb;
-    public LayerMask Enemy  ;
+    public LayerMask Enemy;
     private Animator anim;
     void Start()
     {
@@ -32,7 +32,7 @@ public class PlayerBullet : MonoBehaviour
         {
             if (collision.gameObject.layer == 8) //enemy layer mask
             {
-                collision.gameObject.GetComponent<Enemy>().health -= bulletDamage;
+                collision.gameObject.GetComponent<EnemyStateMachine>().health -= bulletDamage;
             }
             Destroy(this.gameObject);
         }
@@ -41,7 +41,7 @@ public class PlayerBullet : MonoBehaviour
             if (collision.gameObject.layer == 8)
             {
                 anim.SetTrigger("explosion");
-                collision.gameObject.GetComponent<Enemy>().health -= bulletDamage;
+                collision.gameObject.GetComponent<EnemyStateMachine>().health -= bulletDamage;
             }
             Destroy(this.gameObject);
         }

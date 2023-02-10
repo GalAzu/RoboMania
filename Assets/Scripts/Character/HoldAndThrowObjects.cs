@@ -57,7 +57,7 @@ public class HoldAndThrowObjects : MonoBehaviour
     public void ThrowObject()
     {
         var rb = hit.collider.gameObject.GetComponent<Rigidbody2D>();
-        var obj = hit.collider.gameObject.GetComponent<ResponsiveObjects>();
+        var obj = hit.collider.gameObject.GetComponent<ExplosiveItems>();
        // actionDistance -= 1;
         hit.collider.transform.parent = null;
         rb.constraints = RigidbodyConstraints2D.None;
