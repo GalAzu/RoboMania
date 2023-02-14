@@ -30,12 +30,10 @@ public class StatusEffect : MonoBehaviour
     }
     private IEnumerator Slowdown()
     {
-        Character.instance.state = Character.PlayerState.Slowdown;
         onSlowdown = true;
         Character.instance.movementSpeed -= 1.5f;
         yield return new WaitForSeconds(15);
         Character.instance.movementSpeed = 5;
-        Character.instance.state = Character.PlayerState.Walking;
         onSlowdown = false;
     }
 

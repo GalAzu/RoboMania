@@ -2636,7 +2636,7 @@ PrefabInstance:
     - target: {fileID: 4539776443722265686, guid: 35d1d6174d304884d9818150259423d0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.47
+      value: -13.3
       objectReference: {fileID: 0}
     - target: {fileID: 4539776443722265686, guid: 35d1d6174d304884d9818150259423d0,
         type: 3}
@@ -4462,13 +4462,13 @@ PrefabInstance:
         type: 3}
       propertyPath: EnemiesInScene.Array.data[0]
       value: 
-      objectReference: {fileID: 6160738217018322192, guid: 589bff8d5af430242ae813ff806aa67f,
+      objectReference: {fileID: 1811814585216146644, guid: 220d5f92e2c64f14d99ffec280516db8,
         type: 3}
     - target: {fileID: 1436829958605859162, guid: 8038413d00f9d83418004c9c2914a371,
         type: 3}
       propertyPath: EnemiesInScene.Array.data[1]
       value: 
-      objectReference: {fileID: 5156944477997298768, guid: 7d08f3a8279f7f843b459c9840095a5e,
+      objectReference: {fileID: 1811814585216146644, guid: 8e9c8df2de467e64cb3f63ee9ed1c149,
         type: 3}
     - target: {fileID: 1436829958605859162, guid: 8038413d00f9d83418004c9c2914a371,
         type: 3}

@@ -33,7 +33,6 @@ public class Character : MonoBehaviour
     [SerializeField]
     private float rotationLerp;
    public enum PlayerState { Slowdown, Walking, Dash, Shooting };
-    public PlayerState state;
     Vector2 mousePos;
     private LayerMask enemyBullet = 12;
 
@@ -68,7 +67,6 @@ public class Character : MonoBehaviour
     #region movement and rotation
     private void Movement()
     {
-        state = PlayerState.Walking;
         Vector3 moveVector = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.deltaTime * movementSpeed;
         moveVector = Vector3.ClampMagnitude(moveVector, 1);
         transform.position += moveVector;

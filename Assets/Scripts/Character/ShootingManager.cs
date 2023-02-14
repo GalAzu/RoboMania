@@ -20,11 +20,11 @@ public class ShootingManager : MonoBehaviour
     [FoldoutGroup("Dependencies and Setting")]
     [SerializeField] private float timeToNextLightShot;
     [FoldoutGroup("Dependencies and Setting")]
-    public GameObject bulletPrefab;
+    public GameObject DoubleLaserPrefab;
     [FoldoutGroup("Dependencies and Setting")]
-    public GameObject missilePrefab;
+    public GameObject heavyShotPrefab;
     [FoldoutGroup("Dependencies and Setting")]
-    public Transform shootPointR, shootPointL, missilePoint;
+    public Transform shootPointR, shootPointL, shootPointC;
     [FoldoutGroup("Dependencies and Setting")]
     public GameObject ElectricitySphere;
 
@@ -105,7 +105,6 @@ public class ShootingManager : MonoBehaviour
     }
     private void OnShoot()
     {
-        character.state = Character.PlayerState.Shooting;
         if (Input.GetButton("Fire2"))
         {
             if (Time.time >= timeToNextAbilityShot)
@@ -119,7 +118,6 @@ public class ShootingManager : MonoBehaviour
                 //Cooldown Sequence
                 character.anim.SetTrigger("Cooldown");
             }
-
         }
 
         else if (Input.GetButton("Fire1") && canShootLight && Time.time >= timeToNextLightShot) 
@@ -131,11 +129,11 @@ public class ShootingManager : MonoBehaviour
         switch (activeShot)
         {
             case (ActiveShot.DoubleLaser):
-                GameObject bullet = Instantiate(bulletPrefab, shootPointR.transform.position, Character.instance.transform.rotation);   //TDL Bullets pool.
-                GameObject bullet2 = Instantiate(bulletPrefab, shootPointL.transform.position, Character.instance.transform.rotation);
+                GameObject bullet = Instantiate(DoubleLaserPrefab, shootPointR.transform.position, Character.instance.transform.rotation);   //TDL Bullets pool.
+                GameObject bullet2 = Instantiate(DoubleLaserPrefab, shootPointL.transform.position, Character.instance.transform.rotation);
                 break;
             case (ActiveShot.HeavyShot):
-                GameObject missile = Instantiate(missilePrefab, missilePoint.transform.position, Character.instance.transform.rotation);
+                GameObject heavyShotObj = Instantiate(heavyShotPrefab, shootPointC.transform.position, Character.instance.transform.rotation);
                 break;
         }
         timeToNextLightShot = Time.time + lightShotRate * Time.deltaTime;

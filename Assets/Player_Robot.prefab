@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4743919730840918357}
   m_Layer: 0
-  m_Name: missileVector
+  m_Name: ShootPoint C
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -490,7 +490,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.3111993}
+  m_Offset: {x: 0, y: 0.410166}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -501,7 +501,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.94, y: 2.1423986}
+  m_Size: {x: 2.94, y: 2.3403327}
   m_EdgeRadius: 0
 --- !u!50 &4539776443722265680
 Rigidbody2D:
@@ -523,7 +523,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 0
 --- !u!114 &4539776443722265683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,28 +559,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightShotRate: 13.860001
-  abilityShotRate: 50
+  abilityShotRate: 0
   character: {fileID: 0}
   Damagable:
     serializedVersion: 2
     m_Bits: 6912
   timeToNextAbilityShot: 0
   timeToNextLightShot: 0
-  bulletPrefab: {fileID: 890617963547533658, guid: 940f16715c46ba148a4e6fa5a60f0966,
+  DoubleLaserPrefab: {fileID: 890617963547533658, guid: 940f16715c46ba148a4e6fa5a60f0966,
     type: 3}
-  missilePrefab: {fileID: 6189857053981160186, guid: 2be3d7090794c5b4f9ec1cbe0cb474f4,
+  heavyShotPrefab: {fileID: 6189857053981160186, guid: 2be3d7090794c5b4f9ec1cbe0cb474f4,
     type: 3}
   shootPointR: {fileID: 4539776442994073334}
   shootPointL: {fileID: 4539776442252854338}
-  missilePoint: {fileID: 4743919730840918357}
+  shootPointC: {fileID: 0}
   ElectricitySphere: {fileID: 1306605793903958, guid: 9ce4142b18056ab4b813713b878856ca,
     type: 3}
-  activeAbility: 2
+  activeAbility: 0
   activeShot: 0
   doubleShotRate: 69.3
   heavyShotRate: 150
   shockwaveRadius: 10
-  shockwaveShotRate: 250
+  shockwaveShotRate: 281
   shockwaveDamage: 41
   blizzardShotRate: 0
 --- !u!114 &171382697956161974

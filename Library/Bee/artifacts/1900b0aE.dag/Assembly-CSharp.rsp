@@ -373,6 +373,7 @@
 "Assets/EnemiesAttackManager.cs"
 "Assets/EnemyLocomotion.cs"
 "Assets/EnvironmentSpawner.cs"
+"Assets/Inetraction.cs"
 "Assets/Scripts/Character/AbillitySlot.cs"
 "Assets/Scripts/Character/Character.cs"
 "Assets/Scripts/Character/HoldAndThrowObjects.cs"
@@ -408,6 +409,7 @@
 "Assets/Scripts/Unity/SoundGenerator.cs"
 "Assets/Scripts/Vector2Utilities.cs"
 "Assets/StatusEffect.cs"
+"Assets/TreasureChest.cs"
 -langversion:9.0
 
 /deterministic
