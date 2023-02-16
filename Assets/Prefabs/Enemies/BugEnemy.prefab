@@ -152,27 +152,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88313096d2bb9284698504c749ffadba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.05
-  onSlowdown: 0
-  health: 141.47
-  physicalDamage: 0
   enemyState: 0
-  detectRadius: 7.1
-  attackDistance: 5.62
-  backToWalkDistance: 15
-  timeToWalkState: 8.09
-  timeSinceHit: 0
-  target: {fileID: 0}
-  Players:
+  health: 141.47
+  stopChasingTime: 10
+  backToWalkDistance: 20
+  detectRadius: 19.14
+  moveSpeed: 2.05
+  playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  Environment:
-    serializedVersion: 2
-    m_Bits: 2048
-  stopChasingTime: 0
-  onCooldown: 0
-  spawnManager: {fileID: 0}
-  _statusEffect: {fileID: 0}
+  target: {fileID: 0}
   character: {fileID: 0}
 --- !u!114 &5502146401959182107
 MonoBehaviour:
@@ -187,13 +176,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 0
-  timeToNextShot: 0
+  bullet: {fileID: -1956119774138603483, guid: 2477f6680c1e94d41ba26951bd18c889, type: 3}
+  shootTransform: {fileID: 5502146401384467585}
+  timeToNextShot: 0.66
+  attackDistance: 15.36
   bulletSpeed: 7.33
   shotRate: 1.4
-  bullet:
-    bulletPrefab: {fileID: 3840219345046096968, guid: 924a29c9285b6dd49b40c61a353f05c2,
-      type: 3}
-    bulletPos: {fileID: 5502146402673203553}
+  physicalDamage: 0
+  Environment:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &2834085498409141093
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class Shield : MonoBehaviour
     {
         if (collision.gameObject.layer == enemyBulletLayer)
         {
-            DamageShield(collision.GetComponent<EnemyBullets>()._bulletDamage);
+            DamageShield(collision.GetComponent<EnemyBullet>().bulletData._bulletDamage);
             Destroy(collision.gameObject);
         }
     }

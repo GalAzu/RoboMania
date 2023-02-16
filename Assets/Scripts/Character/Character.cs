@@ -103,11 +103,7 @@ public class Character : MonoBehaviour
             var store = collision.GetComponent<Store>();
             //open store
         }
-        if (collision.gameObject.layer == enemyBullet && shield == null) //Bullet damage
-        {
-            Damage(collision.GetComponent<EnemyBullets>()._bulletDamage);
-            Destroy(collision.gameObject);
-        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
