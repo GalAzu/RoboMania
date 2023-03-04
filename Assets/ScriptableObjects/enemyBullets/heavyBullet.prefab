@@ -120,7 +120,7 @@ MonoBehaviour:
     m_Bits: 2816
   bulletData:
     isHoming: 1
-    _bulletDamage: 15
+    _bulletDamage: 55
     bulletAreaDamage: 5
     _bulletSpeed: 7.07
     vfx: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}

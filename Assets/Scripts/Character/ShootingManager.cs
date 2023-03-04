@@ -5,11 +5,12 @@ using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 public class ShootingManager : MonoBehaviour
 {
+    //TODO:Capsulate all shots data and work toward the capsulation - data holders such as so/strucs
     [HideInInspector]
     public float lightShotRate;
     [HideInInspector]
     public float abilityShotRate;
-    public enum ActiveAbility { Fireball, Blizzard, Shockwave };
+    public enum ActiveAbility { FireBalls, Blizzard, Shockwave };
     public enum ActiveShot { DoubleLaser, HeavyShot }
     
     public Character character;
@@ -58,11 +59,11 @@ public class ShootingManager : MonoBehaviour
 
     private void Awake()
     {
-        ResetShotRates();
         abilityShotRate = curAbilityShotRate();
         character = GetComponent<Character>();
         if (activeShot == ActiveShot.DoubleLaser) lightShotRate = doubleShotRate;
         else lightShotRate = heavyShotRate;
+        ResetShotRates();
     }
 
     [Button("Update ability ShotRate")]
@@ -93,7 +94,7 @@ public class ShootingManager : MonoBehaviour
             case (ActiveAbility.Blizzard):
                 return blizzardShotRate;
 
-            case (ActiveAbility.Fireball):
+            case (ActiveAbility.FireBalls):
                 return fireBallShotRate;
         }
         return abilityShotRate;
@@ -147,7 +148,7 @@ public class ShootingManager : MonoBehaviour
                 break;
             case (ActiveAbility.Blizzard):
                 break;
-            case (ActiveAbility.Fireball):
+            case (ActiveAbility.FireBalls):
                 break;
         }
     }
@@ -175,4 +176,9 @@ public class ShootingManager : MonoBehaviour
         var sphere = Instantiate(ElectricitySphere, transform.position, Quaternion.identity);
         Destroy(sphere, 0.3f);
     }
+    private void FireBalls()
+    {
+
+    }
+
 }

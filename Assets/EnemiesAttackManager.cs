@@ -6,6 +6,8 @@ using Sirenix.OdinInspector;
 
 public class EnemiesAttackManager : MonoBehaviour
 {
+    //MAKE THIS VIRTUAL AND INHERIT AS MELEE/LIGHT/HEAVY
+
     [ShowInInspector]
     [Header("Prefabs")]
     [SerializeField]
@@ -17,7 +19,6 @@ public class EnemiesAttackManager : MonoBehaviour
     private float timeToNextShot;
     [Header("Attack Properties")]
     public float attackDistance;
-    public float bulletSpeed;
     [SerializeField]
     private float shotRate;
     public int physicalDamage;

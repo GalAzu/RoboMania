@@ -10,7 +10,7 @@ public class MainMenuUI : MonoBehaviour
     public void OnStartButton()
     {
         SceneManager.LoadScene(startingSceneNumber);
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
 
     public void OnSettingButton()

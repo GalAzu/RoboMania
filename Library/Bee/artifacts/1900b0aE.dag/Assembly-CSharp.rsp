@@ -375,6 +375,8 @@
 "Assets/EnemyLocomotion.cs"
 "Assets/EnvironmentSpawner.cs"
 "Assets/Inetraction.cs"
+"Assets/KY_effects/Script/ConGUI.cs"
+"Assets/KY_effects/Script/Lighting.cs"
 "Assets/Scripts/Character/AbillitySlot.cs"
 "Assets/Scripts/Character/Character.cs"
 "Assets/Scripts/Character/HoldAndThrowObjects.cs"

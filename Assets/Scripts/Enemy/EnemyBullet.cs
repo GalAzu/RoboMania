@@ -17,7 +17,7 @@ public class EnemyBullet : MonoBehaviour
     }
     void Update()
     {
-        if (bulletData.isHoming)
+        if (bulletData.isHoming && characterTransform!=null)
         {
             transform.position = Vector3.MoveTowards(transform.position, characterTransform.position , bulletData._bulletSpeed  * Time.deltaTime);
             Destroy(gameObject, 3);
@@ -30,14 +30,15 @@ public class EnemyBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger");
         if(collision.gameObject.layer == 9)
         {
-            Debug.Log("TriggerWithPlayer");
             collision.gameObject.GetComponent<Character>().Damage(bulletData._bulletDamage);
+        }
+        if (bulletData.vfx != null)
+        {
             var _vfx = Instantiate(bulletData.vfx, transform.position, Quaternion.identity);
             Destroy(_vfx, 1.5f);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }

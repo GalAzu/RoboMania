@@ -99,10 +99,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da2baa296399d4408ac8ba670ab88c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLayer:
+  damageables:
     serializedVersion: 2
-    m_Bits: 512
-  bullet: {fileID: 11400000, guid: cb2334d5986bd3a4aabb0a80c1e0c320, type: 2}
+    m_Bits: 2560
+  bulletData:
+    isHoming: 0
+    _bulletDamage: 35
+    bulletAreaDamage: 0
+    _bulletSpeed: 25.53
+    vfx: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
+  characterTransform: {fileID: 0}
 --- !u!70 &-8949387448541502865
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
