@@ -3,15 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreasureChest : MonoBehaviour 
+public class TreasureChest : Interactions
 {
+    Animator anim;
+
     private void OnEnable()
     {
-
+        action += OpenChest;
     }
-
-    private void OpenTreasureChest()
+    private void OnDisable()
     {
-        //Open Chest
+        action -= OpenChest;
     }
+    private void OpenChest()
+    {
+        Debug.Log("Open Chest");
+    }
+
 }

@@ -388,10 +388,10 @@ GameObject:
   - component: {fileID: 4539776443722265681}
   - component: {fileID: 4539776443722265687}
   - component: {fileID: 4539776443722265680}
+  - component: {fileID: 4539776442542349249}
   - component: {fileID: 4539776443722265683}
   - component: {fileID: 4539776443722265684}
   - component: {fileID: 171382697956161974}
-  - component: {fileID: 4539776442542349249}
   - component: {fileID: 4539776442542349255}
   - component: {fileID: 4539776442542349264}
   m_Layer: 9
@@ -524,6 +524,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &4539776442542349249
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539776443722265682}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2035a232a4454e4c8d133afd6575d40, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4539776443722265683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,7 +565,6 @@ MonoBehaviour:
   waitForSpawn: 0
   shooting: {fileID: 0}
   rotationLerp: 0.78
-  state: 0
 --- !u!114 &4539776443722265684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,26 +619,6 @@ MonoBehaviour:
   AbillitySlot: {fileID: 4225081228171037199, guid: a78cc20e86d8e934295bfef92f761bab,
     type: 3}
   InventoryPanel: {fileID: 0}
---- !u!95 &4539776442542349249
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4539776443722265682}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f2035a232a4454e4c8d133afd6575d40, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4539776442542349255
 MonoBehaviour:
   m_ObjectHideFlags: 0

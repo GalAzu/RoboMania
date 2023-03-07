@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ExplosiveItems : MonoBehaviour
     //STORE ALL OBJECT DATA IN SCRIPTABLE AND LOAD IT FROM CLASS

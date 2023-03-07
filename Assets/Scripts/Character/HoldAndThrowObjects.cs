@@ -1,56 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-using DG.Tweening;
-public class HoldAndThrowObjects : MonoBehaviour 
+﻿using UnityEngine;
+public class HoldAndThrowObjects : Interactions 
 {
     [SerializeField] private Animator anim;
     [SerializeField]
     private bool onHold;
-    public float actionDistance;
-    public LayerMask ObjectsToHold;
-    private RaycastHit2D hit;
-    private Vector3 rayDir;
     [SerializeField] 
-    public LayerMask enemies = 8;
-    [SerializeField]
-    public UnityEvent OnActionEvent , OutOfActionEvent;
-    [SerializeField] private int explosionDamage;
     public float throwForce;
-    private Character character;
     [SerializeField]
     private Transform objectPlace;
-
-    private void Awake()
+    private void OnEnable()
     {
-        character = GetComponent<Character>();
+        action += HoldObject;
     }
-
-    private void Update()
+    private void OnDisable()
     {
-        rayDir = transform.localPosition;
-        hit = Physics2D.Raycast(rayDir, transform.up, actionDistance, ObjectsToHold);
-        if (hit.collider != null)
+        action -= HoldObject;
+    }
+    public override void Update()
+    {
+        base.Update();
+        if (onHold) // TODO Get it out of update
         {
-            if (!onHold && Input.GetKeyDown(KeyCode.Mouse2))
+            hit.collider.transform.position = objectPlace.position;
+            if (Input.GetKeyUp(KeyCode.Mouse2))
             {
-                OnActionEvent.Invoke();
-                onHold = true;
-            }
-            else if (onHold && hit.collider.gameObject.transform.parent == objectPlace.transform && Input.GetKeyDown(KeyCode.Mouse2))
-            {
-                OutOfActionEvent.Invoke();
-                onHold = false;
+                ThrowObject();
             }
         }
     }
     public void HoldObject()
     {
+        onHold = true;
         Rigidbody2D hitRb = hit.collider.gameObject.GetComponent<Rigidbody2D>();
         //actionDistance += 1;
-        hit.collider.transform.parent = objectPlace;
         hit.collider.transform.position = objectPlace.position;
+        hit.collider.transform.parent = objectPlace;
         hitRb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
@@ -63,15 +47,6 @@ public class HoldAndThrowObjects : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.AddForce(transform.up * throwForce , ForceMode2D.Impulse);
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawRay(transform.position, transform.up * actionDistance);
-    }
-    public void Explode()
-    {
-        anim.SetBool("OnExplosion", true);
-        character.curHealth -= explosionDamage;
+        onHold = false;
     }
 }

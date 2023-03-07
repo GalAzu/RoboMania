@@ -62,9 +62,10 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenuUI.cs" />
+    <Compile Include="Assets\Scripts\Character\AnimationsHandler.cs" />
     <Compile Include="Assets\Scripts\Game\UIManager.cs" />
     <Compile Include="Assets\KY_effects\Script\Lighting.cs" />
-    <Compile Include="Assets\EnemyBulletData.cs" />
+    <Compile Include="Assets\Bullet.cs" />
     <Compile Include="Assets\Scripts\Character\PlayerBullet.cs" />
     <Compile Include="Assets\Scripts\Game\PowerUpsManager.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
@@ -72,7 +73,9 @@
     <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\EnemyLocomotion.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\ItemDatabase.cs" />
+    <Compile Include="Assets\Scripts\Character\Bullet.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\ConsumableSlotUI.cs" />
+    <Compile Include="Assets\Scripts\Character\Interactions.cs" />
     <Compile Include="Assets\Scripts\Environment\ExplosiveItems.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyStateMachine.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />

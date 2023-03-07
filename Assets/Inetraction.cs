@@ -4,6 +4,13 @@ using UnityEngine;
 
 public  class Inetraction : MonoBehaviour
 {
-    public delegate void OnInteraction();
-    public static event OnInteraction OnInteractionEvent;
+    private Character character;
+    private void Awake()
+    {
+        character = GameObject.FindGameObjectWithTag("Character").GetComponent<Character>();
+    }
+    public virtual void OnInteraction()
+    {
+        Debug.Log("Interaction");
+    }
 }
