@@ -42,8 +42,8 @@ public class Character : MonoBehaviour
         shield = GetComponent<Shield>();
         shooting = GetComponent<ShootingManager>();
         initSpeed = movementSpeed;
-        initShotRate = shooting.abilityShotRate;
-        anim = GetComponent<Animator>();
+/*        initShotRate = shooting.abilityShotRate;
+*/        anim = GetComponent<Animator>();
         instance = this;
     }
     private void Start()
@@ -54,11 +54,9 @@ public class Character : MonoBehaviour
     }
 
     private void Update()
-     {
+    {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
-
-
     private  void FixedUpdate()
     {
             Movement();
@@ -74,7 +72,7 @@ public class Character : MonoBehaviour
 
     private void PlayerRotation()
     {
-        //rotation not based on rigidbody.
+        //rotation based on transform.
           Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
           difference.Normalize();
           float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg -90;
@@ -95,7 +93,7 @@ public class Character : MonoBehaviour
     }
     #endregion
 
-    //Manage store with events that subscribe from different classes.
+    //TODO:Manage store with events that subscribe from different classes.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Store" && waitForSpawn == true) //Store open

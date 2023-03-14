@@ -8,32 +8,23 @@ public class ShootingManager : MonoBehaviour
     //TODO:Capsulate all shots data and work toward the capsulation - data holders such as so/strucs
     [HideInInspector]
     public float lightShotRate;
-    [HideInInspector]
-    public float abilityShotRate;
-    public enum ActiveAbility { FireBalls, Blizzard, Shockwave };
     public enum ActiveShot { DoubleLaser, HeavyShot }
+    [SerializeField]
+    private float RadiusDamageCheck;
     
     public Character character;
     [FoldoutGroup("Dependencies and Setting")]
     public LayerMask Damagable;
-    [FoldoutGroup("Dependencies and Setting"),ShowInInspector]
-    [SerializeField] private float timeToNextAbilityShot;
     [FoldoutGroup("Dependencies and Setting")]
     [SerializeField] private float timeToNextLightShot;
     [FoldoutGroup("Dependencies and Setting")]
-    public GameObject DoubleLaserPrefab;
+    public GameObject lightShotPrefab;
     [FoldoutGroup("Dependencies and Setting")]
     public GameObject heavyShotPrefab;
     [FoldoutGroup("Dependencies and Setting")]
     public Transform shootPointR, shootPointL, shootPointC;
-    [FoldoutGroup("Dependencies and Setting")]
-    public GameObject ElectricitySphere;
+    private bool canShootLight;
 
-    [TitleGroup("Ability",null,TitleAlignments.Centered,horizontalLine:true,boldTitle:true,indent:false)]
-
-    [EnumToggleButtons , GUIColor(0.5f,0.9F,0,1)]
-    public ActiveAbility activeAbility;
-    [Space]
     [EnumToggleButtons, GUIColor(0.9f, 0.5F, 0, 1)]
     public ActiveShot activeShot;
     [Space]
@@ -42,24 +33,10 @@ public class ShootingManager : MonoBehaviour
     public float doubleShotRate = 100;
     [FoldoutGroup("Shot Stats"),Range(0, 350), GUIColor(1, 0.4f, 1, 1), ShowIf("activeShot", ActiveShot.HeavyShot)]
     public float heavyShotRate = 150;
-    [FoldoutGroup("Shockwave Stats"),GUIColor(0.3f, 0.5f, 1, 1),ShowIf("activeAbility",ActiveAbility.Shockwave)]
-    [Range(0, 90)]
-    public float shockwaveRadius;
-    [FoldoutGroup("Shockwave Stats"), GUIColor(0.3f, 0.5f, 1, 1), ShowIf("activeAbility", ActiveAbility.Shockwave)]
-    [Range(0, 500)]
-    public float shockwaveShotRate;
-    [FoldoutGroup("Shockwave Stats"), GUIColor(0.3f, 0.5f, 1, 1), ShowIf("activeAbility", ActiveAbility.Shockwave)]
-    [Range(0,350)]
-    public float shockwaveDamage;
-    [ShowInInspector]
-    private bool canShootLight = true;
-    [FoldoutGroup("Blizzard Stats"), GUIColor(0.2f, 2.5f, 1, 1), ShowIf("activeAbility", ActiveAbility.Blizzard)]
-    public float blizzardShotRate;
-    private float fireBallShotRate;
+
 
     private void Awake()
     {
-        abilityShotRate = curAbilityShotRate();
         character = GetComponent<Character>();
         if (activeShot == ActiveShot.DoubleLaser) lightShotRate = doubleShotRate;
         else lightShotRate = heavyShotRate;
@@ -67,11 +44,8 @@ public class ShootingManager : MonoBehaviour
     }
 
     [Button("Update ability ShotRate")]
-    public void ResetShotRates()
-    {
-        abilityShotRate = curAbilityShotRate() * 0.2f;
+    public void ResetShotRates()=>
         lightShotRate = CurLightShotRate() * 0.2f;
-    }
 
     private float CurLightShotRate()
     {
@@ -84,44 +58,14 @@ public class ShootingManager : MonoBehaviour
         }
         return lightShotRate;
     }
-
-    public float curAbilityShotRate()
-    {
-        switch (activeAbility)
-        {
-            case (ActiveAbility.Shockwave):
-                return shockwaveShotRate;
-            case (ActiveAbility.Blizzard):
-                return blizzardShotRate;
-
-            case (ActiveAbility.FireBalls):
-                return fireBallShotRate;
-        }
-        return abilityShotRate;
-    }
-
     private void FixedUpdate()
     {
         OnShoot();
     }
     private void OnShoot()
     {
-        if (Input.GetButton("Fire2"))
-        {
-            if (Time.time >= timeToNextAbilityShot)
-            {
-                ShootAbility();
-                character.anim.SetBool("isShooting", true);
-                timeToNextAbilityShot = Time.time + abilityShotRate * Time.deltaTime;
-            }
-            else
-            {
-                //Cooldown Sequence
-                character.anim.SetTrigger("Cooldown");
-            }
-        }
 
-        else if (Input.GetButton("Fire1") && canShootLight && Time.time >= timeToNextLightShot) 
+         if (Input.GetButton("Fire1") && canShootLight && Time.time >= timeToNextLightShot) 
             ShootLight();
     }
 
@@ -130,8 +74,8 @@ public class ShootingManager : MonoBehaviour
         switch (activeShot)
         {
             case (ActiveShot.DoubleLaser):
-                GameObject bullet = Instantiate(DoubleLaserPrefab, shootPointR.transform.position, Character.instance.transform.rotation);   //TDL Bullets pool.
-                GameObject bullet2 = Instantiate(DoubleLaserPrefab, shootPointL.transform.position, Character.instance.transform.rotation);
+                GameObject bullet = Instantiate(lightShotPrefab, shootPointR.transform.position, Character.instance.transform.rotation);   //TDL Bullets pool.
+                GameObject bullet2 = Instantiate(lightShotPrefab, shootPointL.transform.position, Character.instance.transform.rotation);
                 break;
             case (ActiveShot.HeavyShot):
                 GameObject heavyShotObj = Instantiate(heavyShotPrefab, shootPointC.transform.position, Character.instance.transform.rotation);
@@ -139,46 +83,8 @@ public class ShootingManager : MonoBehaviour
         }
         timeToNextLightShot = Time.time + lightShotRate * Time.deltaTime;
     }
-    private void ShootAbility()
-    {
-        switch(activeAbility)
-        {
-            case (ActiveAbility.Shockwave):
-                Shockwave();
-                break;
-            case (ActiveAbility.Blizzard):
-                break;
-            case (ActiveAbility.FireBalls):
-                break;
-        }
-    }
     private void OnDrawGizmosSelected()
     {
-       Gizmos.color = Color.yellow;
-       Gizmos.DrawWireSphere(transform.position, shockwaveRadius);
+        Gizmos.DrawWireSphere(transform.position, RadiusDamageCheck);
     }
-    private void Shockwave()
-    {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, shockwaveRadius, Damagable);
-        foreach (var collider2D in collider)
-        {
-            if (collider2D != null)
-            {
-                var enemyMask = 8;
-                if (collider2D.gameObject.layer == enemyMask)
-                {
-                    var enemy = collider2D.GetComponent<EnemyStateMachine>();
-                    enemy.Damage(shockwaveDamage);
-                   // enemy.OnStatusEffect(StatusEffect.statusEffect.Shock);
-                }
-            }
-        }
-        var sphere = Instantiate(ElectricitySphere, transform.position, Quaternion.identity);
-        Destroy(sphere, 0.3f);
-    }
-    private void FireBalls()
-    {
-
-    }
-
 }

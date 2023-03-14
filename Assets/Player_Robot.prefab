@@ -390,7 +390,6 @@ GameObject:
   - component: {fileID: 4539776443722265680}
   - component: {fileID: 4539776442542349249}
   - component: {fileID: 4539776443722265683}
-  - component: {fileID: 4539776443722265684}
   - component: {fileID: 171382697956161974}
   - component: {fileID: 4539776442542349255}
   - component: {fileID: 4539776442542349264}
@@ -565,43 +564,6 @@ MonoBehaviour:
   waitForSpawn: 0
   shooting: {fileID: 0}
   rotationLerp: 0.78
---- !u!114 &4539776443722265684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4539776443722265682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ee549c099f3c141a925f6845784846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightShotRate: 13.860001
-  abilityShotRate: 0
-  character: {fileID: 0}
-  Damagable:
-    serializedVersion: 2
-    m_Bits: 6912
-  timeToNextAbilityShot: 0
-  timeToNextLightShot: 0
-  DoubleLaserPrefab: {fileID: 890617963547533658, guid: 940f16715c46ba148a4e6fa5a60f0966,
-    type: 3}
-  heavyShotPrefab: {fileID: 6189857053981160186, guid: 2be3d7090794c5b4f9ec1cbe0cb474f4,
-    type: 3}
-  shootPointR: {fileID: 4539776442994073334}
-  shootPointL: {fileID: 4539776442252854338}
-  shootPointC: {fileID: 0}
-  ElectricitySphere: {fileID: 1306605793903958, guid: 9ce4142b18056ab4b813713b878856ca,
-    type: 3}
-  activeAbility: 0
-  activeShot: 0
-  doubleShotRate: 69.3
-  heavyShotRate: 150
-  shockwaveRadius: 10
-  shockwaveShotRate: 281
-  shockwaveDamage: 41
-  blizzardShotRate: 0
 --- !u!114 &171382697956161974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,46 +593,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4830d1ad33285a747928d2de0abc38b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionDistance: 3.05
+  Interactables:
+    serializedVersion: 2
+    m_Bits: 0
   anim: {fileID: 0}
   onHold: 0
-  actionDistance: 3.05
-  ObjectsToHold:
-    serializedVersion: 2
-    m_Bits: 2048
-  enemies:
-    serializedVersion: 2
-    m_Bits: 256
-  OnActionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4539776442542349255}
-        m_TargetAssemblyTypeName: ObjectInteractions, Assembly-CSharp
-        m_MethodName: HoldObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OutOfActionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4539776442542349255}
-        m_TargetAssemblyTypeName: ObjectInteractions, Assembly-CSharp
-        m_MethodName: ThrowObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  explosionDamage: 74
   throwForce: 60
   objectPlace: {fileID: 4743919730840918357}
 --- !u!114 &4539776442542349264

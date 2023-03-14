@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class Inetraction : MonoBehaviour
+public  abstract class Inetraction : MonoBehaviour
 {
     private Character character;
     private void Awake()

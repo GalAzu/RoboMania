@@ -43,8 +43,8 @@ public class ConsumableSlotUI : MonoBehaviour , IPointerDownHandler
                 HPadded();
                 break;
             case 1:   // fireRate adding consumables
-                powerUpManager.IncreaseFireRate(consumable);
-               powerUpManager.ActivateResetStatTimer(15);
+/*                powerUpManager.IncreaseFireRate(consumable);
+*/               powerUpManager.ActivateResetStatTimer(15);
                 break;
             case 2:   // Increase moving speed
                 Haste();

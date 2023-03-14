@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 
 [CreateAssetMenu(fileName = "PowerUpItem", menuName
-= "Items/Consumable")]
+= "Items/ConsumableStoreItem")]
 public class Consumable : Item
 {
     public int hpAdded;

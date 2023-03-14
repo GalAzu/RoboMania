@@ -65,15 +65,15 @@
     <Compile Include="Assets\Scripts\Character\AnimationsHandler.cs" />
     <Compile Include="Assets\Scripts\Game\UIManager.cs" />
     <Compile Include="Assets\KY_effects\Script\Lighting.cs" />
-    <Compile Include="Assets\Bullet.cs" />
+    <Compile Include="Assets\BulletSO.cs" />
     <Compile Include="Assets\Scripts\Character\PlayerBullet.cs" />
     <Compile Include="Assets\Scripts\Game\PowerUpsManager.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\Character\AbilitySO.cs" />
     <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\EnemyLocomotion.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\ItemDatabase.cs" />
-    <Compile Include="Assets\Scripts\Character\Bullet.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\ConsumableSlotUI.cs" />
     <Compile Include="Assets\Scripts\Character\Interactions.cs" />
     <Compile Include="Assets\Scripts\Environment\ExplosiveItems.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\Character\AbillitySlot.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyStateMachineTools.cs" />
+    <Compile Include="Assets\AbilityBulletSO.cs" />
     <Compile Include="Assets\Scripts\Game\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Character\HoldAndThrowObjects.cs" />
@@ -91,7 +92,9 @@
     <Compile Include="Assets\Scripts\Character\ShootingManager.cs" />
     <Compile Include="Assets\Scripts\Unity\SoundGenerator.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
+    <Compile Include="Assets\Scripts\Character\AbilitiesManager.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunShoot.cs" />
+    <Compile Include="Assets\Shockwave.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\AbillitiesItem.cs" />
     <Compile Include="Assets\Scripts\Vector2Utilities.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\StoreUI.cs" />

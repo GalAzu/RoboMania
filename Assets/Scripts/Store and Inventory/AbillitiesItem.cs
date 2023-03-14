@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
 
-[CreateAssetMenu(fileName = "AbillityItem", menuName
-= "Items/Abillity")]
+[CreateAssetMenu(fileName = "AbilityStoreItem", menuName
+= "Items/AbillityStore")]
 public class AbillitiesItem : Item 
 {
 

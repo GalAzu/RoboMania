@@ -2,9 +2,11 @@
 
 
 [System.Serializable]
-public class EnemyBullet : Bullet
+public class EnemyBullet : MonoBehaviour
 {
     private Transform characterTransform;
+    [SerializeField]
+    public BulletSO bullet;
 
     private void Awake()
     {
@@ -12,14 +14,14 @@ public class EnemyBullet : Bullet
     }
     void Update()
     {
-        if (isHoming && characterTransform!=null)
+        if (bullet.isHoming && characterTransform!=null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, characterTransform.position , _bulletSpeed  * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, characterTransform.position , bullet._bulletSpeed  * Time.deltaTime);
             Destroy(gameObject, 3);
         }
         else
         {
-            transform.Translate((Vector3.up * _bulletSpeed) * Time.deltaTime, Space.Self);
+            transform.Translate((Vector3.up * bullet._bulletSpeed) * Time.deltaTime, Space.Self);
             Destroy(gameObject, 3);
         }
     }
@@ -27,11 +29,11 @@ public class EnemyBullet : Bullet
     {
         if(collision.gameObject.layer == 9)
         {
-            collision.gameObject.GetComponent<Character>().Damage(_bulletDamage);
+            collision.gameObject.GetComponent<Character>().Damage(bullet._bulletDamage);
         }
-        if (vfx != null)
+        if (bullet.vfx != null)
         {
-            var _vfx = Instantiate(vfx, transform.position, Quaternion.identity);
+            var _vfx = Instantiate(bullet.vfx, transform.position, Quaternion.identity);
             Destroy(_vfx, 1.5f);
         }
         Destroy(gameObject);

@@ -24,14 +24,10 @@ public class AbillitySlot : MonoBehaviour , IPointerClickHandler
             switch (abillityID)
             {
                 case (0): //FIREBALL
-                    Character.instance.shooting.activeAbility = ShootingManager.ActiveAbility.FireBalls;
                     break;
                 case (1): //ICE
-                    Character.instance.shooting.activeAbility = ShootingManager.ActiveAbility.Blizzard;
                     break;
                 case (2)://SHOCKWAVE
-                    Character.instance.shooting.activeAbility = ShootingManager.ActiveAbility.Shockwave;
-                    shootingManager.abilityShotRate = shootingManager.shockwaveShotRate;
                     break;
             }
             Destroy(gameObject);

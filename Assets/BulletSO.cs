@@ -2,15 +2,18 @@ using UnityEngine;
 
 //EnemyBullets managing all damage that is taken by enemy projectiles of any kind, according to what it collides with.
 [System.Serializable]
-public class Bullet : MonoBehaviour 
+[CreateAssetMenu(fileName = "PowerUpItem", menuName
+= "Items/BulletSO")]
+
+public class BulletSO  : ScriptableObject
 {
     public bool isHoming;
-    public int _bulletDamage;
+    public float _bulletDamage;
     public float bulletAreaDamage;
     public float _bulletSpeed;
     public GameObject vfx;
-    public int destroyTime;
+    public float destroyTime;
     [SerializeField]
-    protected LayerMask Damageables;
+    public LayerMask Damageables;
 }
 
