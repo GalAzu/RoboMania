@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198866534812435342}
   - component: {fileID: 199831446352202148}
   - component: {fileID: 4542903111384494154}
-  - component: {fileID: -5209362972245776169}
+  - component: {fileID: 5620575763520017976}
   m_Layer: 0
   m_Name: ElectricitySphere
   m_TagString: Untagged
@@ -4901,7 +4901,7 @@ SortingGroup:
   m_SortingLayerID: 588849509
   m_SortingLayer: 4
   m_SortingOrder: 0
---- !u!114 &-5209362972245776169
+--- !u!114 &5620575763520017976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4910,8 +4910,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1306605793903958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9319aada940ec4c8eb77b9799c72c5, type: 3}
+  m_Script: {fileID: 11500000, guid: b2981e92c8beb7141b81346331a8c39c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityData: {fileID: 0}
-  abilityType: 0

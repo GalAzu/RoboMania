@@ -7,8 +7,16 @@ using UnityEngine;
 public class AbilitiesManager:MonoBehaviour
 {
     [SerializeField]
-    public AbilitySO[] abilities;
-    public int curAbilityIndex;
+    private int curAbilityIndex;
+
+    [SerializeField]
+    private AbilityType activeAbility;
+    [SerializeField]
+    public Collider2D[] arrayCheck;
+    public AbilitySO[] abilitiesSO;
+    [SerializeField]
+    private float chargeTime;
+
     public enum AbilityType
     {
         Null, // = 0
@@ -16,61 +24,48 @@ public class AbilitiesManager:MonoBehaviour
         Fireballs, // = 2
         Blizzard // = 3
     }
-    public  void Awake()
+    private void Awake()
     {
-        abilities = Resources.LoadAll<AbilitySO>("AbilitiesSO");
+        abilitiesSO = Resources.LoadAll<AbilitySO>("AbilitiesSO");
     }
-    private void OnEnable()
+    private void Start()
     {
-        abilities[1].activationEvent += Shockwave;
-        abilities[2].activationEvent += Fireballs;
-        abilities[3].activationEvent += Blizzard;
+        curAbilityIndex = (int)activeAbility;
     }
-    private void OnDisable()
+    private void OnValidate()
     {
-        abilities[1].activationEvent -= Shockwave;
-        abilities[2].activationEvent -= Fireballs;
-        abilities[3].activationEvent -= Blizzard;
+        curAbilityIndex = (int)activeAbility;
     }
     private void Update()
     {
-
         if (Input.GetMouseButtonDown(1))
         {
-            abilities[curAbilityIndex].Activation();
+            InstantiateAbility(abilitiesSO[(int)activeAbility]0.GameObject);
         }
-    }
-    private void Shockwave()
-    {
-        var abilityData = abilities[1];
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, abilityData.bulletAreaDamage, abilityData.Damageables);
-        foreach (var collider2D in collider)
+        else if (Input.GetMouseButton(1))
         {
-            if (collider2D != null)
-            {
-                var enemyMask = 8;
-                if (collider2D.gameObject.layer == enemyMask)
-                {
-                    var enemy = collider2D.GetComponent<EnemyStateMachine>();
-                    enemy.Damage(abilityData._bulletDamage);
-                    // enemy.OnStatusEffect(StatusEffect.statusEffect.Shock);
-                }
-            }
+            Debug.Log("Charging");
+            chargeTime += Time.deltaTime;
+
         }
-        var sphere = Instantiate(abilityData.vfx, transform.position, Quaternion.identity);
-        Destroy(sphere, 0.3f);
+        else if (Input.GetMouseButtonUp(1))
+        {
+            if (chargeTime > 3)
+            {
+                chargeTime = 0;
+                Debug.Log("Charge Ability");
+                InstantiateAbility(abilitiesSO[(int)activeAbility].GameObject);
+            }
+            else
+            {
+                chargeTime = 0;
+                Debug.Log("POOF");
+            }
 
+        }
     }
-    private void Blizzard()
+    private void InstantiateAbility(GameObject abilityObj)
     {
-
-    }
-    private void Fireballs()
-    {
-        Debug.Log("FIRE");
-        var abilityData = abilities[2];
-        var Fireball1 = Instantiate(abilityData.vfx, transform.position, Quaternion.identity);
-        var Fireball2 = Instantiate(abilityData.vfx, transform.position, Quaternion.identity);
-        var Fireball3 = Instantiate(abilityData.vfx, transform.position, Quaternion.identity);
+        GameObject abilityPrefab = Instantiate(abilityObj, transform.position, Quaternion.identity);
     }
 }

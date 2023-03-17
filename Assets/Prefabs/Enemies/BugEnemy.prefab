@@ -156,7 +156,7 @@ MonoBehaviour:
   health: 141.47
   stopChasingTime: 10
   backToWalkDistance: 20
-  detectRadius: 19.14
+  detectRadius: 13.23
   moveSpeed: 2.05
   playerLayer:
     serializedVersion: 2
@@ -179,7 +179,6 @@ MonoBehaviour:
   shootTransform: {fileID: 5502146401384467585}
   timeToNextShot: 0.66
   attackDistance: 15.36
-  bulletSpeed: 16.55
   shotRate: 2.44
   physicalDamage: 44
   Environment:

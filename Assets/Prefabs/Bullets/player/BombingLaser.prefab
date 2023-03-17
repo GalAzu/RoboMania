@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9154287601613203230}
   - component: {fileID: 900332677}
   - component: {fileID: 7320929177146004099}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BombingLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 588849509
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -224264422132340645, guid: de63bf1749b96ea4e88e7f960618be8e,
     type: 3}
@@ -120,18 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266e4f4da54d8b74581cd97e252a204c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHoming: 1
-  _bulletDamage: 35
-  bulletAreaDamage: 0
-  _bulletSpeed: 7
-  vfx: {fileID: 0}
-  destroyTime: 5
-  Damageables:
-    serializedVersion: 2
-    m_Bits: 256
+  bullet: {fileID: 11400000, guid: 648811de2c474524ba8918d6045240c2, type: 2}
   type: 1
-  LeftShotPos: {fileID: 0}
-  RightShotPos: {fileID: 0}
 --- !u!58 &7320929177146004099
 CircleCollider2D:
   m_ObjectHideFlags: 0

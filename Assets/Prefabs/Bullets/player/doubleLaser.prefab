@@ -99,18 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266e4f4da54d8b74581cd97e252a204c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHoming: 0
-  _bulletDamage: 35
-  bulletAreaDamage: 0
-  _bulletSpeed: 15
-  vfx: {fileID: 0}
-  destroyTime: 3
-  Damageables:
-    serializedVersion: 2
-    m_Bits: 256
+  bullet: {fileID: 11400000, guid: cb2334d5986bd3a4aabb0a80c1e0c320, type: 2}
   type: 0
-  LeftShotPos: {fileID: 0}
-  RightShotPos: {fileID: 0}
 --- !u!70 &4933027327867006892
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

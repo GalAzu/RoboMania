@@ -392,7 +392,6 @@ GameObject:
   - component: {fileID: 4539776443722265683}
   - component: {fileID: 171382697956161974}
   - component: {fileID: 4539776442542349255}
-  - component: {fileID: 4539776442542349264}
   m_Layer: 9
   m_Name: Player_Robot
   m_TagString: Player
@@ -601,22 +600,6 @@ MonoBehaviour:
   onHold: 0
   throwForce: 60
   objectPlace: {fileID: 4743919730840918357}
---- !u!114 &4539776442542349264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4539776443722265682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e072cf06442d7647a89a67d4f1127d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shield: {fileID: 0}
-  _onShield: 1
-  dashForce: 0.2
-  dashTime: 0
 --- !u!1 &4539776443891833024
 GameObject:
   m_ObjectHideFlags: 0

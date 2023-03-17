@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 309aa054416fbf840a2d442a36050b88, type: 3}
-  m_Name: lightShot
+  m_Name: playerBullet_Heavy
   m_EditorClassIdentifier: 
-  bulletPos: {fileID: 0}
-  _bulletDamage: 0
+  isHoming: 0
+  _bulletDamage: 35
   bulletAreaDamage: 0
-  _bulletSpeed: 0
-  vfx: {fileID: 0}
+  _bulletSpeed: 13
+  GameObject: {fileID: 0}
+  destroyTime: 5
+  Damageables:
+    serializedVersion: 2
+    m_Bits: 256

@@ -23,7 +23,6 @@ public class ShootingManager : MonoBehaviour
     public GameObject heavyShotPrefab;
     [FoldoutGroup("Dependencies and Setting")]
     public Transform shootPointR, shootPointL, shootPointC;
-    private bool canShootLight;
 
     [EnumToggleButtons, GUIColor(0.9f, 0.5F, 0, 1)]
     public ActiveShot activeShot;
@@ -65,8 +64,11 @@ public class ShootingManager : MonoBehaviour
     private void OnShoot()
     {
 
-         if (Input.GetButton("Fire1") && canShootLight && Time.time >= timeToNextLightShot) 
+         if (Input.GetButton("Fire1")  && Time.time >= timeToNextLightShot)
+        {
+            Debug.Log("SHOOTING");
             ShootLight();
+        }
     }
 
     private void ShootLight()

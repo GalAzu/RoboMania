@@ -102,7 +102,7 @@ public class EnemyStateMachine : MonoBehaviour
             PhysicalHitOnPlayer();
         }
     }
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, detectRadius);
     }

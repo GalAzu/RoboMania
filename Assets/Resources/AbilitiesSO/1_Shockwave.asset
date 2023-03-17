@@ -16,9 +16,9 @@ MonoBehaviour:
   _bulletDamage: 0
   bulletAreaDamage: 0
   _bulletSpeed: 0
-  vfx: {fileID: 1306605793903958, guid: 9ce4142b18056ab4b813713b878856ca, type: 3}
+  GameObject: {fileID: 1306605793903958, guid: 9ce4142b18056ab4b813713b878856ca, type: 3}
   destroyTime: 0.47
   Damageables:
     serializedVersion: 2
-    m_Bits: 0
-  abilityType: 0
+    m_Bits: 256
+  abilityType: 1

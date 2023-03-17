@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309aa054416fbf840a2d442a36050b88, type: 3}
+  m_Name: enemyBullet_melee
+  m_EditorClassIdentifier: 
+  isHoming: 0
+  _bulletDamage: 35
+  bulletAreaDamage: 0
+  _bulletSpeed: 0
+  destroyTime: 2.5
+  Damageables:
+    serializedVersion: 2
+    m_Bits: 512

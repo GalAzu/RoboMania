@@ -4,6 +4,5 @@ using UnityEngine;
 
 public interface Iabillity 
 {
-
-    public void Activation(AbilitiesManager.AbilityType abilityType);
+    public void Activation();
 }

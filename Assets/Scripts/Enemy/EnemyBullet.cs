@@ -22,7 +22,7 @@ public class EnemyBullet : MonoBehaviour
         else
         {
             transform.Translate((Vector3.up * bullet._bulletSpeed) * Time.deltaTime, Space.Self);
-            Destroy(gameObject, 3);
+            Destroy(gameObject, bullet.destroyTime);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,11 +31,7 @@ public class EnemyBullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<Character>().Damage(bullet._bulletDamage);
         }
-        if (bullet.vfx != null)
-        {
-            var _vfx = Instantiate(bullet.vfx, transform.position, Quaternion.identity);
-            Destroy(_vfx, 1.5f);
-        }
+        //VFX
         Destroy(gameObject);
     }
 }

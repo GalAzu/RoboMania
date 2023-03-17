@@ -22,28 +22,19 @@ public class Character : MonoBehaviour
     public float movementSpeed;
     public float maxHealth;
     public float curHealth;
-    private float initSpeed;
-    private float initShotRate;
     //When true desires go unfulfilled, they turn into needs.
 
     [Title("Character Setting and Dependencies", null, TitleAlignments.Centered)]
     public bool waitForSpawn;
-    public ShootingManager shooting;
-    private Shield shield;
     [SerializeField]
     private float rotationLerp;
-   public enum PlayerState { Slowdown, Walking, Dash, Shooting };
-    Vector2 mousePos;
-    private LayerMask enemyBullet = 12;
+    public enum PlayerState { Slowdown, Walking, Dash, Shooting };
+    private Vector2 mousePos;
 
 
     private void Awake()
     {
-        shield = GetComponent<Shield>();
-        shooting = GetComponent<ShootingManager>();
-        initSpeed = movementSpeed;
-/*        initShotRate = shooting.abilityShotRate;
-*/        anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         instance = this;
     }
     private void Start()
@@ -78,18 +69,6 @@ public class Character : MonoBehaviour
           float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg -90;
           var targetTransform = Quaternion.Euler(0f, 0f, rotationZ) ;
           transform.rotation = Quaternion.Lerp(transform.rotation, targetTransform, rotationLerp);
-
-        //rotation based on rigidbody.
-
-       /* Vector2 direction = mousePos - rb.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
-
-        //rotation with perspective camera(3D)
-
-        /*  Ray mousray = Camera.main.ScreenPointToRay(Input.mousePosition);
-          float midpoint = (transform.position - Camera.main.transform.position).magnitude * 0.5f;
-          transform.LookAt(mousray.origin + mousray.direction * midpoint);   */
     }
     #endregion
 
@@ -114,7 +93,14 @@ public class Character : MonoBehaviour
     public void Damage(float damage)
     {
         curHealth -= damage;
-        UIManager.instance.UpdateHP();
+        if(curHealth <= 0)
+            Death(); //Create death delegate to subscribe from UI/GameManager class.
     }
+
+    private void Death()
+    {
+        Destroy(gameObject);
+    }
+
     public void setShootingAnimOff() => anim.SetBool("isShooting", false);
 }

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHoming: 1
   _bulletDamage: 11.87
-  bulletAreaDamage: 0
-  _bulletSpeed: 0
-  vfx: {fileID: 100004, guid: 6836f5eaa96f845c4ac0909f84272556, type: 3}
-  destroyTime: 3
+  bulletAreaDamage: 38.37
+  _bulletSpeed: 11
+  GameObject: {fileID: 100004, guid: 6836f5eaa96f845c4ac0909f84272556, type: 3}
+  destroyTime: 18.21
   Damageables:
     serializedVersion: 2
-    m_Bits: 0
-  abilityType: 1
+    m_Bits: 4352
+  abilityType: 2
