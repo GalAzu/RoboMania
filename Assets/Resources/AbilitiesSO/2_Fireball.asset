@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 2_Fireball
   m_EditorClassIdentifier: 
   isHoming: 1
-  _bulletDamage: 11.87
-  bulletAreaDamage: 38.37
-  _bulletSpeed: 11
-  GameObject: {fileID: 100004, guid: 6836f5eaa96f845c4ac0909f84272556, type: 3}
-  destroyTime: 18.21
+  _bulletDamage: 55
+  bulletAreaDamage: 4.89
+  _bulletSpeed: 12
+  destroyTime: 2
   Damageables:
     serializedVersion: 2
     m_Bits: 4352
   abilityType: 2
+  GameObject: {fileID: 100004, guid: 6836f5eaa96f845c4ac0909f84272556, type: 3}

@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\BulletSO.cs" />
     <Compile Include="Assets\Scripts\Character\PlayerBullet.cs" />
     <Compile Include="Assets\Scripts\Game\PowerUpsManager.cs" />
+    <Compile Include="Assets\Scripts\FireballsBehaviour.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Character\AbilitySO.cs" />
@@ -96,13 +97,13 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
     <Compile Include="Assets\Scripts\Character\AbilitiesManager.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunShoot.cs" />
-    <Compile Include="Assets\Scripts\Shockwave.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\AbillitiesItem.cs" />
     <Compile Include="Assets\Scripts\Vector2Utilities.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\StoreUI.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\inventory_AbillitySlot.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Store.cs" />
+    <Compile Include="Assets\Scripts\ShockwaveBehaviour.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Store and Inventory\Consumable.cs" />
     <Compile Include="Assets\KY_effects\Script\ConGUI.cs" />
@@ -116,8 +117,7 @@
     <Compile Include="Assets\Scripts\Store and Inventory\Ienvironment.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunAim.cs" />
     <Compile Include="Assets\Scripts\Unity\AudioManager_Unity.cs" />
-    <Compile Include="Assets\Scripts\FireballsBehaviour.cs" />
-    <Compile Include="Assets\Scripts\ShockwaveBehaviour.cs" />
+    <Compile Include="Assets\Entity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

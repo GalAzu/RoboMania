@@ -11,7 +11,7 @@ public class BulletSO  : ScriptableObject
     public float _bulletDamage;
     public float bulletAreaDamage;
     public float _bulletSpeed;
-    public float destroyTime;
+    public int destroyTime;
     [SerializeField]
     public LayerMask Damageables;
 }

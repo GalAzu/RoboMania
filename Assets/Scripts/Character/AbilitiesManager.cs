@@ -40,11 +40,10 @@ public class AbilitiesManager:MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            InstantiateAbility(abilitiesSO[(int)activeAbility]0.GameObject);
+            InstantiateAbility(abilitiesSO[(int)activeAbility].GameObject);
         }
         else if (Input.GetMouseButton(1))
         {
-            Debug.Log("Charging");
             chargeTime += Time.deltaTime;
 
         }
@@ -53,13 +52,11 @@ public class AbilitiesManager:MonoBehaviour
             if (chargeTime > 3)
             {
                 chargeTime = 0;
-                Debug.Log("Charge Ability");
                 InstantiateAbility(abilitiesSO[(int)activeAbility].GameObject);
             }
             else
             {
                 chargeTime = 0;
-                Debug.Log("POOF");
             }
 
         }

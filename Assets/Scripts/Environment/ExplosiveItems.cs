@@ -12,11 +12,11 @@ public class ExplosiveItems : MonoBehaviour
     [SerializeField]
     private float health;
     [Header("Spatial properties")]
-    [SerializeField] private float spatialDamage;
+    [SerializeField] private int spatialDamage;
     [SerializeField] private float spatialRadius;
     [Space]
     [Header("Object Properties")]
-    [SerializeField] private float throwDamage;
+    [SerializeField] private int throwDamage;
     [SerializeField] public bool isExplosive;
     [SerializeField]
     public float velocityDamageThreshold;
@@ -41,7 +41,7 @@ public class ExplosiveItems : MonoBehaviour
         if (rb.velocity.magnitude > 0.5f && collision.gameObject.layer == enemyLayer)
         {
             var enemy = collision.gameObject.GetComponent<EnemyStateMachine>();
-            enemy.health -= throwDamage;
+            enemy.curHealth -= throwDamage;
             DamageObject();
         }
     }
@@ -57,10 +57,8 @@ public class ExplosiveItems : MonoBehaviour
                 RaycastHit2D[] rayHits = Physics2D.CircleCastAll(transform.position, spatialRadius, Vector2.zero);
                 foreach(var hit in rayHits)
                 {
-                    if (hit.collider.tag == "Player")
-                        hit.collider.gameObject.GetComponent<Character>().Damage(spatialDamage);
-                    else if (hit.collider.tag == "Enemy")
-                        hit.collider.gameObject.GetComponent<EnemyStateMachine>().Damage(spatialDamage);
+                    if (hit.collider.tag == "Player" || hit.collider.tag == "Enemy")
+                        hit.collider.gameObject.GetComponent<Entity>().Damage(spatialDamage);
                 }
                 Destroy(vfx, 1.5f);
                

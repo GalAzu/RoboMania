@@ -2898,6 +2898,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1308623172, guid: 35d1d6174d304884d9818150259423d0, type: 3}
+      propertyPath: activeAbility
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308623172, guid: 35d1d6174d304884d9818150259423d0, type: 3}
+      propertyPath: curAbilityIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308623172, guid: 35d1d6174d304884d9818150259423d0, type: 3}
+      propertyPath: attackRadiusGizmos
+      value: 7.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308623173, guid: 35d1d6174d304884d9818150259423d0, type: 3}
+      propertyPath: RadiusDamageCheck
+      value: 4.89
+      objectReference: {fileID: 0}
     - target: {fileID: 4539776443722265680, guid: 35d1d6174d304884d9818150259423d0,
         type: 3}
       propertyPath: m_Simulated
@@ -3903,7 +3919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 15185572, guid: aa7cb01ab6c6ecd41a4e581fd2a65495, type: 3}
       propertyPath: throwDamage
-      value: 51.4
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 15185572, guid: aa7cb01ab6c6ecd41a4e581fd2a65495, type: 3}
       propertyPath: objectDamage

@@ -4745,6 +4745,7 @@ GameObject:
   - component: {fileID: 19900002}
   - component: {fileID: 1287937265702755147}
   - component: {fileID: 8380586518798209122}
+  - component: {fileID: -9163368824993479153}
   m_Layer: 0
   m_Name: fireBall
   m_TagString: Untagged
@@ -9584,6 +9585,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToTarget: 0.21
+  targets: []
+  explosionVFX: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1,
+    type: 3}
+--- !u!58 &-9163368824993479153
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &100006
 GameObject:
   m_ObjectHideFlags: 0

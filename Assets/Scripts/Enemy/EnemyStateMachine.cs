@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class EnemyStateMachine : MonoBehaviour
+public class EnemyStateMachine : Entity
 {
     public enum State { Walking, Chasing, Attacking, Defending };
     public State enemyState;
-    [Header("General")]
-    public float health;
+
     [Header("State Machine")]
     [Header("Chasing")]
     public float stopChasingTime;
@@ -88,11 +87,6 @@ public class EnemyStateMachine : MonoBehaviour
             GameManager.instance.enemyCount--;
             UIManager.instance.UpdateEnemyCount();
             //Explosion particles / animation
-    }
-    public void Damage(float damage)
-    {
-        if (health <= 0) OnDeath();
-        else health -= damage;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

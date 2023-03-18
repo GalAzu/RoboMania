@@ -7,7 +7,7 @@ public class Interactions : MonoBehaviour
     protected RaycastHit2D hit;
     [SerializeField]
     protected float actionDistance;
-    public LayerMask Interactables;
+    public LayerMask Interactables = 9;
     protected Action action;
     protected Character character;
     private void Awake()

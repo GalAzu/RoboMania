@@ -25,7 +25,7 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.gameObject.layer == 8) //enemy layer mask
         {
-            collision.gameObject.GetComponent<EnemyStateMachine>().Damage(bullet._bulletDamage);
+            collision.gameObject.GetComponent<Entity>().Damage(bullet._bulletDamage);
         }
         else Debug.Log("NO LAYER IS TOUCHED");
 

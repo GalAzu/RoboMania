@@ -392,6 +392,8 @@ GameObject:
   - component: {fileID: 4539776443722265683}
   - component: {fileID: 171382697956161974}
   - component: {fileID: 4539776442542349255}
+  - component: {fileID: 1308623172}
+  - component: {fileID: 1308623173}
   m_Layer: 9
   m_Name: Player_Robot
   m_TagString: Player
@@ -561,7 +563,6 @@ MonoBehaviour:
   maxHealth: 100
   curHealth: 100
   waitForSpawn: 0
-  shooting: {fileID: 0}
   rotationLerp: 0.78
 --- !u!114 &171382697956161974
 MonoBehaviour:
@@ -595,11 +596,57 @@ MonoBehaviour:
   actionDistance: 3.05
   Interactables:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   anim: {fileID: 0}
   onHold: 0
   throwForce: 60
   objectPlace: {fileID: 4743919730840918357}
+--- !u!114 &1308623172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539776443722265682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2f6a414fd114d4e8da2835a3d34a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curAbilityIndex: 2
+  activeAbility: 2
+  arrayCheck: []
+  abilitiesSO: []
+  chargeTime: 0
+--- !u!114 &1308623173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539776443722265682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ee549c099f3c141a925f6845784846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightShotRate: 0
+  RadiusDamageCheck: 24.25
+  character: {fileID: 0}
+  Damagable:
+    serializedVersion: 2
+    m_Bits: 0
+  timeToNextLightShot: 0
+  lightShotPrefab: {fileID: 890617963547533658, guid: 940f16715c46ba148a4e6fa5a60f0966,
+    type: 3}
+  heavyShotPrefab: {fileID: 6189857053981160186, guid: 2be3d7090794c5b4f9ec1cbe0cb474f4,
+    type: 3}
+  shootPointR: {fileID: 4539776442994073334}
+  shootPointL: {fileID: 4539776442252854338}
+  shootPointC: {fileID: 4743919730840918357}
+  activeShot: 0
+  doubleShotRate: 100
+  heavyShotRate: 150
 --- !u!1 &4539776443891833024
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ using System;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 
-public class Character : MonoBehaviour
+public class Character : Entity
 {
     public static Character instance;
     [HideInInspector]
@@ -19,9 +19,6 @@ public class Character : MonoBehaviour
 
     [Title("PlayerStats", null, TitleAlignments.Centered)]
     public int machineParts;
-    public float movementSpeed;
-    public float maxHealth;
-    public float curHealth;
     //When true desires go unfulfilled, they turn into needs.
 
     [Title("Character Setting and Dependencies", null, TitleAlignments.Centered)]
@@ -89,17 +86,6 @@ public class Character : MonoBehaviour
             var store = collision.GetComponent<Store>();
             //close store
         }
-    }
-    public void Damage(float damage)
-    {
-        curHealth -= damage;
-        if(curHealth <= 0)
-            Death(); //Create death delegate to subscribe from UI/GameManager class.
-    }
-
-    private void Death()
-    {
-        Destroy(gameObject);
     }
 
     public void setShootingAnimOff() => anim.SetBool("isShooting", false);
