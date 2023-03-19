@@ -28,7 +28,9 @@ public class ShockwaveBehaviour : MonoBehaviour
                 if (collider2D.gameObject.layer == enemyMask)
                 {
                     var enemy = collider2D.GetComponent<EnemyStateMachine>();
-                    enemy.Damage(_abilityData._bulletDamage);
+                    float proximity = (transform.position - enemy.transform.position).magnitude;
+                    float effect = 1 - (proximity / _abilityData.bulletAreaDamage);
+                    enemy.Damage(_abilityData._bulletDamage * effect);
                     // enemy.OnStatusEffect(StatusEffect.statusEffect.Shock);
                 }
             }

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1811814585216146644, guid: 220d5f92e2c64f14d99ffec280516db8,
         type: 3}
       propertyPath: m_Name
-      value: BugEnemyMelee
+      value: BugEnemyMelee Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5502146401959182107, guid: 220d5f92e2c64f14d99ffec280516db8,
         type: 3}
@@ -21,12 +21,12 @@ PrefabInstance:
     - target: {fileID: 5502146401959182107, guid: 220d5f92e2c64f14d99ffec280516db8,
         type: 3}
       propertyPath: shotRate
-      value: 14.4
+      value: 1.56
       objectReference: {fileID: 0}
     - target: {fileID: 5502146401959182107, guid: 220d5f92e2c64f14d99ffec280516db8,
         type: 3}
       propertyPath: attackDistance
-      value: 13.16
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 5502146401959182107, guid: 220d5f92e2c64f14d99ffec280516db8,
         type: 3}

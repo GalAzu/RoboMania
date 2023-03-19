@@ -27,7 +27,14 @@ public class EnemyStateMachine : Entity
     private EnemiesAttackManager attackManager;
     private const string CONST_PLAYER_NAME = "Player";
     private const string CONST_SPAWN_MANAGER = "SpawnManager";
-
+    private void OnEnable()
+    {
+        entityDeathEvent += OnDeath;
+    }
+    private void OnDestroy()
+    {
+        entityDeathEvent -= OnDeath;
+    }
     private void Awake()
     {
         character = GameObject.FindGameObjectWithTag(CONST_PLAYER_NAME).GetComponent<Character>();

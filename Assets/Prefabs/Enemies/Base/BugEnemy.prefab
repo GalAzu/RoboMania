@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5502146401959182104}
   - component: {fileID: 5502146401959182107}
   m_Layer: 8
-  m_Name: SpiderEnemy
+  m_Name: BugEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 588849509
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bfd4ae63ac46b784284bc02dfda7509c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd4dd43fe203ab145b23552fa0571eb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,18 +106,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.018144608, y: -0.1391592}
+  m_Offset: {x: -0.018144608, y: -0.4939394}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 1.22}
+    oldSize: {x: 0.88, y: 1.04}
     newSize: {x: 0.88, y: 1.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3193855, y: 3.0117168}
+  m_Size: {x: 2.3193855, y: 2.3021564}
   m_EdgeRadius: 0
 --- !u!50 &1942124995524583875
 Rigidbody2D:
@@ -152,15 +152,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88313096d2bb9284698504c749ffadba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 0
+  maxHealth: 0
+  curHealth: 0
   enemyState: 0
-  health: 141.47
-  stopChasingTime: 0
-  backToWalkDistance: 15
-  detectRadius: 7.1
+  stopChasingTime: 10
+  backToWalkDistance: 20
+  detectRadius: 19.94
   moveSpeed: 2.05
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   target: {fileID: 0}
   character: {fileID: 0}
 --- !u!114 &5502146401959182107
@@ -175,15 +177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512585ba40d88e14d88bbe8f7d828d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
-  shootTransform: {fileID: 0}
-  timeToNextShot: 0
-  attackDistance: 0
-  shotRate: 1.4
-  physicalDamage: 0
-  Environment:
-    serializedVersion: 2
-    m_Bits: 0
+  bullet: {fileID: -1956119774138603483, guid: 2477f6680c1e94d41ba26951bd18c889, type: 3}
+  shootTransform: {fileID: 5502146401384467585}
+  timeToNextShot: 0.66
+  attackDistance: 15.36
+  shotRate: 2.44
+  physicalDamage: 44
 --- !u!1 &2834085498409141093
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8769041950461803509
 Transform:
   m_ObjectHideFlags: 0
@@ -430,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2892723865720403667
 Transform:
   m_ObjectHideFlags: 0

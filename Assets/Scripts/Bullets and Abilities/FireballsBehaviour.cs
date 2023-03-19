@@ -16,7 +16,7 @@ public class FireballsBehaviour : MonoBehaviour
     }
     private void Start()
     {
-        targets = Physics2D.OverlapCircleAll(transform.position, _abilityData.bulletAreaDamage, _abilityData.Damageables);
+        targets = Physics2D.OverlapCircleAll(transform.position, _abilityData.homingRadius, _abilityData.Damageables);
         Debug.Log(targets.Length);
         randomTarget = Random.Range(0, targets.Length);
     }

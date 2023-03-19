@@ -22,8 +22,6 @@ public class EnemiesAttackManager : MonoBehaviour
     [SerializeField]
     private float shotRate;
     public int physicalDamage;
-    public LayerMask Environment;
-
 
     public void Attack()
     {

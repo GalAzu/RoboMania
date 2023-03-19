@@ -21,4 +21,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   abilityType: 1
+  homingRadius: 0
   GameObject: {fileID: 1306605793903958, guid: 9ce4142b18056ab4b813713b878856ca, type: 3}
+  shotPos: {fileID: 0}

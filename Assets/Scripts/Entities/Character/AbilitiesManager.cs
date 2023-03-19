@@ -40,7 +40,7 @@ public class AbilitiesManager:MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            InstantiateAbility(abilitiesSO[(int)activeAbility].GameObject);
+            InstantiateAbility(abilitiesSO[(int)activeAbility]);
         }
         else if (Input.GetMouseButton(1))
         {
@@ -52,7 +52,7 @@ public class AbilitiesManager:MonoBehaviour
             if (chargeTime > 3)
             {
                 chargeTime = 0;
-                InstantiateAbility(abilitiesSO[(int)activeAbility].GameObject);
+                InstantiateAbility(abilitiesSO[(int)activeAbility]);
             }
             else
             {
@@ -61,8 +61,9 @@ public class AbilitiesManager:MonoBehaviour
 
         }
     }
-    private void InstantiateAbility(GameObject abilityObj)
+    private void InstantiateAbility(AbilitySO abilityObj)
     {
-        GameObject abilityPrefab = Instantiate(abilityObj, transform.position, Quaternion.identity);
+        Instantiate(abilityObj.GameObject, transform.position, Quaternion.identity);
+        
     }
 }

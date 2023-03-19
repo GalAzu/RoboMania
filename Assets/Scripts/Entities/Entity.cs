@@ -7,8 +7,8 @@ public abstract class Entity : MonoBehaviour
     public float movementSpeed;
     public float maxHealth;
     public float curHealth;
-    private delegate void Death();
-    private event Death entityDeathEvent;
+    public delegate void Death();
+    public event Death entityDeathEvent;
     public void Damage(float damage)
     {
         curHealth -= damage;

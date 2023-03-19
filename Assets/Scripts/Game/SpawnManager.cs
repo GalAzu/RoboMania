@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     [ShowInInspector]
     public int waveNumber;
-    public GameObject[] EnemiesInScene;
+    public GameObject[] enemiesToSpawn;
     public int waveSize;
     public bool waveIsSpawning;
     public bool timerIsOn;
@@ -79,8 +79,8 @@ public class SpawnManager : MonoBehaviour
     {
         foreach(Vector3 spawnPoint in nextSpawnPoints)
         {
-            int randomEnemyIndex = Random.Range(0, EnemiesInScene.Length);
-            var newEnemy = Instantiate(EnemiesInScene[randomEnemyIndex], spawnPoint , Quaternion.identity);
+            int randomEnemyIndex = Random.Range(0, enemiesToSpawn.Length);
+            var newEnemy = Instantiate(enemiesToSpawn[randomEnemyIndex], spawnPoint , Quaternion.identity);
             var spawnfx = Instantiate(onSpawnEffect, spawnPoint, Quaternion.identity);
             Destroy(spawnfx, 1);
         }

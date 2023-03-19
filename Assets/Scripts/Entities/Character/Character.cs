@@ -25,7 +25,6 @@ public class Character : Entity
     public bool waitForSpawn;
     [SerializeField]
     private float rotationLerp;
-    public enum PlayerState { Slowdown, Walking, Dash, Shooting };
     private Vector2 mousePos;
 
 
